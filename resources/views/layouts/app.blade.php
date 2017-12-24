@@ -15,6 +15,8 @@
 </head>
 <body>
     <div id="app">
+      @if (Route::has('login'))
+        @auth
         <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -70,6 +72,8 @@
                 </div>
             </div>
         </nav>
+          @endauth
+        @endif
 
         @yield('content')
     </div>
