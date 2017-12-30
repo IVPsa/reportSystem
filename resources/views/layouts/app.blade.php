@@ -12,7 +12,8 @@
 
     <!-- Styles -->
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
     <script>
@@ -29,79 +30,59 @@
 </head>
 <body>
     <div  id="app">
-      @if (Route::has('login'))
-        @auth
-        <nav class="navbar navbar-inverse " style="border-radius:0;">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" tyle="font-size:40px;" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+@if (Route::has('login'))
+  @auth
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <span class="d-none d-sm-block " style="font-size:40px; color:white; cursor:pointer" onclick="openNav()">&#9776;</span>
+      <a class="navbar-brand" href="#">RPS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-                    <span class="hidden-xs navbar-left" style="font-size:40px; color:white; cursor:pointer" onclick="openNav()">&#9776;</span>
-                    <!-- Branding Image -->
-                    <h3 class="navbar-left">RPS</h3>
-
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li  class="hidden-lg hidden-md">
-                                <a href="#">PERFIL</a>
-                            </li>
-                            <li  class="hidden-lg hidden-md">
-                                <a href="#">REPORTES</a>
-                            </li>
-                            <li  class="hidden-lg hidden-md">
-                                <a href="#">ORDENES DE TRABAJO</a>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                  <h4>  {{ Auth::user()->name }} <span class="caret"></span></h4>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item  d-md-none d-xs-block">
+            <a class="nav-link" href="#">Home </a>
+          </li>
+          <li class="nav-item d-md-none d-xs-block">
+            <a class="nav-link" href="#">Link</a>
+          </li>
 
 
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        </ul>
+      	<ul class="navbar-nav ">
+          @guest
+              <li><a href="{{ route('login') }}">Login</a></li>
+              <li><a href="{{ route('register') }}">Register</a></li>
+          @else
+
+           <li class="nav-item dropdown mr-5 pr-3">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }}
+              </a>
+              <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
 
 
-          @endauth
-        @endif
-        
+              </div>
+            </li>
+                    @endguest
+      	</ul>
+      </div>
+
+     </nav>
+
+  @endauth
+@endif
+
       <div class="hidden-xs ">
 
         <div id="mySidenav" class="sidenav ">
@@ -113,20 +94,19 @@
       </div>
 
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-xs-12">
-            @yield('content')
-          </div>
-        </div>
+
+    </div>
+
+    <div class="container-fluid bg-dark">
+
+          @yield('content')
 
       </div>
 
     </div>
 
-
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- <script src="{{ asset('js/app.js') }}"></script> -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
