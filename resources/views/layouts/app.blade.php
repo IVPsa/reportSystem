@@ -15,6 +15,7 @@
     <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
       function openNav() {
@@ -87,9 +88,10 @@
 
         <div id="mySidenav" class="sidenav ">
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="#">PERFIL</a>
-          <a href="#">REPORTES</a>
-          <a href="#">ORDENES DE TRABAJO</a>
+          <a href="{{route('home')}}">HOME</a>
+          <a href="{{route('Perfil')}}">PERFIL</a>
+          <a href="{{route('reportes')}}">REPORTES</a>
+          <a href="{{route('listaOt')}}">ORDENES DE TRABAJO</a>
         </div>
       </div>
 
