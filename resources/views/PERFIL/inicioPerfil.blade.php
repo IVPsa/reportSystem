@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-2 col-xs-12">
-    <img src="https://s3.amazonaws.com/ceblog/wp-content/uploads/2012/05/lorem-ipsum1.jpg" class="img-thumbnail" alt="Cinque Terre">
+    <img src="http://via.placeholder.com/350x350"  class="img-thumbnail" alt="Cinque Terre">
     <br />
     <button type="button" class="btn btn-primary btn-lg">ACTUALIZAR FOTO </button>
 
@@ -12,8 +12,8 @@
   <div class="col-md-10 col-xs-12">
 
     <h1 class="display-6 ">DATOS PERSONALES</h1>
-    <div align="center">
-    <table class="" >
+
+    <table class="table" >
       <tr>
         <td >
           <h4 class="text-right">NOMBRE:</h4>
@@ -58,7 +58,7 @@
       </tr>
     </table>
 
-    </div>
+
 
   </div>
 </div>
@@ -72,8 +72,8 @@
 
     <h1 class="display-6 ">DATOS BANCARIOS</h1>
 
-    <div align="center">
-    <table class="" >
+
+    <table class="table" >
       <tr>
         <td>
           <h4 class="text-right">Nº CUENTA:</h4>
@@ -115,7 +115,7 @@
         </td>
       </tr>
     </table>
-    </div>
+
 
   </div>
 </div>

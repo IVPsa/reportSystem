@@ -12,7 +12,7 @@
       </div>
 
       <div class="col-md-12 col-xs-12">
-        <table align="center">
+        <table align="center" cellpadding="5">
 
           <tr>
             <td>  <h5 class="text-right">FECHA INICIO:</h5></td>
@@ -59,7 +59,7 @@
           <tr>
             <td></td>
             <td align="center">
-              <button type="button" name="button" style="width:150px;" class=" btn btn-primary">REPORTE</button>
+            <a href="{{route('reporteEdicion')}}">  <button type="button" name="button" style="width:150px;" class=" btn btn-primary btn-xs">REPORTE FOTOGRAFICO</button></a>
 
             </td>
           </tr>

@@ -28,6 +28,15 @@
     </script>
 
 
+
+    <style>
+         .thumb {
+           height: 300px;
+           border: 1px solid #000;
+           margin: 10px 5px 0 0;
+         }
+     </style>
+
 </head>
 <body>
     <div  id="app">
