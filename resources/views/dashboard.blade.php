@@ -13,9 +13,9 @@
 <br />
     <center>
 
-        <a href="{{route('Perfil')}}"><button type="button" class="btn btn-success"> <i class="fa fa-address-card-o" style="font-size:150px"></i> <br>PERFIL</button></a>
-        <a href="{{route('OT')}}"><button type="button" class="btn btn-info"><i class="fa fa-clipboard" style="font-size:150px;"></i> <br> OT</button></a>
-        <a href="{{route('reportes')}}"><button type="button" class="btn btn-warning"> <i class="fa fa-archive" style="font-size:150px;"></i> <br> REPORTES</button></a>
+        <a href="{{route('Perfil')}}"><button type="button" class="btn btn-success"> <i class="fa fa-address-card-o" style="font-size:150px; width:202px;"></i> <br>PERFIL</button></a>
+        <a href="{{route('OT')}}"><button type="button" class="btn btn-info"><i class="fa fa-clipboard" style="font-size:150px; width:202px;"></i> <br> ORDENES DE TRABAJO</button></a>
+        <a href="{{route('reportes')}}"><button type="button" class="btn btn-warning"> <i class="fa fa-archive" style="font-size:150px; width:202px;"></i> <br> REPORTES</button></a>
 
     </center>
   </div>

@@ -54,12 +54,19 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ">
           <li class="nav-item  d-md-none d-xs-block">
-            <a class="nav-link" href="#">Home </a>
+              <a class="nav-link" href="{{route('home')}}">HOME</a>
           </li>
           <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="{{route('Perfil')}}">PERFIL</a>
           </li>
 
+          <li class="nav-item d-md-none d-xs-block">
+            <a class="nav-link" href="{{route('reportes')}}">REPORTES</a>
+          </li>
+
+          <li class="nav-item d-md-none d-xs-block">
+            <a class="nav-link" href="{{route('listaOt')}}">OT</a>
+          </li>
 
         </ul>
       	<ul class="navbar-nav ">

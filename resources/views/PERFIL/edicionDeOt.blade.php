@@ -58,7 +58,7 @@
 
           <tr>
             <td align="center"colspan="2">
-            <a href="{{route('reporteEdicion')}}">  <button type="button" name="button" class=" btn btn-primary btn-xs">REPORTE FOTOGRAFICO</button></a>
+            <a href="{{route('reporteEdicion')}}">  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">REPORTE</button></a>
             </td>
           </tr>
 
