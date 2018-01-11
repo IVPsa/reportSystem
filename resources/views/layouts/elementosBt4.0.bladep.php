@@ -1,6 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!--grilla para formularios-->
+      <div class="col-md-12">
+        <div class="row">
+
+            <div class="col-md-6 col-xs-12">
+
+              <div class="form-group row">
+                <h5 class="col-md-2 col-xs-12 ">NOMBRE:</h5>
+                <input class="form-control col-10 col-form  col-xs-12"  type="text" >
+              </div>
+
+              <div class="form-group row">
+                <h5 class="col-md-2 col-xs-12">NOMBRE:</h5>
+                <input class="form-control col-10 col-form  col-xs-12"  type="text" >
+              </div>
+
+            </div>
+        </div>
+      </div>
+  <!--grilla para formularios-->
 <div class="row">
 
   <div class="col-md-12">

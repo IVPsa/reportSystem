@@ -17,6 +17,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
     <script>
       function openNav() {
           document.getElementById("mySidenav").style.width = "250px";
@@ -39,11 +40,11 @@
 
 </head>
 <body>
-    <div  id="app">
+<div  id="app">
 
 @if (Route::has('login'))
   @auth
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgba(0, 0, 0, 0.9);">
       <span class="d-none d-sm-block " style="font-size:40px; color:white; cursor:pointer" onclick="openNav()">&#9776;</span>
       <a class="navbar-brand" href="#">RPS</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

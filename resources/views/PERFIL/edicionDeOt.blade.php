@@ -57,16 +57,13 @@
           </tr>
 
           <tr>
-            <td></td>
-            <td align="center">
-            <a href="{{route('reporteEdicion')}}">  <button type="button" name="button" style="width:150px;" class=" btn btn-primary btn-xs">REPORTE FOTOGRAFICO</button></a>
-
+            <td align="center"colspan="2">
+            <a href="{{route('reporteEdicion')}}">  <button type="button" name="button" class=" btn btn-primary btn-xs">REPORTE FOTOGRAFICO</button></a>
             </td>
           </tr>
 
           <tr>
-            <td></td>
-            <td align="center">
+            <td align="center" colspan="2">
               <button type="button" name="button" style="width:150px;" class=" btn btn-primary">ACTUALIZAR</button>
             </td>
           </tr>

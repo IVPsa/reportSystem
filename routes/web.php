@@ -57,7 +57,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
   });
 // FIN RUTAS REPORTES
 
-// OT RUTAS REPORTES
+// INCIO RUTAS OT
   Route::group(['prefix' => 'OT'], function () {
 
             Route::get('/crearOt', function () {
@@ -75,4 +75,9 @@ Route::group(['prefix' => 'PERFIL'], function () {
             Route::get('/resumenOt', function () {
                 return view('OT.resumenOt');
             })->name('resumenOt');
+
+            Route::get('/InicioOT', function () {
+                return view('OT.inicio');
+            })->name('OT');
    });
+// FIN RUTAS OT

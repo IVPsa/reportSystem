@@ -31,7 +31,7 @@
 
         <div class="container" align="center">
 
-          <a href="{{route('subirImagenes')}}"<button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button>
+          <a href="{{route('subirImagenes')}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button>
         </div>
 
       </div>
