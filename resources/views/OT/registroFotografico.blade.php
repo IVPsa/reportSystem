@@ -17,9 +17,7 @@
   <div class="form-group row">
     <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" ></textarea>
     <img src="http://via.placeholder.com/350x350"  class="img-thumbnail  col-5 col-xs-5" alt="Cinque Terre">
-    <!-- <div class="col-1"> -->
-      <button type="button" class="btn btn-danger col-1  col-xs-1">X</button>
-    <!-- </div> -->
+
   </div>
 </div>
 </div>
