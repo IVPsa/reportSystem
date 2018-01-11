@@ -2,12 +2,15 @@
 
 @section('content')
 <div class="container">
-
+<h1 class="text-center">BIENVENIDO A REPORT SYSTEM BETA 0.1</h1>
 
 <div class="row">
 
   <div class="col-md-12">
-
+<br />
+<br />
+<br />
+<br />
     <center>
 
         <a href="{{route('Perfil')}}"><button type="button" class="btn btn-success"> <i class="fa fa-address-card-o" style="font-size:150px"></i> <br>PERFIL</button></a>
@@ -23,7 +26,9 @@
 
 </div>
 
+<div style="height:250px;">
 
+</div>
 
 
 @endsection

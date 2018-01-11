@@ -47,9 +47,9 @@ Route::group(['prefix' => 'PERFIL'], function () {
                return view('REPORTES.hojaReporte');
            })->name('hojaReporte');
 
-           Route::get('/registroFotografico', function () {
-               return view('REPORTES.registroFotografico');
-           })->name('registroFotografico');
+           Route::get('/ReporteFotografico', function () {
+               return view('REPORTES.ReporteFotografico');
+           })->name('ReporteFotografico');
 
            Route::get('/reportes', function () {
                return view('REPORTES.reportes');
