@@ -2,7 +2,7 @@
 @section('content')
 
 
-<h3 class="text-center">REFISTRO FOTOGRAFICO </h3>
+<h3 class="text-center">REGISTRO FOTOGRAFICO </h3>
 
 <h3 class="text-center">OT Nº:#####</h3>
 <h3 class="text-center">REPORTE Nº:#####</h3>
