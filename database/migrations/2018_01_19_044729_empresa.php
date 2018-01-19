@@ -14,9 +14,11 @@ class Empresa extends Migration
     public function up()
     {
         //quitar esto?
-        
-        $table->increments('EMP_COD')->unsigned();
+        Schema::create('EMP_EMPRESA', function (Blueprint $table) {
+        $table->increments('EMP_COD');
         $table->string('EMP_DESCRIPCION');
+      });
+    }
 
     /**
      * Reverse the migrations.

@@ -14,11 +14,14 @@ class OtAsignada extends Migration
     public function up()
     {
         //
+        Schema::create('OT_ASIGNADA', function (Blueprint $table) {
+
         $table->integer('OT_ID')->unsigned();
         $table->foreign('OT_ID')->references('OT_ID')->on('OT_ORDEN_TRABAJO');
 
-        $table->integer('users')->unsigned();
+        $table->integer('id')->unsigned();
         $table->foreign('id')->references('id')->on('users');
+        });
     }
 
     /**
