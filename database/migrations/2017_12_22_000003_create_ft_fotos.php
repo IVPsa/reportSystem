@@ -14,14 +14,14 @@ class CreateFtFotos extends Migration
     public function up()
     {
         //
-          Schema::create('FT_FOTOS', function (Blueprint $table) {
-              $table->increments('FT_COD');
-              $table->string('FT_DESC');
-              $table->string('FT_IMG');
-              $table->integer('FT_REP_COD')->unsigned();
-              $table->foreign('FT_REP_COD')->references('REP_COD')->on('REP_REPORTE');
-
-          });
+          // Schema::create('FT_FOTOS', function (Blueprint $table) {
+          //     $table->increments('FT_COD');
+          //     $table->string('FT_DESC');
+          //     $table->string('FT_IMG');
+          //     $table->integer('FT_REP_COD')->unsigned();
+          //     $table->foreign('FT_REP_COD')->references('REP_COD')->on('REP_REPORTE');
+          //
+          // });
     }
 
     /**

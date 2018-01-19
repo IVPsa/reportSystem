@@ -18,7 +18,8 @@ class CreateRepReporte extends Migration
         Schema::create('REP_REPORTE', function (Blueprint $table) {
             $table->increments('REP_COD');
             $table->string('REP_DES');
-            $table->date('REP_FECHA');
+            $table->dateTime('REP_FECHA_EDICION');
+            $table->date('REP_FECHA_INICIO');
             $table->string('REP_ESTADO');
 
             $table->integer('REP_USER_ID')->unsigned();

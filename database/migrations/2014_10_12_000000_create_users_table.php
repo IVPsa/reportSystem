@@ -19,6 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('empresa');
             $table->string('password');
+            $table->string('USU_TPU_COD');
+            $table->string('USER_N_CTA_BANCO');
+            $table->string('USER_BANCO');
+            $table->string('USER_TP_CTA');
+            $table->string('password');
+            $table->int('USER_EMP_COD');
             $table->rememberToken();
             $table->timestamps();
         });
