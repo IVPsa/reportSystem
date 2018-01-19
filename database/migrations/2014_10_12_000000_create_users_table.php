@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('USER_BANCO');
             $table->string('USER_TP_CTA');
             $table->string('password');
-            $table->int('USER_EMP_COD');
+            $table->integer('USER_EMP_COD');
             $table->rememberToken();
             $table->timestamps();
         });
