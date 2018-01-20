@@ -16,7 +16,7 @@ class CreateOtOrdenTrabajo extends Migration
         //
         Schema::create('OT_ORDEN_TRABAJO', function (Blueprint $table) {
             $table->increments('OT_ID');
-            $table->integer('OT_FOLIO');
+            // $table->integer('OT_FOLIO');
             $table->string('OT_DES');
             $table->string('OT_ESTADO');
             $table->date('OT_FECHA_CREACION');

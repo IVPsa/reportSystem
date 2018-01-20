@@ -19,7 +19,7 @@
           <h4 class="text-right">NOMBRE:</h4>
         </td>
         <td>
-            <input class="form-control"  type="text" >
+            <input class="form-control"  type="text" value=" {{ Auth::user()->USU_NOMBRE }}">
         </td>
       </tr>
 
@@ -28,7 +28,7 @@
           <h4 class="text-right">EMPRESA:</h4>
         </td>
         <td>
-            <input class="form-control" type="text" >
+            <input class="form-control" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
         </td>
       </tr>
 
@@ -37,7 +37,7 @@
           <h4 class="text-right">RUT:</h4>
         </td>
         <td>
-            <input class="form-control" type="text" >
+            <input class="form-control" type="text" placeholder="no inscrito">
         </td>
       </tr>
       <tr>
@@ -45,7 +45,7 @@
           <h4 class="text-right">EMAIL:</h4>
         </td>
         <td>
-            <input class="form-control" type="text" >
+            <input class="form-control" type="text" value="{{ Auth::user()->email }}" >
         </td>
       </tr>
       <tr>
@@ -79,7 +79,7 @@
           <h4 class="text-right">Nº CUENTA:</h4>
         </td>
         <td>
-            <input class="form-control"   type="text" >
+            <input class="form-control"   type="text" value="{{ Auth::user()->USER_N_CTA_BANCO }}">
         </td>
       </tr>
 
@@ -88,8 +88,8 @@
           <h4 class="text-right">TIPO DE CUENTA:</h4>
         </td>
         <td>
-          <select class="form-control"   name="">
-            <option></option>
+          <select class="form-control"   name="" >
+            <option selected>{{ Auth::user()->USER_TP_CTA }}</option>
             <option></option>
             <option></option>
             <option></option>
@@ -103,7 +103,7 @@
             <h4 class="text-right">BANCO:</h4>
           </td>
           <td>
-              <input class="form-control" type="text" >
+              <input class="form-control" type="text" value="{{ Auth::user()->USER_BANCO }}" >
           </td>
       </tr>
       <tr>

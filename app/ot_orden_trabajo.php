@@ -30,7 +30,21 @@ class ot_orden_trabajo extends Model
    */
       protected $fillable = [
           'OT_DES'
+          // 'OT_FOLIO',
+          'OT_DES',
+          'OT_ESTADO',
+          'OT_FECHA_CREACION',
+          'OT_FECHA_TERMINO',
+          'OT_REGION',
+          'OT_CIUDAD',
+          'OT_DIRECCION',
+          'OT_VALOR',
+          'OT_USER_ID_CREADOR',
+          'OT_USER_ID'
+
       ];
+
+
 
       public function User()
       {

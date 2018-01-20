@@ -40,5 +40,6 @@ class CreateReporteFotografico extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('RPFG_REPORTE_FOTOGRAFICO');
     }
 }

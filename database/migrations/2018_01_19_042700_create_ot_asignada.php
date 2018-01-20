@@ -32,6 +32,6 @@ class CreateOtAsignada extends Migration
     public function down()
     {
         //
-          Schema::dropIfExists('OtAsignada');
+          Schema::dropIfExists('OT_ASIGNADA');
     }
 }

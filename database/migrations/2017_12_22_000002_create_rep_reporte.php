@@ -39,5 +39,6 @@ class CreateRepReporte extends Migration
     public function down()
     {
         //
+          Schema::dropIfExists('REP_REPORTE');
     }
 }

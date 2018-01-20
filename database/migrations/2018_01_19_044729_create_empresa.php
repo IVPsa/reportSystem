@@ -14,6 +14,8 @@ class CreateEmpresa extends Migration
     public function up()
     {
         //quitar esto?
+        //TAL VEZ SI, delar un select con empresas afiliadas al RPS
+        //revisar despues
         Schema::create('EMP_EMPRESA', function (Blueprint $table) {
         $table->increments('EMP_COD');
         $table->string('EMP_DESCRIPCION');
@@ -28,5 +30,6 @@ class CreateEmpresa extends Migration
     public function down()
     {
         //
+          Schema::dropIfExists('EMP_EMPRESA');
     }
 }
