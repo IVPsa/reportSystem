@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('USU_EMPRESA');
             $table->string('USU_TPU_COD');
+            $table->string('USU_RUT');
             $table->string('USER_N_CTA_BANCO');
             $table->string('USER_BANCO');
             $table->string('USER_TP_CTA');

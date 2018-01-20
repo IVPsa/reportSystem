@@ -22,7 +22,8 @@ class User extends Authenticatable
         'USU_TPU_COD',
         'USER_N_CTA_BANCO',
         'USER_BANCO',
-        'USER_TP_CTA'
+        'USER_TP_CTA',
+        'USU_RUT'
     ];
 
     /**

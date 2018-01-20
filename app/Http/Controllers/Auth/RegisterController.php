@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'USER_N_CTA_BANCO'=>'NO INFORMADO',
             'USER_BANCO'=>'NO INFORMADO',
             'USER_TP_CTA'=>'NO INFORMADO',
+            'USU_RUT'=>'NO INFORMADO',
             'password' => bcrypt($data['password'])
         ]);
     }
