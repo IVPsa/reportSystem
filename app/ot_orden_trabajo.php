@@ -14,7 +14,7 @@ class ot_orden_trabajo extends Model
   * @var string
   */
 
-    protected $table ="OT_ORDEN_TRABAJO"
+    protected $table ="OT_ORDEN_TRABAJO";
 
     /**
    * Llave primaria de la tabla
@@ -29,7 +29,7 @@ class ot_orden_trabajo extends Model
    * @var array
    */
       protected $fillable = [
-          'OT_DES'
+          
           // 'OT_FOLIO',
           'OT_DES',
           'OT_ESTADO',

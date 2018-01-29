@@ -10,7 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('ot_orden_trabajo', 'Controller_Ot');
+
+
+Route::resource('ot_orden_trabajo', 'OrdenTrabajoController');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -60,9 +63,9 @@ Route::group(['prefix' => 'PERFIL'], function () {
 // INCIO RUTAS OT
   Route::group(['prefix' => 'OT'], function () {
 
-            Route::get('/crearOt', function () {
-                return view('OT.crearOt');
-            })->name('crearOt');
+            // Route::get('/crearOt', function () {
+            //     return view('OT.crearOt');
+            // })->name('crearOt');
 
             Route::get('/listaOt', function () {
                 return view('OT.listaOt');
@@ -76,8 +79,21 @@ Route::group(['prefix' => 'PERFIL'], function () {
                 return view('OT.resumenOt');
             })->name('resumenOt');
 
-            Route::get('/InicioOT', function () {
-                return view('OT.inicio');
-            })->name('OT');
+
+              Route::get('/crearOt', [
+                'uses' => 'OrdenTrabajoController@getCrearOt',
+                'as' => 'OT.crearOT',
+            ]);
+
+              Route::get('/crearOt', [
+                'uses' => 'OrdenTrabajoController@postAgregarOrdenTrabajo',
+                'as' => 'OT.crearOT',
+            ]);
+
+            Route::get('/', [
+              'uses' => 'OrdenTrabajoController@index',
+              'as' => 'InicioOT',
+            ]);
+
    });
 // FIN RUTAS OT

@@ -13,7 +13,7 @@
 
         <tr>
           <td>  <h5 class="text-right">FECHA INICIO:</h5></td>
-          <td><input type="text" class="form-control" name="" value=""></td>
+          <td><input type="date" class="form-control" name="fecha_inicio" value=""></td>
         </tr>
 
 
@@ -21,7 +21,7 @@
         <tr>
           <td>  <h5 class="text-right">REGION:</h5></td>
           <td>
-            <select class="form-control" name="">
+            <select class="form-control" name="region">
               <option></option>
               <option></option>
               <option></option>
@@ -33,7 +33,7 @@
         <tr>
           <td>  <h5 class="text-right">CIUDAD:</h5></td>
           <td>
-            <select class="form-control" name="">
+            <select class="form-control" name="ciudad">
               <option></option>
               <option></option>
               <option></option>
@@ -44,12 +44,12 @@
 
         <tr>
           <td>  <h5 class="text-right">DIRECCION:</h5></td>
-          <td><input type="text" class="form-control" name="" value=""></td>
+          <td><input type="text" class="form-control" name="direccion" value=""></td>
         </tr>
 
         <tr>
           <td>  <h5 class="text-right">VALOR:</h5></td>
-          <td><input type="text" class="form-control" name="" value=""></td>
+          <td><input type="text" class="form-control" name="valor" value=""></td>
         </tr>
 
         <tr>

@@ -1,13 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Auth;
+use App\ot_orden_trabajo;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ot_orden_trabajo;
+use Exception;
+use Carbon\Carbon;
 
-class Controller_Ot extends Controller
+class OrdenTrabajoController extends Controller
 {
+      public function __construct()
+      {
+          $this->middleware('auth');
+      }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +23,7 @@ class Controller_Ot extends Controller
     public function index()
     {
         //
-         $ot = ot_orden_trabajo::all();
-        return response()->json($ot);
+          return view('OT.inicio');
     }
 
     /**
@@ -25,9 +31,10 @@ class Controller_Ot extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getCrearOt()
     {
         //
+        return view('OT.crearOt');
     }
 
     /**
@@ -39,30 +46,26 @@ class Controller_Ot extends Controller
     public function store(Request $request)
     {
         //
-
-        $ot = Discussion::create($request->all());
-       return response()->json($ot);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
-          return response()->json($ot);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
     }
@@ -71,25 +74,22 @@ class Controller_Ot extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ot_orden_trabajo $ot)
+    public function update(Request $request, ot_orden_trabajo $ot_orden_trabajo)
     {
         //
-        $ot = $ot->update($request->all());
-       return response()->json($ot);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
-         $ot->delete();
     }
 }
