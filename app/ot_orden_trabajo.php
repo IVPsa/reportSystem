@@ -29,7 +29,7 @@ class ot_orden_trabajo extends Model
    * @var array
    */
       protected $fillable = [
-          
+
           // 'OT_FOLIO',
           'OT_DES',
           'OT_ESTADO',
@@ -48,7 +48,7 @@ class ot_orden_trabajo extends Model
 
       public function User()
       {
-          return $this->hasMany('App\User', '{USER_ID', 'USERS');
+          return $this->hasOne('App\User', '{USER_ID', 'USERS');
       }
 
 }

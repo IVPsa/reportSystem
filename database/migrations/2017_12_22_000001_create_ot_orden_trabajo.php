@@ -28,7 +28,7 @@ class CreateOtOrdenTrabajo extends Migration
             $table->integer('OT_USER_ID_CREADOR');
             $table->integer('OT_USER_ID')->unsigned();
             $table->foreign('OT_USER_ID')->references('id')->on('users');
-
+            $table->timestamps();
 
 
         });
@@ -43,5 +43,6 @@ class CreateOtOrdenTrabajo extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('OT_ORDEN_TRABAJO');
     }
 }

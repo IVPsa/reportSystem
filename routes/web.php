@@ -85,9 +85,9 @@ Route::group(['prefix' => 'PERFIL'], function () {
                 'as' => 'OT.crearOT',
             ]);
 
-              Route::get('/crearOt', [
-                'uses' => 'OrdenTrabajoController@postAgregarOrdenTrabajo',
-                'as' => 'OT.crearOT',
+              Route::post('/crearOt', [
+                'uses' => 'OrdenTrabajoController@store',
+                'as' => 'insert',
             ]);
 
             Route::get('/', [
