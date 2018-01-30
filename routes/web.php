@@ -67,9 +67,10 @@ Route::group(['prefix' => 'PERFIL'], function () {
             //     return view('OT.crearOt');
             // })->name('crearOt');
 
-            Route::get('/listaOt', function () {
-                return view('OT.listaOt');
-            })->name('listaOt');
+            Route::get('/listaOt', [
+              'uses' => 'OrdenTrabajoController@show',
+              'as' => 'listaOt',
+            ]);
 
             Route::get('/registroFotografico', function () {
                 return view('OT.registroFotografico');

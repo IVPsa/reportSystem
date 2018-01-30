@@ -4,6 +4,10 @@ COMANDOS SQL
 drop database reportSystem;
 create database reportSystem;
 
+composer install
+composer dumpautoload
 COMANDOS ARTISAN
 ________________________________________________________________________________
-php artisan route:list | nos mostrará nuestra colección de rutas
+php artisan route:list   | nos mostrará nuestra colección de rutas
+php artisan cache:clear  |limpiar cache
+php artisan migrate:fresh|recarga migraciones

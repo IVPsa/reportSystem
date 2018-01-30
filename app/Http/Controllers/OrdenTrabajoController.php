@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
 use Carbon\Carbon;
+// use App\Http\Controllers\DB;
+use Illuminate\Support\Facades\DB;
 
 class OrdenTrabajoController extends Controller
 {
@@ -97,6 +99,8 @@ class OrdenTrabajoController extends Controller
     public function show(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
+        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
+        return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 
     /**
