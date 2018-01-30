@@ -76,19 +76,21 @@ Route::group(['prefix' => 'PERFIL'], function () {
                 return view('OT.registroFotografico');
             })->name('registroFotografico');
 
-            Route::get('/resumenOt', function () {
-                return view('OT.resumenOt');
-            })->name('resumenOt');
 
-
-              Route::get('/crearOt', [
-                'uses' => 'OrdenTrabajoController@getCrearOt',
-                'as' => 'OT.crearOT',
+            Route::get('/resumenOt/{id}', [
+              'uses' => 'OrdenTrabajoController@edit',
+              'as' => 'OT.resumenOt',
             ]);
 
-              Route::post('/crearOt', [
-                'uses' => 'OrdenTrabajoController@store',
-                'as' => 'insert',
+
+            Route::get('/crearOt', [
+              'uses' => 'OrdenTrabajoController@getCrearOt',
+              'as' => 'OT.crearOT',
+            ]);
+
+            Route::post('/crearOt', [
+              'uses' => 'OrdenTrabajoController@store',
+              'as' => 'insert',
             ]);
 
             Route::get('/', [

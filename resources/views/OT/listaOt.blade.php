@@ -74,7 +74,7 @@
           <td>{{ $ordenDeTrabajo->OT_DES }}</td>
           <td>{{ $ordenDeTrabajo->OT_FECHA_CREACION }}</td>
           <td>{{ $ordenDeTrabajo->OT_FECHA_TERMINO }}</td>
-          <td width="15px" ><a href="{{route('resumenOt')}}"<button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></td>
+          <td width="15px" ><a href="{{route('OT.resumenOt' ,$ordenDeTrabajo->OT_ID)}}"<button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></td>
           <td width="15px" ><button class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button></td>
           @endforeach
         </tr>

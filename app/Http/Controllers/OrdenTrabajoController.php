@@ -109,9 +109,11 @@ class OrdenTrabajoController extends Controller
      * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function edit(ot_orden_trabajo $ot_orden_trabajo)
+    public function edit($id )
     {
         //
+      $ordenDeTrabajo = ot_orden_trabajo::find($id);
+      return view('OT.resumenOt',compact('ordenDeTrabajo'));
     }
 
     /**
