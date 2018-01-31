@@ -87,8 +87,8 @@ class OrdenTrabajoController extends Controller
             'OT_CIUDAD' =>  $data['ciudad'],
             'OT_DIRECCION' =>  $data['direccion'],
             'OT_VALOR' =>  $data['valor'],
-            'OT_USER_ID_CREADOR' =>'1',
-            'OT_USER_ID' =>  $id,
+            'OT_USER_ID_CREADOR' => $id,
+            'OT_USER_ID' => 'sin asignar',
             'updated_at'=> Carbon::now(),
             'created_at'=> Carbon::now()
         ]);

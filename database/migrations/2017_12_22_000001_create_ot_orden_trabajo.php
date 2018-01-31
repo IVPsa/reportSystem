@@ -17,7 +17,7 @@ class CreateOtOrdenTrabajo extends Migration
         Schema::create('OT_ORDEN_TRABAJO', function (Blueprint $table) {
             $table->increments('OT_ID');
             // $table->integer('OT_FOLIO');
-            $table->string('OT_DES');
+            $table->text('OT_DES');
             $table->string('OT_ESTADO');
             $table->date('OT_FECHA_CREACION');
             $table->date('OT_FECHA_TERMINO');
@@ -26,8 +26,8 @@ class CreateOtOrdenTrabajo extends Migration
             $table->string('OT_DIRECCION');
             $table->string('OT_VALOR');
             $table->integer('OT_USER_ID_CREADOR');
-            $table->integer('OT_USER_ID')->unsigned();
-            $table->foreign('OT_USER_ID')->references('id')->on('users');
+            $table->integer('OT_USER_ID_CREADOR')->unsigned();
+            $table->foreign('OT_USER_ID_CREADOR')->references('id')->on('users');
             $table->timestamps();
 
 
