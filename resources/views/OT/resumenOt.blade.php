@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
-  <h3 class="text-center">ORDEN DE TRABAJO ID:{{ $ordenDeTrabajo->OT_ID  or '' }}</h3>
-  <h3 class="text-center">EMPRESA:#####</h3>
+  <h3 class="text-center">ORDEN DE TRABAJO ID: {{ $ordenDeTrabajo->OT_ID  or '' }}</h3>
+  <!-- <h3 class="text-center">EMPRESA:#####</h3> -->
   <div class="row">
     <div class="col-md-12 col-xs-12">
 

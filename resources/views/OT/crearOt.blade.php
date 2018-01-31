@@ -15,7 +15,7 @@
 
               <tr>
                 <td>  <h5 class="text-right">FECHA INICIO:</h5></td>
-                <td><input type="date" class="form-control" name="fecha_inicio" value=""></td>
+                <td><input type="text" readonly class="form-control" name="fecha_inicio" value="<?php echo date("Y-d-m");?>"></td>
               </tr>
 
 

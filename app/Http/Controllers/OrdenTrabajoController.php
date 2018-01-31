@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\ot_orden_trabajo;
 use App\User;
-use App\Http\Controllers\Auth;
+// use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
 use Carbon\Carbon;
 // use App\Http\Controllers\DB;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrdenTrabajoController extends Controller
 {
@@ -74,18 +76,19 @@ class OrdenTrabajoController extends Controller
 
     protected function createOrdenTrabajo(array $data)
     {
+        $id = Auth::id();
         // $usuario=Auth::user()->USU_NOMBRE;
         return ot_orden_trabajo::create([
             'OT_DES' => $data['descripcion'],
             'OT_ESTADO' =>'EN ESPERA',
-            'OT_FECHA_CREACION' => Carbon::now(),
-            'OT_FECHA_TERMINO' => Carbon::now(),
+            'OT_FECHA_CREACION' => Carbon::today(),
+            'OT_FECHA_TERMINO' => Carbon::today(),
             'OT_REGION' =>  $data['region'],
             'OT_CIUDAD' =>  $data['ciudad'],
             'OT_DIRECCION' =>  $data['direccion'],
             'OT_VALOR' =>  $data['valor'],
             'OT_USER_ID_CREADOR' =>'1',
-            'OT_USER_ID' =>  '1',
+            'OT_USER_ID' =>  $id,
             'updated_at'=> Carbon::now(),
             'created_at'=> Carbon::now()
         ]);

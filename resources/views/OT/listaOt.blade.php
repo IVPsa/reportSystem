@@ -68,24 +68,18 @@
           <td>FECHA DE FIN</td>
           <td colspan="2">ACCION</td>
         </tr>
+        @foreach($ordenDeTrabajo as $ordenDeTrabajo)
         <tr>
-          @foreach($ordenDeTrabajo as $ordenDeTrabajo)
           <td>{{ $ordenDeTrabajo->OT_ID }}</td>
           <td>{{ $ordenDeTrabajo->OT_DES }}</td>
           <td>{{ $ordenDeTrabajo->OT_FECHA_CREACION }}</td>
           <td>{{ $ordenDeTrabajo->OT_FECHA_TERMINO }}</td>
           <td width="15px" ><a href="{{route('OT.resumenOt' ,$ordenDeTrabajo->OT_ID)}}"<button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></td>
           <td width="15px" ><button class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button></td>
-          @endforeach
         </tr>
+        @endforeach
 
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td width="15px"><button class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button></td>
-        </tr>
+        
       </table>
     </div>
   </div>
