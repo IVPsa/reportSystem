@@ -15,44 +15,44 @@
 
           <tr>
             <td>  <h5 class="text-right">FECHA INICIO:</h5></td>
-            <td><input type="text" class="form-control" name="" value="{{ $ordenDeTrabajo->OT_FECHA_CREACION}}"></td>
+            <td><input type="text" class="form-control" name="fecha_inicio" value="{{ $ordenDeTrabajo->OT_FECHA_CREACION}}"></td>
           </tr>
 
 
 
           <tr>
             <td>  <h5 class="text-right">FECHA TERMINO:</h5></td>
-            <td><input type="text" class="form-control" name="" value="{{ $ordenDeTrabajo->OT_FECHA_TERMINO}}"></td>
+            <td><input type="text" class="form-control" name="fecha_termino" value="{{ $ordenDeTrabajo->OT_FECHA_TERMINO}}"></td>
           </tr>
 
           <tr>
             <td>  <h5 class="text-right">REGION:</h5></td>
-            <td><input type="text" class="form-control" name="" value="{{ $ordenDeTrabajo->OT_REGION}}"></td>
+            <td><input type="text" class="form-control" name="region" value="{{ $ordenDeTrabajo->OT_REGION}}"></td>
           </tr>
 
           <tr>
             <td>  <h5 class="text-right">CIUDAD:</h5></td>
-            <td><input type="text" class="form-control" name="" value="{{ $ordenDeTrabajo->OT_CIUDAD}}"></td>
+            <td><input type="text" class="form-control" name="ciudad" value="{{ $ordenDeTrabajo->OT_CIUDAD}}"></td>
           </tr>
 
           <tr>
             <td>  <h5 class="text-right">DIRECCION:</h5></td>
-            <td><input type="text" class="form-control" name="" value="{{ $ordenDeTrabajo->OT_DIRECCION}}"></td>
+            <td><input type="text" class="form-control" name="direccion" value="{{ $ordenDeTrabajo->OT_DIRECCION}}"></td>
           </tr>
 
           <tr>
             <td>  <h5 class="text-right">VALOR:</h5></td>
-            <td><input type="text" class="form-control" name="" value="{{ $ordenDeTrabajo->OT_VALOR}}"></td>
+            <td><input type="text" class="form-control" name="valor" value="{{ $ordenDeTrabajo->OT_VALOR}}"></td>
           </tr>
 
           <tr>
             <td><h5 class="text-right">ESTADO:</td>
             <td>
               <select class="form-control" name="">
-                  <option value="" selected> {{ $ordenDeTrabajo->OT_ESTADO}}</option>
-                  <option value=""></option>
-                  <option value=""></option>
-                  <option value=""></option>
+                  <option value="{{ $ordenDeTrabajo->OT_ESTADO}}" > {{ $ordenDeTrabajo->OT_ESTADO}}</option>
+                  <option value="EN PROCESO">EN PROCESO</option>
+                  <option value="EN ESPERA">EN ESPERA</option>
+                  <option value="TERMINADA">TERMINADA</option>
               </select>
             </td>
 

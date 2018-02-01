@@ -84,15 +84,20 @@ Route::group(['prefix' => 'PERFIL'], function () {
               'as' => 'OT.resumenOt',
             ]);
 
-            // Route::patch('/resumenOt/{id}', [
-            //   'uses' => 'OrdenTrabajoController@edit',
-            //   'as' => 'edit',
-            // ]);
+            Route::post('/resumenOt/{id}', [
+              'uses' => 'OrdenTrabajoController@edit',
+              'as' => 'edit',
+            ]);
 
 
             Route::get('/crearOt', [
               'uses' => 'OrdenTrabajoController@getCrearOt',
               'as' => 'OT.crearOT',
+            ]);
+
+            Route::post('/Eliminar', [
+              'uses' => 'OrdenTrabajoController@destroy',
+              'as' => 'Eliminar',
             ]);
 
             Route::post('/crearOt', [

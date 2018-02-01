@@ -118,12 +118,13 @@ class OrdenTrabajoController extends Controller
      * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    // public function edit($id )
-    // {
-    //     //
-    //   $ordenDeTrabajo = ot_orden_trabajo::find($id);
-    //   return view('OT.resumenOt',compact('ordenDeTrabajo'));
-    // }
+    public function edit($id )
+    {
+        //
+      $ordenDeTrabajo = ot_orden_trabajo::find($id);
+      return view('OT.resumenOt',compact('ordenDeTrabajo'));
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -135,6 +136,8 @@ class OrdenTrabajoController extends Controller
     public function update(Request $request, ot_orden_trabajo $ot_orden_trabajo)
     {
         //
+        //   $ordenDeTrabajo = ot_orden_trabajo::find($id);
+        //   return view('OT.resumenOt',compact('ordenDeTrabajo'));
     }
 
     /**
@@ -146,6 +149,7 @@ class OrdenTrabajoController extends Controller
     public function destroy(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
+
     }
       // $proveedor = Auth::user()->id;
 }
