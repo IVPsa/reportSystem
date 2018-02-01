@@ -11,7 +11,9 @@
 |
 */
 
-
+// Route::resource('ot_orden_trabajo', 'OrdenTrabajoController'['except' => [
+//      'index', 'show', 'create', 'store', 'update', 'destroy'
+// ]]);
 Route::resource('ot_orden_trabajo', 'OrdenTrabajoController');
 
 Route::get('/', function () {
@@ -78,9 +80,14 @@ Route::group(['prefix' => 'PERFIL'], function () {
 
 
             Route::get('/resumenOt/{id}', [
-              'uses' => 'OrdenTrabajoController@edit',
+              'uses' => 'OrdenTrabajoController@resumen',
               'as' => 'OT.resumenOt',
             ]);
+
+            // Route::patch('/resumenOt/{id}', [
+            //   'uses' => 'OrdenTrabajoController@edit',
+            //   'as' => 'edit',
+            // ]);
 
 
             Route::get('/crearOt', [

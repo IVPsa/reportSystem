@@ -3,7 +3,7 @@
 <div class="row">
 
   <div class="col-md-12 col-xs-12">
-    <form id="form1" name="form1" class="form-horizontal" method="post" action="{{ route('insert') }}">
+    <form id="form1" name="form1" class="form-horizontal" method="post" action="{{ route('OT.crearOT') }}">
     {{ csrf_field() }}
           <div class="col-md-12 col-xs-12">
             <h5 class="text-center">DESCRIPCION</h5>

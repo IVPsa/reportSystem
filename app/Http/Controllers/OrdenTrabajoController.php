@@ -88,7 +88,7 @@ class OrdenTrabajoController extends Controller
             'OT_DIRECCION' =>  $data['direccion'],
             'OT_VALOR' =>  $data['valor'],
             'OT_USER_ID_CREADOR' => $id,
-            'OT_USER_ID' => 'sin asignar',
+            'OT_USER_ENCARGADO' => '1',
             'updated_at'=> Carbon::now(),
             'created_at'=> Carbon::now()
         ]);
@@ -106,18 +106,24 @@ class OrdenTrabajoController extends Controller
         return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 
+    public function resumen($id )
+    {
+        //
+      $ordenDeTrabajo = ot_orden_trabajo::find($id);
+      return view('OT.resumenOt',compact('ordenDeTrabajo'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id )
-    {
-        //
-      $ordenDeTrabajo = ot_orden_trabajo::find($id);
-      return view('OT.resumenOt',compact('ordenDeTrabajo'));
-    }
+    // public function edit($id )
+    // {
+    //     //
+    //   $ordenDeTrabajo = ot_orden_trabajo::find($id);
+    //   return view('OT.resumenOt',compact('ordenDeTrabajo'));
+    // }
 
     /**
      * Update the specified resource in storage.

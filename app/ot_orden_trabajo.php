@@ -40,7 +40,7 @@ class ot_orden_trabajo extends Model
           'OT_DIRECCION',
           'OT_VALOR',
           'OT_USER_ID_CREADOR',
-          'OT_USER_ID'
+          'OT_USER_ENCARGADO'
 
       ];
 

@@ -25,7 +25,7 @@ class CreateOtOrdenTrabajo extends Migration
             $table->string('OT_CIUDAD');
             $table->string('OT_DIRECCION');
             $table->string('OT_VALOR');
-            $table->integer('OT_USER_ID_CREADOR');
+            $table->integer('OT_USER_ENCARGADO');
             $table->integer('OT_USER_ID_CREADOR')->unsigned();
             $table->foreign('OT_USER_ID_CREADOR')->references('id')->on('users');
             $table->timestamps();
