@@ -153,10 +153,10 @@ class OrdenTrabajoController extends Controller
 
         if (! $id)
         {
-          return redirect()->route('InicioOT')->with('error', "Hubo un problema al eliminar la orden de trabajo.");
+          return redirect()->route('listaOt')->with('error', "Hubo un problema al eliminar la orden de trabajo.");
         }
 
-        return redirect()->route('InicioOT')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
+        return redirect()->route('listaOt')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
     }
       // $proveedor = Auth::user()->id;
 }
