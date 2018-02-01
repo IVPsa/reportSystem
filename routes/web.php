@@ -81,7 +81,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
 
             Route::get('/resumenOt/{id}', [
               'uses' => 'OrdenTrabajoController@resumen',
-              'as' => 'OT.resumenOt',
+              'as' => 'resumen',
             ]);
 
             Route::post('/resumenOt/{id}', [
@@ -95,7 +95,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
               'as' => 'OT.crearOT',
             ]);
 
-            Route::post('/Eliminar', [
+            Route::get('/listaOt/{id}', [
               'uses' => 'OrdenTrabajoController@destroy',
               'as' => 'Eliminar',
             ]);

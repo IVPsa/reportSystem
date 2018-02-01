@@ -146,10 +146,17 @@ class OrdenTrabajoController extends Controller
      * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ot_orden_trabajo $ot_orden_trabajo)
+    public function destroy( $id)
     {
         //
+        ot_orden_trabajo::find($id)->delete();
 
+        if (! $id)
+        {
+          return redirect()->route('InicioOT')->with('error', "Hubo un problema al eliminar la orden de trabajo.");
+        }
+
+        return redirect()->route('InicioOT')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
     }
       // $proveedor = Auth::user()->id;
 }
