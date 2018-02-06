@@ -118,11 +118,24 @@ class OrdenTrabajoController extends Controller
      * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
      * @return \Illuminate\Http\Response
      */
-    public function edit($id )
+    public function edit(Request $request, $ordenDeTrabajo )
     {
         //
-      $ordenDeTrabajo = ot_orden_trabajo::find($id);
-      return view('OT.resumenOt',compact('ordenDeTrabajo'));
+      // $ordenDeTrabajo = ot_orden_trabajo::find($ordenDeTrabajo);
+
+      $estado = $request->input('estado');
+      $encargado = $request->input('encargado');
+
+      $editOt = ot_orden_trabajo::where('OT_ID',$ordenDeTrabajo)->update([
+        'OT_ESTADO' => $estado,
+        'OT_USER_ENCARGADO' => $encargado
+      ]);
+
+      if (!$editOt) {
+        return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('error', 'Hubo un error al modificar estado de Solicitud de Fondo.');
+      }
+
+        return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('success', 'Solicitud de Fondo cambiada de estado exitosamente.');
     }
 
 

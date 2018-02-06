@@ -84,7 +84,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
               'as' => 'resumen',
             ]);
 
-            Route::post('/resumenOt/{id}', [
+            Route::patch('/resumenOt/{id}', [
               'uses' => 'OrdenTrabajoController@edit',
               'as' => 'edit',
             ]);
