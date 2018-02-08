@@ -109,8 +109,11 @@ class OrdenTrabajoController extends Controller
     public function resumen($id )
     {
         //
+      $usuario=User::all();
+
       $ordenDeTrabajo = ot_orden_trabajo::find($id);
-      return view('OT.resumenOt',compact('ordenDeTrabajo'));
+      return view('OT.resumenOt',compact('ordenDeTrabajo'))
+      ->with('usuario', $usuario);
     }
     /**
      * Show the form for editing the specified resource.
