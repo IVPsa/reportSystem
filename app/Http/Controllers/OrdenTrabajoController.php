@@ -135,10 +135,10 @@ class OrdenTrabajoController extends Controller
       ]);
 
       if (!$editOt) {
-        return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('error', 'Hubo un error al modificar estado de Solicitud de Fondo.');
+        return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('error', 'Hubo un error al modificar OT.');
       }
 
-        return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('success', 'Solicitud de Fondo cambiada de estado exitosamente.');
+        return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('success', 'La OT modificada exitosamente.');
     }
 
 
