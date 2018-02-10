@@ -26,7 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //INICIO  RUTAS PERFIL
 Route::group(['prefix' => 'PERFIL'], function () {
 
-  
+
           Route::get('/', [
             'uses' => 'OrdenTrabajoController@showPerfil',
             'as' => 'Perfil',
@@ -45,12 +45,17 @@ Route::group(['prefix' => 'PERFIL'], function () {
 
           Route::get('/CreacionDeReporte/{id}', [
             'uses' => 'OrdenTrabajoController@reporte',
-            'as' => 'reporteEdicion',
+            'as' => 'CreacionDeReporte',
           ]);
 
           Route::post('/CreacionDeReporte/{id}', [
             'uses' => 'OrdenTrabajoController@reporteCreacion',
             'as' => 'reporteCreacion',
+          ]);
+
+          Route::get('/edicionDeReporte/{id}', [
+            'uses' => 'OrdenTrabajoController@reporteEdicion',
+            'as' => 'edicionDeReporte',
           ]);
 
 

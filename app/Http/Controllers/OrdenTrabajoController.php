@@ -89,7 +89,7 @@ class OrdenTrabajoController extends Controller
             'OT_DIRECCION' =>  $data['direccion'],
             'OT_VALOR' =>  $data['valor'],
             'OT_USER_ID_CREADOR' => $id,
-            'OT_USER_ENCARGADO' => '1',
+            'OT_USER_ENCARGADO' => $id,
             'updated_at'=> Carbon::now(),
             'created_at'=> Carbon::now()
         ]);
@@ -235,6 +235,12 @@ class OrdenTrabajoController extends Controller
         return redirect()->route('Perfil')->with('success', 'El reporte ha sido creado exitosamente, haga click en reporte para editarlo');
     }
 
+    public function reporteEdicion($id){
+
+        $reporte = rep_reporte::find($id);
+
+        return view('PERFIL.reporteEdicion', compact('reporte'));
+    }
 
 
 }

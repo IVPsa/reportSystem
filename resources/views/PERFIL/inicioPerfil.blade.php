@@ -152,10 +152,12 @@
             <a href="{{route('OTedicion', $OTasignadas->OT_ID)}}">
               <button type="button" class="btn btn-primary">VER</button>
             </a>
-
-            <a href="{{route('OTedicion',$OTasignadas->OT_ID)}}">
+            <BR />
+            <a href="{{route('edicionDeReporte',$OTasignadas->OT_ID)}}">
               <button type="button" class="btn btn-primary">REPORTE</button>
             </a>
+            <BR />
+              <button type="button" class="btn btn-primary">REG. FOTOGRAFICO</button>
 
           </td>
         </tr>

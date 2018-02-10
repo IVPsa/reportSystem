@@ -61,7 +61,7 @@
 
           <tr>
             <td align="center"colspan="2">
-            <a href="{{route('reporteEdicion', $ordenDeTrabajoAsignada->OT_ID)}}">  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">CREAR REPORTE</button></a>
+            <a href="{{route('CreacionDeReporte', $ordenDeTrabajoAsignada->OT_ID)}}">  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">CREAR REPORTE</button></a>
             </td>
           </tr>
 
