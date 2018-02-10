@@ -1,6 +1,15 @@
 @extends('layouts.app')
 @section('content')
 
+@if ($message = Session::get('success'))
+<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <p>{{ $message }}</p>
+</div>
+@endif
+
 <div class="row">
   <div class="col-md-2 col-xs-12">
     <img src="http://via.placeholder.com/350x350"  class="img-thumbnail" alt="Cinque Terre">
@@ -133,14 +142,24 @@
           <td>FECHA TERMINO</td>
           <td width="100px">ACCION</td>
         </tr>
+        @foreach($OTasignadas as $OTasignadas)
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><a href="{{route('edicionDeOt')}}"><button type="button" class="btn btn-primary">EDITAR</button></a></td>
-        </tr>
+          <td>{{$OTasignadas->OT_ID}}</td>
+          <td>{{$OTasignadas->OT_DES}}</td>
+          <td>{{$OTasignadas->OT_FECHA_CREACION}}</td>
+          <td>{{$OTasignadas->OT_FECHA_TERMINO}}</td>
+          <td>
+            <a href="{{route('OTedicion', $OTasignadas->OT_ID)}}">
+              <button type="button" class="btn btn-primary">VER</button>
+            </a>
 
+            <a href="{{route('OTedicion',$OTasignadas->OT_ID)}}">
+              <button type="button" class="btn btn-primary">REPORTE</button>
+            </a>
+
+          </td>
+        </tr>
+        @endforeach
       </table>
     </div>
 
@@ -160,13 +179,15 @@
           <td>FECHA TERMINO</td>
           <td width="100px">ACCION</td>
         </tr>
+        @foreach($OTcreadas as $OTcreadas)
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{$OTcreadas->OT_ID}}</td>
+          <td>{{$OTcreadas->OT_DES}}</td>
+          <td>{{$OTcreadas->OT_FECHA_TERMINO}}</td>
+          <td>{{$OTcreadas->OT_FECHA_CREACION}}</td>
           <td><button type="button" class="btn btn-primary">EDITAR</button></td>
         </tr>
+        @endforeach
 
       </table>
     </div>

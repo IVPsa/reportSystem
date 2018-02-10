@@ -13,7 +13,7 @@ class rep_reporte extends Model
   * @var string
   */
 
-    protected $table ="REP_REPORTE"
+    protected $table ="REP_REPORTE";
 
     /**
    * Llave primaria de la tabla
@@ -29,8 +29,11 @@ class rep_reporte extends Model
    */
       protected $fillable = [
           'REP_DES',
-          'REP_FECHA',
-          'REP_ESTADO'
+          'REP_FECHA_EDICION',
+          'REP_FECHA_INICIO',
+          'REP_ESTADO',
+          'REP_USER_ID',
+          'REP_OT_ID'
       ];
 
 

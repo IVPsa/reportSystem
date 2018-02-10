@@ -27,7 +27,7 @@ class CreateRepReporte extends Migration
 
             $table->integer('REP_OT_ID')->unsigned();
             $table->foreign('REP_OT_ID')->references('OT_ID')->on('OT_ORDEN_TRABAJO');
-
+            $table->timestamps();
         });
     }
 

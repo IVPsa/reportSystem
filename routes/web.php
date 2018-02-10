@@ -14,7 +14,7 @@
 // Route::resource('ot_orden_trabajo', 'OrdenTrabajoController'['except' => [
 //      'index', 'show', 'create', 'store', 'update', 'destroy'
 // ]]);
-Route::resource('ot_orden_trabajo', 'OrdenTrabajoController');
+Route::resource('ot_orden_trabajo', 'OrdenTrabajo');
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,17 +26,33 @@ Route::get('/home', 'HomeController@index')->name('home');
 //INICIO  RUTAS PERFIL
 Route::group(['prefix' => 'PERFIL'], function () {
 
-          Route::get('/Perfil', function () {
-              return view('PERFIL.inicioPerfil');
-          })->name('Perfil');
+  
+          Route::get('/', [
+            'uses' => 'OrdenTrabajoController@showPerfil',
+            'as' => 'Perfil',
+          ]);
 
-          Route::get('/edicionDeOt', function () {
-              return view('PERFIL.edicionDeOt');
-          })->name('edicionDeOt');
 
-          Route::get('/reporteEdicion', function () {
-              return view('PERFIL.reporteEdicion');
-          })->name('reporteEdicion');
+          Route::get('/edicionDeOt/{id}', [
+            'uses' => 'OrdenTrabajoController@edicionDeOt',
+            'as' => 'OTedicion',
+          ]);
+
+          Route::patch('/edicionDeOt/{id}', [
+            'uses' => 'OrdenTrabajoController@updateOtAsignada',
+            'as' => 'edicionDeOtAsignada',
+          ]);
+
+          Route::get('/CreacionDeReporte/{id}', [
+            'uses' => 'OrdenTrabajoController@reporte',
+            'as' => 'reporteEdicion',
+          ]);
+
+          Route::post('/CreacionDeReporte/{id}', [
+            'uses' => 'OrdenTrabajoController@reporteCreacion',
+            'as' => 'reporteCreacion',
+          ]);
+
 
           Route::get('/subirImagenes', function () {
               return view('PERFIL.subirImagenes');
@@ -85,7 +101,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
             ]);
 
             Route::patch('/resumenOt/{id}', [
-              'uses' => 'OrdenTrabajoController@edit',
+              'uses' => 'OrdenTrabajoController@update',
               'as' => 'edit',
             ]);
 
@@ -95,14 +111,14 @@ Route::group(['prefix' => 'PERFIL'], function () {
               'as' => 'OT.crearOT',
             ]);
 
-            Route::get('/listaOt/{id}', [
-              'uses' => 'OrdenTrabajoController@destroy',
-              'as' => 'Eliminar',
-            ]);
-
             Route::post('/crearOt', [
               'uses' => 'OrdenTrabajoController@store',
               'as' => 'insert',
+            ]);
+
+            Route::get('/listaOt/{id}', [
+              'uses' => 'OrdenTrabajoController@destroy',
+              'as' => 'Eliminar',
             ]);
 
             Route::get('/', [

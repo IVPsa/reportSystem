@@ -88,8 +88,6 @@
             <a href="{{ route('Eliminar', $ordenDeTrabajo->OT_ID) }}">
               <button type="button"  class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button>
             </a>
-
-
           </td>
         </tr>
         @endforeach

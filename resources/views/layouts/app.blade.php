@@ -66,7 +66,7 @@
           </li>
 
           <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="{{route('listaOt')}}">OT</a>
+            <a class="nav-link" href="{{route('InicioOT')}}">OT</a>
           </li>
 
         </ul>
@@ -109,7 +109,7 @@
           <a href="{{route('home')}}">HOME</a>
           <a href="{{route('Perfil')}}">PERFIL</a>
           <a href="{{route('reportes')}}">REPORTES</a>
-          <a href="{{route('listaOt')}}">ORDENES DE TRABAJO</a>
+          <a href="{{route('InicioOT')}}">ORDENES DE TRABAJO</a>
         </div>
       </div>
 
