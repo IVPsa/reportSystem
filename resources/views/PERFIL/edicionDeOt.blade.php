@@ -59,12 +59,13 @@
             </td>
           </tr>
 
+          @iF (!$buscarReporte <> false)
           <tr>
             <td align="center"colspan="2">
             <a href="{{route('CreacionDeReporte', $ordenDeTrabajoAsignada->OT_ID)}}">  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">CREAR REPORTE</button></a>
             </td>
           </tr>
-
+          @endif
           <tr>
             <td align="center" colspan="2">
               <button type="submit" name="button" style="width:150px;" class=" btn btn-primary">ACTUALIZAR</button>

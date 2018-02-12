@@ -30,9 +30,10 @@ class perfil extends Controller
 
 
        public function edicionDeOt($id){
-           //
+         //Aqui colocar una conducion que permita saber si la ot tiene un reporte creado
+         $buscarReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
-         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada'));
+         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','buscarReporte'));
 
        }
 
