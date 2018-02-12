@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\user;
 use App\ot_orden_trabajo;
 use App\rep_reporte;
-
+use App\Http\Controllers\Console;
 use App\Http\Controllers\Controller;
 use Exception;
 use Carbon\Carbon;
@@ -31,8 +31,10 @@ class perfil extends Controller
 
        public function edicionDeOt($id){
          //Aqui colocar una conducion que permita saber si la ot tiene un reporte creado
+
          $buscarReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
+        
          return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','buscarReporte'));
 
        }
