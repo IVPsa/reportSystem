@@ -14,7 +14,7 @@ class ot_orden_trabajo extends Model
   * @var string
   */
 
-    protected $table ="OT_ORDEN_TRABAJO"
+    protected $table ="OT_ORDEN_TRABAJO";
 
     /**
    * Llave primaria de la tabla
@@ -29,12 +29,26 @@ class ot_orden_trabajo extends Model
    * @var array
    */
       protected $fillable = [
-          'OT_DES'
+
+          // 'OT_FOLIO',
+          'OT_DES',
+          'OT_ESTADO',
+          'OT_FECHA_CREACION',
+          'OT_FECHA_TERMINO',
+          'OT_REGION',
+          'OT_CIUDAD',
+          'OT_DIRECCION',
+          'OT_VALOR',
+          'OT_USER_ID_CREADOR',
+          'OT_USER_ENCARGADO'
+
       ];
+
+
 
       public function User()
       {
-          return $this->hasMany('App\User', '{USER_ID', 'USERS');
+          return $this->hasOne('App\User', '{USER_ID', 'USERS');
       }
 
 }

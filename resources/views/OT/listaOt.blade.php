@@ -1,5 +1,13 @@
 @extends('layouts.app')
 @section('content')
+@if ($message = Session::get('success'))
+<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
+      <p>{{ $message }}</p>
+  </div>
+@endif
 <h1 class="text-center">LISTADO DE ORDENES DE TRABAJO</h1>
 <table cellpadding="5" align="center">
 
@@ -66,24 +74,25 @@
           <td>DESCRIPCION</td>
           <td>FECHA DE INICIO</td>
           <td>FECHA DE FIN</td>
-          <td>ACCION</td>
+          <td colspan="2">ACCION</td>
         </tr>
-
+        @foreach($ordenDeTrabajo as $ordenDeTrabajo)
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td width="15px"><a href="{{route('resumenOt')}}"<button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></td>
-        </tr>
+          <td>{{ $ordenDeTrabajo->OT_ID }}</td>
+          <td>{{ $ordenDeTrabajo->OT_DES }}</td>
+          <td>{{ $ordenDeTrabajo->OT_FECHA_CREACION }}</td>
+          <td>{{ $ordenDeTrabajo->OT_FECHA_TERMINO }}</td>
+          <td width="15px" ><a href="{{route('resumen' ,$ordenDeTrabajo->OT_ID)}}"><button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></a></td>
+          <td width="15px" >
 
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td width="15px"><button class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button></td>
+            <a href="{{ route('Eliminar', $ordenDeTrabajo->OT_ID) }}">
+              <button type="button"  class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button>
+            </a>
+          </td>
         </tr>
+        @endforeach
+
+
       </table>
     </div>
   </div>

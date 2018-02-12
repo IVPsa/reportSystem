@@ -17,8 +17,9 @@ class CreateRepReporte extends Migration
 
         Schema::create('REP_REPORTE', function (Blueprint $table) {
             $table->increments('REP_COD');
-            $table->string('REP_DES');
-            $table->date('REP_FECHA');
+            $table->text('REP_DES');
+            $table->dateTime('REP_FECHA_EDICION');
+            $table->date('REP_FECHA_INICIO');
             $table->string('REP_ESTADO');
 
             $table->integer('REP_USER_ID')->unsigned();
@@ -26,7 +27,7 @@ class CreateRepReporte extends Migration
 
             $table->integer('REP_OT_ID')->unsigned();
             $table->foreign('REP_OT_ID')->references('OT_ID')->on('OT_ORDEN_TRABAJO');
-
+            $table->timestamps();
         });
     }
 
@@ -38,5 +39,6 @@ class CreateRepReporte extends Migration
     public function down()
     {
         //
+          Schema::dropIfExists('REP_REPORTE');
     }
 }
