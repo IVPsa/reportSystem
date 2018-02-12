@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\ot_orden_trabajo;
 use App\rep_reporte;
 use App\User;
-// use App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
 use Carbon\Carbon;
-// use App\Http\Controllers\DB;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 

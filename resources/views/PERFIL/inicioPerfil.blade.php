@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
 @if ($message = Session::get('success'))
 <div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -149,15 +155,15 @@
           <td>{{$OTasignadas->OT_FECHA_CREACION}}</td>
           <td>{{$OTasignadas->OT_FECHA_TERMINO}}</td>
           <td>
-            <a href="{{route('OTedicion', $OTasignadas->OT_ID)}}">
-              <button type="button" class="btn btn-primary">VER</button>
+            <a href="{{route('OTedicion', $OTasignadas->OT_ID)}}"  data-toggle="tooltip"p data-lacement="top" title="VER OT">
+              <button class="btn btn-xs btn-success"> <i class="fa fa-play" style="font-size:20px;"></i></button>
             </a>
-            <BR />
-            <a href="{{route('edicionDeReporte',$OTasignadas->OT_ID)}}">
-              <button type="button" class="btn btn-primary">REPORTE</button>
+
+            <a href="{{route('edicionDeReporte',$OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
+              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
             </a>
-            <BR />
-              <button type="button" class="btn btn-primary">REG. FOTOGRAFICO</button>
+
+              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
 
           </td>
         </tr>
