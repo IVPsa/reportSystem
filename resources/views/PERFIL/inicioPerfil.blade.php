@@ -159,7 +159,7 @@ $(document).ready(function(){
               <button class="btn btn-xs btn-success"> <i class="fa fa-play" style="font-size:20px;"></i></button>
             </a>
 
-            <a href="{{route('edicionDeReporte',$OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
+            <a href="{{route('edicionDeReporte', $OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
               <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
             </a>
 

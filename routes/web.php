@@ -28,33 +28,33 @@ Route::group(['prefix' => 'PERFIL'], function () {
 
 
           Route::get('/', [
-            'uses' => 'OrdenTrabajoController@showPerfil',
+            'uses' => 'perfil@showPerfil',
             'as' => 'Perfil',
           ]);
 
 
-          Route::get('/edicionDeOt/{id}', [
-            'uses' => 'OrdenTrabajoController@edicionDeOt',
+          Route::get('/VerOt/{id}', [
+            'uses' => 'perfil@edicionDeOt',
             'as' => 'OTedicion',
           ]);
 
-          Route::patch('/edicionDeOt/{id}', [
-            'uses' => 'OrdenTrabajoController@updateOtAsignada',
+          Route::patch('/VerOt/{id}', [
+            'uses' => 'perfil@updateOtAsignada',
             'as' => 'edicionDeOtAsignada',
           ]);
 
           Route::get('/CreacionDeReporte/{id}', [
-            'uses' => 'OrdenTrabajoController@reporte',
+            'uses' => 'perfil@reporte',
             'as' => 'CreacionDeReporte',
           ]);
 
           Route::post('/CreacionDeReporte/{id}', [
-            'uses' => 'OrdenTrabajoController@reporteCreacion',
+            'uses' => 'perfil@reporteCreacion',
             'as' => 'reporteCreacion',
           ]);
 
           Route::get('/edicionDeReporte/{id}', [
-            'uses' => 'OrdenTrabajoController@reporteEdicion',
+            'uses' => 'perfil@reporteEdicion',
             'as' => 'edicionDeReporte',
           ]);
 
