@@ -137,14 +137,14 @@ class OrdenTrabajoController extends Controller
       $estado = $request->input('estado');
       $encargado = $request->input('encargado');
 
-      $crearReporte=rep_reporte::create([
-        'REP_DES'=>' ',
-        'REP_FECHA_EDICION'=> Carbon::today(),
-        'REP_FECHA_INICIO'=> Carbon::today(),
-        'REP_ESTADO'=>'ABIERTO',
-        'REP_USER_ID'=>$encargado,
-        'REP_OT_ID'=>$ordenDeTrabajo
-      ]);
+      // $crearReporte=rep_reporte::create([
+      //   'REP_DES'=>' ',
+      //   'REP_FECHA_EDICION'=> Carbon::today(),
+      //   'REP_FECHA_INICIO'=> Carbon::today(),
+      //   'REP_ESTADO'=>'ABIERTO',
+      //   'REP_USER_ID'=>$encargado,
+      //   'REP_OT_ID'=>$ordenDeTrabajo
+      // ]);
 
       $editOt = ot_orden_trabajo::where('OT_ID',$ordenDeTrabajo)->update([
         'OT_ESTADO' => $estado,
@@ -179,6 +179,6 @@ class OrdenTrabajoController extends Controller
         return redirect()->route('listaOt')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
     }
     // $proveedor = Auth::user()->id;
-    
+
 
 }

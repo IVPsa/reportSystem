@@ -85,7 +85,7 @@ class perfil extends Controller
 
        public function reporteEdicion($id){
 
-           $reporte = rep_reporte::where('OT_ID',$id);
+           $reporte = rep_reporte::find($id);
 
            return view('PERFIL.reporteEdicion', compact('reporte'));
        }
