@@ -35,7 +35,7 @@ class perfil extends Controller
          $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
 
-         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','buscarReporte'));
+         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte'));
 
        }
 

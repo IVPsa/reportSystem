@@ -169,6 +169,7 @@ class OrdenTrabajoController extends Controller
     public function destroy( $id)
     {
         //
+        rep_reporte::where('REP_USER_ID',$id)->delete();
         ot_orden_trabajo::find($id)->delete();
 
         if (! $id)

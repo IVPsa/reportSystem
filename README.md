@@ -36,7 +36,9 @@ $user->name;
 Autenticación con el objeto Request
 Como una manera alternativa a través de los Request también se puede obtener la información del usuario que esta logueado, observa el siguiente ejemplo
 
-
+INSERT INTO `users` (`id`, `USU_NOMBRE`, `email`, `USU_EMPRESA`, `USU_TPU_COD`, `USU_RUT`, `USER_N_CTA_BANCO`, `USER_BANCO`, `USER_TP_CTA`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'ivan', 'ivan_vilugron@hotmail.es', 'mappu', 'TECNICO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', '$2y$10$QRA2VaF/SA1iuhXgfI9oJenm4NA1Cjc5vMsSDSoy2aoc9zC68sMDW', 'NULL', '2018-02-13 06:04:42', '2018-02-13 06:04:42'),
+(2, 'ale', 'ale@hotmail.es', 'mappu', 'TECNICO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', '$2y$10$mOdzVgIE89OILvXieI38UuITlLveuL2T1tAiA1dR3fhnTIJPPvO3i', NULL, '2018-02-13 06:05:08', '2018-02-13 06:05:08');
 
 
 <?php
