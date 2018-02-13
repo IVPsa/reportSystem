@@ -58,7 +58,7 @@
               </select>
             </td>
           </tr>
-          @if ($buscarReporte == "[]" )
+          @if ($comprobarExistenciaDeReporte == "[]" )
           <tr>
             <td align="center"colspan="2">
               <a href="{{route('CreacionDeReporte', $ordenDeTrabajoAsignada->OT_ID)}}">  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">CREAR REPORTE</button></a>

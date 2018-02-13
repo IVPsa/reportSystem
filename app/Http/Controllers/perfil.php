@@ -22,19 +22,19 @@ class perfil extends Controller
          $idUsuario = Auth::id();
          $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->get();
          $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
-         // $OTasignadas = ot_orden_trabajo::find($idUsuario);
+         $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
 
-         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas' ));
+         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','buscarReporte' ));
        }
 
 
        public function edicionDeOt($id){
          //Aqui colocar una conducion que permita saber si la ot tiene un reporte creado
 
-         $buscarReporte= rep_reporte::where('REP_OT_ID', $id)->get();
+         $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
-        
+
          return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','buscarReporte'));
 
        }

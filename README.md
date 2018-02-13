@@ -8,10 +8,10 @@ composer install
 composer dumpautoload
 COMANDOS ARTISAN
 ________________________________________________________________________________
-php artisan route:list   | nos mostrará nuestra colección de rutas
-php artisan cache:clear  | limpiar cache
-php artisan migrate:fresh| recarga migraciones
-
+php artisan route:list                                  | nos mostrará nuestra colección de rutas
+php artisan cache:clear                                 | limpiar cache
+php artisan migrate:fresh                               | recarga migraciones
+php artisan make:factory --model=#nombre del modelo#    | crea un factory con un modelo determinado
 
 Route::get('personal/new','RrhhAdminController@getNuevoRh')->name('regPersonal');
 
@@ -22,6 +22,7 @@ DOCUMENTAICON UTIL
 
 https://laraveles.com/obtener-usuario-autenticado-facade-auth/
 
+https://github.com/fzaninotto/Faker#fakerproviderbase
 
 use Illuminate\Support\Facades\Auth;
 // Obtiene el objeto del Usuario Autenticado
