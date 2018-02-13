@@ -162,11 +162,10 @@ $(document).ready(function(){
             <a href="#" data-toggle="tooltip" data-lacement="top" title="AUN NO SE HA CREADO UN REPORTE">
               <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
             </a>
-            @else
-            <a href="{{route('edicionDeReporte', $OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
-              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
-            </a>
             @endif
+            <!-- <a href="{{route('edicionDeReporte', $OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
+              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
+            </a> -->
 
               <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
 

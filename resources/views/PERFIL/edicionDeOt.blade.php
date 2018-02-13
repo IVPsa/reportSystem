@@ -69,7 +69,9 @@
           @else
           <tr>
             <td align="center"colspan="2">
-              <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">VER REPORTE</button>
+                <a href="{{route('edicionDeReporte', $ordenDeTrabajoAsignada->OT_ID)}}">
+                  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">VER REPORTE</button>
+                </a>
             </td>
           </tr>
 
