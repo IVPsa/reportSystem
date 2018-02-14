@@ -146,7 +146,7 @@ $(document).ready(function(){
           <td>DESCRIPCION</td>
           <td>FECHA INICIO</td>
           <td>FECHA TERMINO</td>
-          <td width="100px">ACCION</td>
+          <td width="100px" colspan="3">ACCION</td>
         </tr>
         @foreach($OTasignadas as $OTasignadas)
         <tr>
@@ -197,7 +197,7 @@ $(document).ready(function(){
           <td>{{$OTcreadas->OT_DES}}</td>
           <td>{{$OTcreadas->OT_FECHA_TERMINO}}</td>
           <td>{{$OTcreadas->OT_FECHA_CREACION}}</td>
-          <td><button type="button" class="btn btn-primary">EDITAR</button></td>
+          <td><a  href="{{route('resumen', $OTcreadas->OT_ID)}}"  <button type="button" class="btn btn-primary">EDITAR</button></td>
         </tr>
         @endforeach
 
