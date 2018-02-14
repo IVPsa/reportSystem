@@ -154,22 +154,31 @@ $(document).ready(function(){
           <td>{{$OTasignadas->OT_DES}}</td>
           <td>{{$OTasignadas->OT_FECHA_CREACION}}</td>
           <td>{{$OTasignadas->OT_FECHA_TERMINO}}</td>
-          <td>
+          <!-- 
+
+          <td width="25px">
+              @if ($buscarReporte == "[]" )
+              <a href="#" data-toggle="tooltip" data-lacement="top" title="AUN NO SE HA CREADO UN REPORTE">
+                <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
+              </a>
+              @else
+
+                <a href="{{route('edicionDeReporte', $OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
+                  <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
+                </a>
+              @endif
+
+          </td> -->
+          <td width="25px">
             <a href="{{route('OTedicion', $OTasignadas->OT_ID)}}"  data-toggle="tooltip"p data-lacement="top" title="VER OT">
               <button class="btn btn-xs btn-success"> <i class="fa fa-play" style="font-size:20px;"></i></button>
             </a>
-            @if ($buscarReporte == "[]" )
-            <a href="#" data-toggle="tooltip" data-lacement="top" title="AUN NO SE HA CREADO UN REPORTE">
-              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
-            </a>
-            @endif
-            <!-- <a href="{{route('edicionDeReporte', $OTasignadas->OT_ID)}}" data-toggle="tooltip"p data-lacement="top" title="VER REPORTE">
-              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-clipboard" style="font-size:20px;"></i></button>
-            </a> -->
-
-              <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
-
           </td>
+          <td width="25px">
+
+            <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
+          </td>
+
         </tr>
         @endforeach
       </table>

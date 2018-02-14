@@ -2,7 +2,7 @@
 @section('content')
 
 <h3 class="text-center">REPORTE ID: {{$reporte->REP_COD}}</h3>
-  
+
 <div class="col-md-12 col-xs-12">
 
     <div class="row">

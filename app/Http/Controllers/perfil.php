@@ -11,7 +11,6 @@ use Exception;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Http\Request;
 
 class perfil extends Controller
@@ -23,6 +22,7 @@ class perfil extends Controller
          $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->get();
          $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
          $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
+
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
 
          return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','buscarReporte' ));
@@ -34,8 +34,10 @@ class perfil extends Controller
 
          $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
+         $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
 
-         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte'));
+         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte','verReporte'));
+         // )->with('verReporte',$verReporte)
 
        }
 
@@ -87,10 +89,10 @@ class perfil extends Controller
        }
 
        public function reporteEdicion($id){
-
+         // $reporte = DB::table('rep_reporte')->where('REP_OT_ID',$id)->get();
            $reporte = rep_reporte::find($id);
 
-           return view('PERFIL.reporteEdicion', compact('reporte'));
+           return view('PERFIL.reporteEdicion',compact('reporte'));
        }
 
 

@@ -168,11 +168,13 @@ class OrdenTrabajoController extends Controller
      */
     public function destroy( $id)
     {
-        //
-        rep_reporte::where('REP_USER_ID',$id)->delete();
-        ot_orden_trabajo::find($id)->delete();
 
-        if (! $id)
+      $usuario = Auth::id();
+        //
+        $eliminarOt=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+        $elimnarReporte= ot_orden_trabajo::find($id)->delete();
+
+        if (!$eliminarOt && !$elimnarReporte)
         {
           return redirect()->route('listaOt')->with('error', "Hubo un problema al eliminar la orden de trabajo.");
         }

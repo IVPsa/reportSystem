@@ -53,7 +53,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'reporteCreacion',
           ]);
 
-          Route::get('/edicionDeReporte/{id}', [
+          Route::get('/VerReporte/{id}', [
             'uses' => 'perfil@reporteEdicion',
             'as' => 'edicionDeReporte',
           ]);
