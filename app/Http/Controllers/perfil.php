@@ -95,5 +95,50 @@ class perfil extends Controller
            return view('PERFIL.reporteEdicion',compact('reporte'));
        }
 
+       public function actualizarDatosPersonales(Request $request){
+         $id = Auth::id();
+
+         $rut=$request->input('rut');
+         $email=$request->input('email');
+         $nombre=$request->input('nombre');
+
+
+         $actualizarDatosPersonales = user::where('id',$id)->update([
+           'USU_RUT'=>$rut,
+           'email'=>$email,
+           'USU_NOMBRE'=>$nombre,
+         ]);
+
+         if (!$actualizarDatosPersonales) {
+           return redirect()->route('Perfil')->with('error', 'Hubo un error Editar Datos personales');
+         }
+
+           return redirect()->route('Perfil')->with('success', 'Datos personales actualizados exitosamente');
+
+       }
+
+      public function actualizarDatosBancarios(Request $request){
+
+        $id = Auth::id();
+        $nCuentat=$request->input('nCuenta');
+        $tipoCta=$request->input('tipoCta');
+        $banco=$request->input('banco');
+
+
+        $actualizarDatosBancarios = user::where('id',$id)->update([
+          'USER_N_CTA_BANCO'=>$nCuentat,
+          'USER_BANCO'=>$banco,
+          'USER_TP_CTA'=>$tipoCta,
+        ]);
+
+        if (!$actualizarDatosBancarios) {
+          return redirect()->route('Perfil')->with('error', 'Hubo un error Editar Datos personales');
+        }
+
+          return redirect()->route('Perfil')->with('success', 'Datos personales actualizados exitosamente');
+
+      }
+
+
 
 }

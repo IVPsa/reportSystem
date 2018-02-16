@@ -17,120 +17,151 @@ $(document).ready(function(){
 @endif
 
 <div class="row">
+
   <div class="col-md-2 col-xs-12">
     <img src="http://via.placeholder.com/350x350"  class="img-thumbnail" alt="Cinque Terre">
     <br />
     <button type="button" class="btn btn-primary btn-lg">ACTUALIZAR FOTO </button>
-
   </div>
+
 
   <div class="col-md-10 col-xs-12">
+    <br />
+    <form action="{{ route('actualizarDatosPersonales')}}" method="post">
+    {{ csrf_field() }}
+    {{ method_field('PATCH') }}
 
-    <h1 class="display-6 ">DATOS PERSONALES</h1>
+    <div class="form-group row">
+      <h4 class="col-md-2 col-xs-12" >NOMBRE:</h4>
+      <input class="form-control col-10 col-form  col-xs-12" type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
+    </div>
 
-    <table class="table" >
-      <tr>
-        <td >
-          <h4 class="text-right">NOMBRE:</h4>
-        </td>
-        <td>
-            <input class="form-control"  type="text" value=" {{ Auth::user()->USU_NOMBRE }}">
-        </td>
-      </tr>
+    <div class="form-group row">
+      <h4 class="col-md-2 col-xs-12" >EMPRESA:</h4>
+      <input class="form-control col-10 col-form  col-xs-12" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
+    </div>
 
-      <tr>
-        <td>
-          <h4 class="text-right">EMPRESA:</h4>
-        </td>
-        <td>
-            <input class="form-control" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
-        </td>
-      </tr>
+    <div class="form-group row">
+      <h4 class="col-md-2 col-xs-12" >RUT:</h4>
+      <input class="form-control col-10 col-form  col-xs-12" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
+    </div>
 
-      <tr>
-        <td>
-          <h4 class="text-right">RUT:</h4>
-        </td>
-        <td>
-            <input class="form-control" type="text" placeholder="no inscrito">
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <h4 class="text-right">EMAIL:</h4>
-        </td>
-        <td>
-            <input class="form-control" type="text" value="{{ Auth::user()->email }}" >
-        </td>
-      </tr>
-      <tr>
-        <td>
+    <div class="form-group row">
+      <h4 class="col-md-2 col-xs-12" >EMAIL:</h4>
+      <input class="form-control col-10 col-form  col-xs-12" name="email" type="email" value="{{ Auth::user()->email }}" >
+    </div>
 
-        </td>
-        <td>
-            <button type="button" class="btn btn-primary">ACTUALIZAR DATOS</button>
-        </td>
-      </tr>
-    </table>
+      <table class="" >
+        <tr>
+          <td >
+            <h4 class="text-right">NOMBRE:</h4>
+          </td>
+          <td>
+              <input class="form-control"  type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
+          </td>
+        </tr>
 
+        <tr>
+          <td>
+            <h4 class="text-right">EMPRESA:</h4>
+          </td>
+          <td>
+              <input class="form-control" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
+          </td>
+        </tr>
 
+        <tr>
+          <td>
+            <h4 class="text-right">RUT:</h4>
+          </td>
+          <td>
+              <input class="form-control" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h4 class="text-right">EMAIL:</h4>
+          </td>
+          <td>
+              <input class="form-control" name="email" type="email" value="{{ Auth::user()->email }}" >
+          </td>
+        </tr>
+        <tr>
+          <td>
+
+          </td>
+          <td>
+              <button type="submit" class="btn btn-primary">ACTUALIZAR DATOS</button>
+          </td>
+        </tr>
+      </table>
+
+    </form>
 
   </div>
+
 </div>
 
 <div class="row">
   <div class="col-md-2 col-xs-10">
-
   </div>
 
   <div class="col-md-10 col-xs-12">
+    <form action="{{ route('actualizarDatosBancarios')}}" method="post">
+      {{ csrf_field() }}
+      {{ method_field('PATCH') }}
 
-    <h1 class="display-6 ">DATOS BANCARIOS</h1>
+      <h1 class="display-6 ">DATOS BANCARIOS</h1>
 
 
-    <table class="table" >
-      <tr>
-        <td>
-          <h4 class="text-right">Nº CUENTA:</h4>
-        </td>
-        <td>
-            <input class="form-control"   type="text" value="{{ Auth::user()->USER_N_CTA_BANCO }}">
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <h4 class="text-right">TIPO DE CUENTA:</h4>
-        </td>
-        <td>
-          <select class="form-control"   name="" >
-            <option selected>{{ Auth::user()->USER_TP_CTA }}</option>
-            <option></option>
-            <option></option>
-            <option></option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-
+      <table class="" >
+        <tr>
           <td>
-            <h4 class="text-right">BANCO:</h4>
+            <h4 class="text-right">Nº CUENTA:</h4>
           </td>
           <td>
-              <input class="form-control" type="text" value="{{ Auth::user()->USER_BANCO }}" >
+              <input class="form-control" name="nCuenta"   type="text" value="{{ Auth::user()->USER_N_CTA_BANCO }}">
           </td>
-      </tr>
-      <tr>
-        <td>
+        </tr>
 
-        </td>
-        <td>
-            <button type="button" class="btn btn-primary">ACTUALIZAR DATOS</button>
-        </td>
-      </tr>
-    </table>
+        <tr>
+          <td>
+            <h4 class="text-right">TIPO DE CUENTA:</h4>
+          </td>
+          <td>
+            <select class="form-control"   name="tipoCta" >
+              <option selected>{{ Auth::user()->USER_TP_CTA }}</option>
+              <option>CORRIENTE</option>
+              <option>AHORRO</option>
+              <option>RUT</option>
+            </select>
+          </td>
+        </tr>
 
+        <tr>
+
+            <td>
+              <h4 class="text-right">BANCO:</h4>
+            </td>
+            <td>
+              <select class="form-control"   name="banco" >
+                <option selected>{{ Auth::user()->USER_BANCO }}</option>
+                <option>BANCO ESTADO</option>
+                <option>BCI</option>
+                <option>BBVA</option>
+              </select>
+            </td>
+        </tr>
+        <tr>
+          <td>
+
+          </td>
+          <td>
+              <button type="submit" class="btn btn-primary">ACTUALIZAR DATOS</button>
+          </td>
+        </tr>
+      </table>
+    </form>
 
   </div>
 </div>
@@ -154,7 +185,7 @@ $(document).ready(function(){
           <td>{{$OTasignadas->OT_DES}}</td>
           <td>{{$OTasignadas->OT_FECHA_CREACION}}</td>
           <td>{{$OTasignadas->OT_FECHA_TERMINO}}</td>
-          <!-- 
+          <!--
 
           <td width="25px">
               @if ($buscarReporte == "[]" )

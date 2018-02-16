@@ -76,7 +76,7 @@
               <li><a href="{{ route('register') }}">Register</a></li>
           @else
 
-           <li class="nav-item dropdown mr-5 pr-3">
+           <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->USU_NOMBRE }}
               </a>

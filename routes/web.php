@@ -32,6 +32,16 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'Perfil',
           ]);
 
+          Route::patch('/actualizarDatosPersonales', [
+            'uses' => 'perfil@actualizarDatosPersonales',
+            'as' => 'actualizarDatosPersonales',
+          ]);
+
+          Route::patch('/actualizarDatosBancarios', [
+            'uses' => 'perfil@actualizarDatosBancarios',
+            'as' => 'actualizarDatosBancarios',
+          ]);
+
 
           Route::get('/VerOt/{id}', [
             'uses' => 'perfil@edicionDeOt',
