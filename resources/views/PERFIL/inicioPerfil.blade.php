@@ -231,5 +231,43 @@ $(document).ready(function(){
   </div>
 </div>
 
+@foreach ($imagenes as $imagenes)
+<!-- <img  src="{{ Storage::disk('public')->url($imagenes->RPFG_IMG_URL)}}" /> -->
+
+<img  class="img-thumbnail" src="storage/{{$imagenes->RPFG_IMG_URL}}" />
+@endforeach
+<form class="" action="{{route('subirArchivo')}}" method="post" enctype="multipart/form-data">
+  {{ csrf_field() }}
+  <input type="text" name="mensaje" value="">
+  <input type="file" id="files" class="form-control-file" name="image" value="">
+
+  <output id="list"></output>
+<script>
+  function archivo(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Obtenemos la imagen del campo "file".
+    for (var i = 0, f; f = files[i]; i++) {
+      //Solo admitimos imágenes.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Insertamos la imagen
+          document.getElementById("list").innerHTML = ['<img src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+        };
+      })(f);
+
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('files').addEventListener('change', archivo, false);
+</script>
+</form>
 
 @endsection

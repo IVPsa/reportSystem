@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\user;
 use App\ot_orden_trabajo;
 use App\rep_reporte;
+use App\rf_reporte_fotografico;
+use App\ft_fotos;
 use App\Http\Controllers\Console;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -22,10 +24,11 @@ class perfil extends Controller
          $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->get();
          $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
          $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
+         $imagenes=rf_reporte_fotografico::all();
 
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
 
-         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','buscarReporte' ));
+         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','buscarReporte','imagenes' ));
        }
 
 
@@ -136,6 +139,28 @@ class perfil extends Controller
         }
 
           return redirect()->route('Perfil')->with('success', 'Datos personales actualizados exitosamente');
+
+      }
+
+      public function subirArchivo(Request $request){
+
+        $mensaje=$request->input('mensaje');
+        $image=$request->file('image');
+
+        $subirimagen= rf_reporte_fotografico::Create([
+          'RPFG_IMG_URL'=>$image->store('imagenes','public'),
+          'RPFG_IMG_DESC'=> $mensaje,
+          'RPFG_OT_ID'=> 1,
+          'RPFG_REP_COD'=>1
+        ]);
+
+
+        if (!$subirimagen) {
+          return redirect()->route('Perfil')->with('error', 'imagen mala.');
+        }
+
+          return redirect()->route('Perfil')->with('success', 'imagen buena');
+
 
       }
 

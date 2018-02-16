@@ -28,7 +28,7 @@ class CreateReporteFotografico extends Migration
 
             $table->integer('RPFG_OT_ID')->unsigned();
             $table->foreign('RPFG_OT_ID')->references('OT_ID')->on('OT_ORDEN_TRABAJO');
-
+            $table->timestamps();
         });
     }
 

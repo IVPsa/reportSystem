@@ -32,6 +32,12 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'Perfil',
           ]);
 
+          Route::post('/subirArchivo', [
+            'uses' => 'perfil@subirArchivo',
+            'as' => 'subirArchivo',
+          ]);
+
+
           Route::patch('/actualizarDatosPersonales', [
             'uses' => 'perfil@actualizarDatosPersonales',
             'as' => 'actualizarDatosPersonales',
