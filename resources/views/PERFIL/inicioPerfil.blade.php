@@ -26,75 +26,55 @@ $(document).ready(function(){
 
 
   <div class="col-md-10 col-xs-12">
+    <h1 class="display-6 ">DATOS PERSONALES</h1>
+
     <br />
     <form action="{{ route('actualizarDatosPersonales')}}" method="post">
-    {{ csrf_field() }}
-    {{ method_field('PATCH') }}
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
 
-    <div class="form-group row">
-      <h4 class="col-md-2 col-xs-12" >NOMBRE:</h4>
-      <input class="form-control col-10 col-form  col-xs-12" type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
-    </div>
+        <table class="table" >
+            <tr>
+              <td >
+                <h4 class="text-right">NOMBRE:</h4>
+              </td>
+              <td>
+                  <input class="form-control"  type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
+              </td>
+            </tr>
 
-    <div class="form-group row">
-      <h4 class="col-md-2 col-xs-12" >EMPRESA:</h4>
-      <input class="form-control col-10 col-form  col-xs-12" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
-    </div>
+            <tr>
+              <td>
+                <h4 class="text-right">EMPRESA:</h4>
+              </td>
+              <td>
+                  <input class="form-control" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
+              </td>
+            </tr>
 
-    <div class="form-group row">
-      <h4 class="col-md-2 col-xs-12" >RUT:</h4>
-      <input class="form-control col-10 col-form  col-xs-12" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
-    </div>
+            <tr>
+              <td>
+                <h4 class="text-right">RUT:</h4>
+              </td>
+              <td>
+                  <input class="form-control" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4 class="text-right">EMAIL:</h4>
+              </td>
+              <td>
+                  <input class="form-control" name="email" type="email" value="{{ Auth::user()->email }}" >
+              </td>
+            </tr>
+            <tr>
 
-    <div class="form-group row">
-      <h4 class="col-md-2 col-xs-12" >EMAIL:</h4>
-      <input class="form-control col-10 col-form  col-xs-12" name="email" type="email" value="{{ Auth::user()->email }}" >
-    </div>
-
-      <table class="" >
-        <tr>
-          <td >
-            <h4 class="text-right">NOMBRE:</h4>
-          </td>
-          <td>
-              <input class="form-control"  type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <h4 class="text-right">EMPRESA:</h4>
-          </td>
-          <td>
-              <input class="form-control" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <h4 class="text-right">RUT:</h4>
-          </td>
-          <td>
-              <input class="form-control" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <h4 class="text-right">EMAIL:</h4>
-          </td>
-          <td>
-              <input class="form-control" name="email" type="email" value="{{ Auth::user()->email }}" >
-          </td>
-        </tr>
-        <tr>
-          <td>
-
-          </td>
-          <td>
-              <button type="submit" class="btn btn-primary">ACTUALIZAR DATOS</button>
-          </td>
-        </tr>
-      </table>
+              <td colspan="2" align="center">
+                  <button type="submit" class="btn btn-primary">ACTUALIZAR DATOS</button>
+              </td>
+            </tr>
+          </table>
 
     </form>
 
@@ -114,7 +94,7 @@ $(document).ready(function(){
       <h1 class="display-6 ">DATOS BANCARIOS</h1>
 
 
-      <table class="" >
+      <table class="table" >
         <tr>
           <td>
             <h4 class="text-right">Nº CUENTA:</h4>
@@ -153,14 +133,13 @@ $(document).ready(function(){
             </td>
         </tr>
         <tr>
-          <td>
 
-          </td>
-          <td>
+          <td colspan="2" align="center">
               <button type="submit" class="btn btn-primary">ACTUALIZAR DATOS</button>
           </td>
         </tr>
       </table>
+
     </form>
 
   </div>
@@ -171,14 +150,17 @@ $(document).ready(function(){
     <h1 class="display-6 text-center">OT's ASIGNADAS</h1>
 
     <div class="table-responsive">
-      <table class="table table-bordered" align="center">
-        <tr>
-          <td>ID</td>
-          <td>DESCRIPCION</td>
-          <td>FECHA INICIO</td>
-          <td>FECHA TERMINO</td>
-          <td width="100px" colspan="3">ACCION</td>
-        </tr>
+      <table class="table table-hover table-dark table-bordered" align="center">
+
+        <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>DESCRIPCION</th>
+              <th>FECHA INICIO</th>
+              <th>FECHA TERMINO</th>
+              <th width="100px" colspan="3">ACCION</th>
+            </tr>
+        </thead>
         @foreach($OTasignadas as $OTasignadas)
         <tr>
           <td>{{$OTasignadas->OT_ID}}</td>
@@ -223,14 +205,16 @@ $(document).ready(function(){
     <h1 class="display-6 text-center">OT's CREADAS</h1>
 
     <div class="table-responsive">
-      <table class="table table-bordered" align="center">
-        <tr>
-          <td>ID</td>
-          <td>DESCRIPCION</td>
-          <td>FECHA INICIO</td>
-          <td>FECHA TERMINO</td>
-          <td width="100px">ACCION</td>
-        </tr>
+      <table class="table table-hover table-dark table-bordered" align="center">
+        <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>DESCRIPCION</th>
+              <th>FECHA INICIO</th>
+              <th>FECHA TERMINO</th>
+              <th width="100px" colspan="3">ACCION</th>
+            </tr>
+        </thead>
         @foreach($OTcreadas as $OTcreadas)
         <tr>
           <td>{{$OTcreadas->OT_ID}}</td>

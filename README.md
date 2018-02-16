@@ -83,3 +83,25 @@ Determinar si existe un usuario autenticado con Auth::check()
 Cerrar sesión activa con Auth::logout();
 Iniciar sesión pasando como parámetro una instancia de usuario con Auth::login($user);
 Iniciar una sesión usando el id un usuario con Auth::loginUsingId(1);
+
+
+
+<div class="form-group row">
+  <h4 class="col-md-2 col-xs-12" >NOMBRE:</h4>
+  <input class="form-control col-md-5 col-form  col-xs-12" type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
+</div>
+
+<div class="form-group row">
+  <h4 class="col-md-2 col-xs-12" >EMPRESA:</h4>
+  <input class="form-control col-md-5 col-form  col-xs-12" type="text" value="{{ Auth::user()->USU_EMPRESA }}" >
+</div>
+
+<div class="form-group row">
+  <h4 class="col-md-2 col-xs-12" >RUT:</h4>
+  <input class="form-control col-md-5  col-form  col-xs-12" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
+</div>
+
+<div class="form-group row">
+  <h4 class="col-md-2 col-xs-12" >EMAIL:</h4>
+  <input class="form-control col-md-5 col-form  col-xs-12" name="email" type="email" value="{{ Auth::user()->email }}" >
+</div>
