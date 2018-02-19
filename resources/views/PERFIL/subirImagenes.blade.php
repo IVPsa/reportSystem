@@ -12,14 +12,14 @@
   <div class="form-group row">
     <h5 class="col-md-2 col-xs-12" >IMAGEN:</h5>
     <input class="form-control col-5 col-form  col-xs-12" readonly type="text" >
-     <input type="file" class="form-control-file col-5 col-form  col-xs-12"  id="files" name="files[]">
+     <input type="file" class="form-control-file col-5 col-form  col-xs-12 "  id="files" name="files[]">
     <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
   </div>
 
   <div class="form-group row">
     <h5 class="col-md-2 col-xs-12">DESCRIPCION:</h5>
     <textarea  class="form-control col-5 col-form  col-xs-12" rows="10" ></textarea>
-    <output  class="form-control col-5 col-form  col-xs-12" id="list"></output>
+    <output  class="form-control col-5 col-form  col-xs-12"  id="list"></output>
   </div>
 
   <div class="form-group row">

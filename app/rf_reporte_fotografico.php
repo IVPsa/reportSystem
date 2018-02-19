@@ -10,8 +10,7 @@ class rf_reporte_fotografico extends Model
 
     protected $table ="RPFG_REPORTE_FOTOGRAFICO";
     protected $fillable = [
-      'RPFG_IMG_URL',
-      'RPFG_IMG_DESC',
+
       'RPFG_OT_ID',
       'RPFG_REP_COD'
     ];

@@ -32,9 +32,15 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'Perfil',
           ]);
 
-          Route::post('/subirArchivo', [
-            'uses' => 'perfil@subirArchivo',
-            'as' => 'subirArchivo',
+          // Route::post('/subirArchivo', [
+          //   'uses' => 'perfil@subirArchivo',
+          //   'as' => 'subirArchivo',
+          // ]);
+
+
+          Route::patch('/', [
+            'uses' => 'perfil@subirFotoDePerfil',
+            'as' => 'subirAvatar',
           ]);
 
 
@@ -74,6 +80,10 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'edicionDeReporte',
           ]);
 
+          Route::get('/CrearReporteFotografico/{id}', [
+            'uses' => 'perfil@CrearReporteFotografico',
+            'as' => 'CrearReporteFotografico',
+          ]);
 
           Route::get('/subirImagenes', function () {
               return view('PERFIL.subirImagenes');

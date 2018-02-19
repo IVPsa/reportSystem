@@ -23,7 +23,8 @@ class User extends Authenticatable
         'USER_N_CTA_BANCO',
         'USER_BANCO',
         'USER_TP_CTA',
-        'USU_RUT'
+        'USU_RUT',
+        'USER_AVATAR'
     ];
 
     /**

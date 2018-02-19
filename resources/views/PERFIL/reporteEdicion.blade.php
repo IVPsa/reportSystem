@@ -34,6 +34,10 @@
           <button type="submit"  class="btn btn-primary ">ACTUALIZAR REPORTE</button>
           <BR />
           <BR />
+          <form class="" action="{{'CrearReporteFotografico',$reporte->REP_COD }}" method="post">
+            <button type="submit" class="btn btn-primary " > CREAR  REPORTE FOTOGRAFICO</button>
+          </form>
+          <BR />
           <a href="{{route('subirImagenes')}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a>
         </div>
 
