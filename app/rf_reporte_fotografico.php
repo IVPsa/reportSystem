@@ -9,6 +9,9 @@ class rf_reporte_fotografico extends Model
     //
 
     protected $table ="RPFG_REPORTE_FOTOGRAFICO";
+
+    protected $primaryKey = "RPFG_COD";
+
     protected $fillable = [
 
       'RPFG_OT_ID',

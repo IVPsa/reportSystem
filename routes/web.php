@@ -80,7 +80,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'edicionDeReporte',
           ]);
 
-          Route::get('/CrearReporteFotografico/{id}', [
+          Route::post('/VerReporte/{id}', [
             'uses' => 'perfil@CrearReporteFotografico',
             'as' => 'CrearReporteFotografico',
           ]);

@@ -17,14 +17,17 @@ $(document).ready(function(){
 @endif
 
 <div class="row">
-  <div class="col-md-2 col-xs-12">
+
+
+    <div class="col-md-2 col-xs-12">
       @foreach ($fotoPerfil as $fotoPerfil)
-            <img  src="storage/{{$fotoPerfil->USER_AVATAR }}" width="200" height="300" />
+      <img  src="storage/{{$fotoPerfil->USER_AVATAR }}" width="200" height="300" />
       @endforeach
-    <br />
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#subirAvatar" data-backdrop="static">ACTUALIZAR FOTO </button>
-    @include('modals.subirAvatar')
-  </div>
+      <br />
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#subirAvatar" data-backdrop="static">ACTUALIZAR FOTO </button>
+      @include('modals.subirAvatar')
+    </div>
+
 
 
 

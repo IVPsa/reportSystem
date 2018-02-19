@@ -29,7 +29,7 @@ class perfil extends Controller
          $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
          $imagenes=rf_reporte_fotografico::all();
          $fotoPerfil=user::where('id',$idUsuario)->get();
-
+         // dd($fotoPerfil);
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
 
          return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','buscarReporte','imagenes','fotoPerfil' ));
@@ -42,6 +42,8 @@ class perfil extends Controller
          $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
          $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
+
+         // dd($ordenDeTrabajoAsignada);
 
          return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte','verReporte'));
          // )->with('verReporte',$verReporte)
@@ -98,8 +100,9 @@ class perfil extends Controller
        public function reporteEdicion($id){
          // $reporte = DB::table('rep_reporte')->where('REP_OT_ID',$id)->get();
            $reporte = rep_reporte::find($id);
-
-           return view('PERFIL.reporteEdicion',compact('reporte'));
+           $comprobarReporteFotografico = rf_reporte_fotografico::where('RPFG_REP_COD',$id)->get();
+           
+           return view('PERFIL.reporteEdicion',compact('reporte', 'comprobarReporteFotografico'));
        }
 
        public function actualizarDatosPersonales(Request $request){
@@ -164,16 +167,20 @@ class perfil extends Controller
 
       }
 
-      public function CrearReporteFotografico($id){
+      public function CrearReporteFotografico(Request $request, $id){
+
+        $numeroOt=$request->input('numeroOt');
 
         $crearReporteFotogarfico= rf_reporte_fotografico::Create([
-          'RPFG_IMG_URL'=>$image->store('imagenes','public'),
-          'RPFG_IMG_DESC'=> $mensaje,
-          'RPFG_OT_ID'=> 1,
-          'RPFG_REP_COD'=>1
+          'RPFG_OT_ID'=> $numeroOt,
+          'RPFG_REP_COD'=>$id
         ]);
 
+        if (!$crearReporteFotogarfico) {
+          return redirect()->route('edicionDeReporte', $id)->with('success', 'Hubo un error al crear el reporte fotografico');
+        }
 
+          return redirect()->route('edicionDeReporte', $id)->with('success', 'Reporte fotografico creado exitosamente');
       }
 
       // public function subirArchivo(Request $request){

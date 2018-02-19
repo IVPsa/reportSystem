@@ -150,3 +150,21 @@ Iniciar una sesión usando el id un usuario con Auth::loginUsingId(1);
   document.getElementById('files').addEventListener('change', archivo, false);
 </script>
 </form> -->
+
+
+@if ($fotoPerfil=[9] == null)
+<div class="col-md-2 col-xs-12">
+  @foreach ($fotoPerfil as $fotoPerfil)
+  <img  src="storage/{{$fotoPerfil->USER_AVATAR }}" width="200" height="300" />
+  @endforeach
+  <br />
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#subirAvatar" data-backdrop="static">ACTUALIZAR FOTO </button>
+  @include('modals.subirAvatar')
+</div>
+@else
+
+<div class="col-md-2 col-xs-12">
+  <img  src="{{asset('images/sinPerfil.png')}}" width="200" height="300" />
+  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#subirAvatar" data-backdrop="static">ACTUALIZAR FOTO </button>
+</div>
+@endif
