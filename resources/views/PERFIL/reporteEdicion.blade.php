@@ -39,18 +39,22 @@
         </div>
 
         <div class="container" align="center">
+
           <button type="submit"  class="btn btn-primary ">ACTUALIZAR REPORTE</button>
-          <br />
+        </div>
+
+        <div class="container" align="center">
           <br />
           @if ($comprobarReporteFotografico == "[]")
             <form action="{{route('CrearReporteFotografico',$reporte->REP_COD)}}" method="post">
               {{ csrf_field() }}
+              <input  hidden name="numeroOt" value="{{$reporte->REP_OT_ID}}">
               <button type="submit" class="btn btn-primary " > CREAR  REPORTE FOTOGRAFICO</button>
             </form>
           @else
-            <BR />
-            <BR />
-            <a href="{{route('subirImagenes')}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a>
+            @foreach ($comprobarReporteFotografico as $comprobarReporteFotografico)
+              <a href="{{route('ReporteFotografico', $comprobarReporteFotografico->RPFG_COD)}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a>
+            @endForeach
           @endif
         </div>
 

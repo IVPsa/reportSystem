@@ -85,9 +85,15 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'CrearReporteFotografico',
           ]);
 
-          Route::get('/subirImagenes', function () {
-              return view('PERFIL.subirImagenes');
-          })->name('subirImagenes');
+          Route::get('/ReporteFotografico/{id}', [
+            'uses' => 'perfil@ReporteFotografico',
+            'as' => 'ReporteFotografico',
+          ]);
+
+          Route::post('/subirArchivo', [
+            'uses' => 'perfil@subirArchivo',
+            'as' => 'subirArchivo',
+          ]);
 
  });
 // FIN RUTAS PERFIL
@@ -99,9 +105,9 @@ Route::group(['prefix' => 'PERFIL'], function () {
                return view('REPORTES.hojaReporte');
            })->name('hojaReporte');
 
-           Route::get('/ReporteFotografico', function () {
+           Route::get('/VerReporteFotografico', function () {
                return view('REPORTES.ReporteFotografico');
-           })->name('ReporteFotografico');
+           })->name('VerReporteFotografico');
 
            Route::get('/reportes', function () {
                return view('REPORTES.reportes');

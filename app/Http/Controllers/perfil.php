@@ -101,8 +101,10 @@ class perfil extends Controller
          // $reporte = DB::table('rep_reporte')->where('REP_OT_ID',$id)->get();
            $reporte = rep_reporte::find($id);
            $comprobarReporteFotografico = rf_reporte_fotografico::where('RPFG_REP_COD',$id)->get();
-           
-           return view('PERFIL.reporteEdicion',compact('reporte', 'comprobarReporteFotografico'));
+
+           $reportefotografico=rf_reporte_fotografico::find($id);
+
+           return view('PERFIL.reporteEdicion',compact('reporte', 'comprobarReporteFotografico','reportefotografico'));
        }
 
        public function actualizarDatosPersonales(Request $request){
@@ -130,13 +132,13 @@ class perfil extends Controller
       public function actualizarDatosBancarios(Request $request){
 
         $id = Auth::id();
-        $nCuentat=$request->input('nCuenta');
+        $nCuenta=$request->input('nCuenta');
         $tipoCta=$request->input('tipoCta');
         $banco=$request->input('banco');
 
 
         $actualizarDatosBancarios = user::where('id',$id)->update([
-          'USER_N_CTA_BANCO'=>$nCuentat,
+          'USER_N_CTA_BANCO'=>$nCuenta,
           'USER_BANCO'=>$banco,
           'USER_TP_CTA'=>$tipoCta,
         ]);
@@ -169,10 +171,10 @@ class perfil extends Controller
 
       public function CrearReporteFotografico(Request $request, $id){
 
-        $numeroOt=$request->input('numeroOt');
+        $numero=$request->input('numeroOt');
 
         $crearReporteFotogarfico= rf_reporte_fotografico::Create([
-          'RPFG_OT_ID'=> $numeroOt,
+          'RPFG_OT_ID'=> $numero,
           'RPFG_REP_COD'=>$id
         ]);
 
@@ -183,27 +185,36 @@ class perfil extends Controller
           return redirect()->route('edicionDeReporte', $id)->with('success', 'Reporte fotografico creado exitosamente');
       }
 
-      // public function subirArchivo(Request $request){
-      //
-      //   $mensaje=$request->input('mensaje');
-      //   $image=$request->file('image');
-      //
-      //   $subirimagen= rf_reporte_fotografico::Create([
-      //     'RPFG_IMG_URL'=>$image->store('imagenes','public'),
-      //     'RPFG_IMG_DESC'=> $mensaje,
-      //     'RPFG_OT_ID'=> 1,
-      //     'RPFG_REP_COD'=>1
-      //   ]);
-      //
-      //
-      //   if (!$subirimagen) {
-      //     return redirect()->route('Perfil')->with('error', 'imagen mala.');
-      //   }
-      //
-      //     return redirect()->route('Perfil')->with('success', 'imagen buena');
-      //
-      //
-      // }
+      public function ReporteFotografico($id){
+
+        $reporteFotografico = rf_reporte_fotografico::find($id);
+        $fotos=ft_fotos::where('FT_RPFG_COD',$id)->get();
+
+        return view('PERFIL.subirImagenes',compact('reporteFotografico','fotos'));
+
+
+      }
+
+      public function subirArchivo(Request $request){
+
+        $mensaje=$request->input('descripcionImagen');
+        $image=$request->file('image');
+        $codigoReporte=$request->input('codigoReporte');
+
+        $subirimagen= ft_fotos::Create([
+          'FT_IMG'=>$image->store('imagenes','public'),
+          'FT_DESC'=> $mensaje,
+          'FT_RPFG_COD'=>$codigoReporte
+        ]);
+
+        if (!$subirimagen) {
+          return redirect()->route('ReporteFotografico', $codigoReporte)->with('error', 'imagen mala.');
+        }
+
+          return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'imagen buena');
+
+
+      }
 
 
 

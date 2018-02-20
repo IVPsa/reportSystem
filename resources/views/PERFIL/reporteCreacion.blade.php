@@ -35,7 +35,7 @@
             <button type="submit"  class="btn btn-primary ">CREAR REPORTE</button>
             <BR />
             <BR />
-            <!-- <a href="{{route('subirImagenes')}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a> -->
+
           </div>
 
         </div>
