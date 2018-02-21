@@ -68,14 +68,17 @@
 <div class="row">
   <div class="col-md-12 col-xs-12">
     <div class="table-responsive">
-      <table class="table table-bordered">
-        <tr>
-          <td>ID</td>
-          <td>DESCRIPCION</td>
-          <td>FECHA DE INICIO</td>
-          <td>FECHA DE FIN</td>
-          <td colspan="2">ACCION</td>
-        </tr>
+      <table class="table table-hover table-dark table-bordered" align="center">
+
+        <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>DESCRIPCION</th>
+              <th>FECHA INICIO</th>
+              <th>FECHA TERMINO</th>
+              <th width="100px" colspan="2">ACCION</th>
+            </tr>
+        </thead>
         @foreach($ordenDeTrabajo as $ordenDeTrabajo)
         <tr>
           <td>{{ $ordenDeTrabajo->OT_ID }}</td>

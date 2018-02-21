@@ -22,7 +22,7 @@
 
         <div class="col-md-12 col-xs-12">
           <h5 class="text-center">DESCRIPCION</h5>
-          <textarea style="height:350px;" class="form-control"> {{ $ordenDeTrabajo->OT_DES}}</textarea>
+          <textarea style="height:350px;" name="descripcion" class="form-control"> {{ $ordenDeTrabajo->OT_DES}}</textarea>
         </div>
 
         <div class="col-md-12 col-xs-12">

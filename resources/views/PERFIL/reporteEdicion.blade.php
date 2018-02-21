@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
+@if ($message = Session::get('success'))
+<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <p>{{ $message }}</p>
+</div>
+@endif
 <h3 class="text-center">REPORTE ID: {{$reporte->REP_COD}}</h3>
 
 <div class="col-md-12 col-xs-12">
@@ -31,10 +39,23 @@
         </div>
 
         <div class="container" align="center">
+
           <button type="submit"  class="btn btn-primary ">ACTUALIZAR REPORTE</button>
-          <BR />
-          <BR />
-          <a href="{{route('subirImagenes')}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a>
+        </div>
+
+        <div class="container" align="center">
+          <br />
+          @if ($comprobarReporteFotografico == "[]")
+            <form action="{{route('CrearReporteFotografico',$reporte->REP_COD)}}" method="post">
+              {{ csrf_field() }}
+              <input  hidden name="numeroOt" value="{{$reporte->REP_OT_ID}}">
+              <button type="submit" class="btn btn-primary " > CREAR  REPORTE FOTOGRAFICO</button>
+            </form>
+          @else
+            @foreach ($comprobarReporteFotografico as $comprobarReporteFotografico)
+              <a href="{{route('ReporteFotografico', $comprobarReporteFotografico->RPFG_COD)}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a>
+            @endForeach
+          @endif
         </div>
 
       </div>

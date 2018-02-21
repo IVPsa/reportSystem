@@ -1,47 +1,58 @@
 @extends('layouts.app')
 @section('content')
 
+@if ($message = Session::get('success'))
+<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <p>{{ $message }}</p>
+</div>
+@endif
+<h3 class="text-center">REGISTRO FOTOGRAFICO {{$reporteFotografico->RPFG_COD}} </h3>
 
-<h3 class="text-center">REGISTRO FOTOGRAFICO </h3>
-
-<h3 class="text-center">OT Nº:#####</h3>
-<h3 class="text-center">REPORTE Nº:#####</h3>
+<h3 class="text-center">OT Nº:{{$reporteFotografico->RPFG_OT_ID}}</h3>
+<h3 class="text-center">REPORTE Nº: {{$reporteFotografico->RPFG_REP_COD}}</h3>
 
 <div class="col-md-12 col-xs-12">
+    <form class="" action="{{route('subirArchivo', $reporteFotografico->RPFG_COD)}}" method="post" enctype="multipart/form-data">
+        {{ csrf_field() }}
+      <div class="form-group row">
+        <input hidden name="codigoReporte" value="{{$reporteFotografico->RPFG_COD}}">
+        <h5 class="col-md-2 col-xs-12" > SELECCIONAR IMAGEN:</h5>
 
-  <div class="form-group row">
-    <h5 class="col-md-2 col-xs-12" >IMAGEN:</h5>
-    <input class="form-control col-5 col-form  col-xs-12" readonly type="text" >
-     <input type="file" class="form-control-file col-5 col-form  col-xs-12"  id="files" name="files[]">
-    <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
-  </div>
+         <input type="file" class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" >
+        <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
+      </div>
 
-  <div class="form-group row">
-    <h5 class="col-md-2 col-xs-12">DESCRIPCION:</h5>
-    <textarea  class="form-control col-5 col-form  col-xs-12" rows="10" ></textarea>
-    <output  class="form-control col-5 col-form  col-xs-12" id="list"></output>
-  </div>
+      <div class="form-group row">
+        <h5 class="col-md-2 col-xs-12">DESCRIPCION:</h5>
+        <textarea  name="descripcionImagen" class="form-control col-5 col-form  col-xs-12" rows="10" ></textarea>
+        <output  class="form-control col-5 col-form  col-xs-12"  id="list"></output>
+      </div>
 
-  <div class="form-group row">
-    <div class=" col-2 col-form  col-xs-12"></div>
-    <input type="submit" class="btn btn-primary col-10 col-form  col-xs-12" value="SUBIR">
-  </div>
-
+      <div class="form-group row">
+        <div class=" col-2 col-form  col-xs-12"></div>
+        <input type="submit" class="btn btn-primary col-10 col-form  col-xs-12" value="SUBIR">
+      </div>
+    </form>
 </div>
 
 <h3 class="text-center">FOTOS SUBIDAS</h3>
 <div class="table-responsive">
 
 
-<div class="col-md-12 col-xs-12">
-  <div class="form-group row">
-    <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" ></textarea>
-    <img src="http://via.placeholder.com/350x350"  class="img-thumbnail  col-5 col-xs-5" alt="Cinque Terre">
-    <!-- <div class="col-1"> -->
-      <button type="button" class="btn btn-danger col-1  col-xs-1">X</button>
-    <!-- </div> -->
+  <div class="col-md-12 col-xs-12">
+    <div class="form-group row">
+      @foreach ($fotos as $fotos)
+        <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
+        <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-5 col-xs-5" >
+
+          <button type="button" class="btn btn-danger col-1  col-xs-1">X</button>
+
+      @endforeach
+    </div>
   </div>
-</div>
 </div>
 <br />
 

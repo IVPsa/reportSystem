@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ft_fotos;
 use App\ot_orden_trabajo;
 use App\rep_reporte;
+use App\rf_reporte_fotografico;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -137,10 +139,21 @@ class OrdenTrabajoController extends Controller
       $estado = $request->input('estado');
       $encargado = $request->input('encargado');
 
+      // $crearReporte=rep_reporte::create([
+      //   'REP_DES'=>' ',
+      //   'REP_FECHA_EDICION'=> Carbon::today(),
+      //   'REP_FECHA_INICIO'=> Carbon::today(),
+      //   'REP_ESTADO'=>'ABIERTO',
+      //   'REP_USER_ID'=>$encargado,
+      //   'REP_OT_ID'=>$ordenDeTrabajo
+      // ]);
+
       $editOt = ot_orden_trabajo::where('OT_ID',$ordenDeTrabajo)->update([
         'OT_ESTADO' => $estado,
         'OT_USER_ENCARGADO' => $encargado
       ]);
+
+
 
       if (!$editOt) {
         return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('error', 'Hubo un error al modificar OT.');
@@ -157,10 +170,39 @@ class OrdenTrabajoController extends Controller
      */
     public function destroy( $id)
     {
-        //
-        ot_orden_trabajo::find($id)->delete();
 
-        if (! $id)
+        $usuario = Auth::id();
+
+        $rpfg=rf_reporte_fotografico::where('RPFG_OT_ID',$id)->value('RPFG_COD');
+        // dd($rpfg);
+        if($rpfg==[])
+        {
+
+          $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+
+          $eliminarOt= ot_orden_trabajo::find($id)->delete();
+        }
+
+        else{
+
+          $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
+
+          $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+
+          $eliminarOt= ot_orden_trabajo::find($id)->delete();
+
+        }
+
+        //
+        // $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
+        //
+        // $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
+        //
+        // $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+        //
+        // $eliminarOt= ot_orden_trabajo::find($id)->delete();
+
+        if (!$eliminarOt)
         {
           return redirect()->route('listaOt')->with('error', "Hubo un problema al eliminar la orden de trabajo.");
         }
@@ -168,77 +210,6 @@ class OrdenTrabajoController extends Controller
         return redirect()->route('listaOt')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
     }
     // $proveedor = Auth::user()->id;
-
-
-    public function showPerfil(){
-
-      $idUsuario = Auth::id();
-      $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->get();
-      $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
-      // $OTasignadas = ot_orden_trabajo::find($idUsuario);
-      // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
-
-      return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas' ));
-    }
-
-    public function edicionDeOt($id){
-        //
-      $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
-      return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada'));
-
-    }
-
-    public function updateOtAsignada(Request $request, $ordenDeTrabajoAsignada ){
-
-      $estado = $request->input('estado');
-
-      $editOtAsignada = ot_orden_trabajo::where('OT_ID',$ordenDeTrabajoAsignada)->update([
-        'OT_ESTADO' => $estado
-      ]);
-
-      if (!$editOtAsignada) {
-        return redirect()->route('Perfil')->with('error', 'Hubo un error al modificar OT.');
-      }
-
-        return redirect()->route('Perfil')->with('success', 'La OT modificada exitosamente.');
-    }
-    public function reporte($id){
-
-        $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
-
-        return view('PERFIL.reporteCreacion', compact('ordenDeTrabajoAsignada'));
-    }
-
-    public function reporteCreacion(Request $request, $ordenDeTrabajoAsignada ){
-
-      $numeroOt = $request->input('numeroOt');
-      $creador = $request->input('creador');
-      $descripcionReporte = $request->input('descripcionReporte');
-      $Usu = Auth::id();
-
-      $creacionDeReporte = rep_reporte::create([
-        'REP_DES'=>$descripcionReporte,
-        'REP_FECHA_INICIO'=> Carbon::today(),
-        'REP_FECHA_EDICION'=> Carbon::today(),
-        'REP_ESTADO'=>'ABIERTO',
-        'REP_USER_ID'=>$Usu,
-        'REP_OT_ID'=>$ordenDeTrabajoAsignada
-      ]);
-
-
-      if (!$creacionDeReporte) {
-        return redirect()->route('Perfil')->with('error', 'Hubo un error al crear el reporte');
-      }
-
-        return redirect()->route('Perfil')->with('success', 'El reporte ha sido creado exitosamente, haga click en reporte para editarlo');
-    }
-
-    public function reporteEdicion($id){
-
-        $reporte = rep_reporte::find($id);
-
-        return view('PERFIL.reporteEdicion', compact('reporte'));
-    }
 
 
 }

@@ -28,40 +28,72 @@ Route::group(['prefix' => 'PERFIL'], function () {
 
 
           Route::get('/', [
-            'uses' => 'OrdenTrabajoController@showPerfil',
+            'uses' => 'perfil@showPerfil',
             'as' => 'Perfil',
           ]);
 
+          // Route::post('/subirArchivo', [
+          //   'uses' => 'perfil@subirArchivo',
+          //   'as' => 'subirArchivo',
+          // ]);
 
-          Route::get('/edicionDeOt/{id}', [
-            'uses' => 'OrdenTrabajoController@edicionDeOt',
+
+          Route::patch('/', [
+            'uses' => 'perfil@subirFotoDePerfil',
+            'as' => 'subirAvatar',
+          ]);
+
+
+          Route::patch('/actualizarDatosPersonales', [
+            'uses' => 'perfil@actualizarDatosPersonales',
+            'as' => 'actualizarDatosPersonales',
+          ]);
+
+          Route::patch('/actualizarDatosBancarios', [
+            'uses' => 'perfil@actualizarDatosBancarios',
+            'as' => 'actualizarDatosBancarios',
+          ]);
+
+
+          Route::get('/VerOt/{id}', [
+            'uses' => 'perfil@edicionDeOt',
             'as' => 'OTedicion',
           ]);
 
-          Route::patch('/edicionDeOt/{id}', [
-            'uses' => 'OrdenTrabajoController@updateOtAsignada',
+          Route::patch('/VerOt/{id}', [
+            'uses' => 'perfil@updateOtAsignada',
             'as' => 'edicionDeOtAsignada',
           ]);
 
           Route::get('/CreacionDeReporte/{id}', [
-            'uses' => 'OrdenTrabajoController@reporte',
+            'uses' => 'perfil@reporte',
             'as' => 'CreacionDeReporte',
           ]);
 
           Route::post('/CreacionDeReporte/{id}', [
-            'uses' => 'OrdenTrabajoController@reporteCreacion',
+            'uses' => 'perfil@reporteCreacion',
             'as' => 'reporteCreacion',
           ]);
 
-          Route::get('/edicionDeReporte/{id}', [
-            'uses' => 'OrdenTrabajoController@reporteEdicion',
+          Route::get('/VerReporte/{id}', [
+            'uses' => 'perfil@reporteEdicion',
             'as' => 'edicionDeReporte',
           ]);
 
+          Route::post('/VerReporte/{id}', [
+            'uses' => 'perfil@CrearReporteFotografico',
+            'as' => 'CrearReporteFotografico',
+          ]);
 
-          Route::get('/subirImagenes', function () {
-              return view('PERFIL.subirImagenes');
-          })->name('subirImagenes');
+          Route::get('/ReporteFotografico/{id}', [
+            'uses' => 'perfil@ReporteFotografico',
+            'as' => 'ReporteFotografico',
+          ]);
+
+          Route::post('/subirArchivo', [
+            'uses' => 'perfil@subirArchivo',
+            'as' => 'subirArchivo',
+          ]);
 
  });
 // FIN RUTAS PERFIL
@@ -73,9 +105,9 @@ Route::group(['prefix' => 'PERFIL'], function () {
                return view('REPORTES.hojaReporte');
            })->name('hojaReporte');
 
-           Route::get('/ReporteFotografico', function () {
+           Route::get('/VerReporteFotografico', function () {
                return view('REPORTES.ReporteFotografico');
-           })->name('ReporteFotografico');
+           })->name('VerReporteFotografico');
 
            Route::get('/reportes', function () {
                return view('REPORTES.reportes');

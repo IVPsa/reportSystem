@@ -19,16 +19,12 @@ class CreateReporteFotografico extends Migration
 
             $table->increments('RPFG_COD');
 
-
-            $table->text('RPFG_IMG_URL');
-            $table->text('RPFG_IMG_DESC');
-
             $table->integer('RPFG_REP_COD')->unsigned();
             $table->foreign('RPFG_REP_COD')->references('REP_COD')->on('REP_REPORTE');
 
             $table->integer('RPFG_OT_ID')->unsigned();
             $table->foreign('RPFG_OT_ID')->references('OT_ID')->on('OT_ORDEN_TRABAJO');
-
+            $table->timestamps();
         });
     }
 

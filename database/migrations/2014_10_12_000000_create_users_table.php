@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('USER_N_CTA_BANCO');
             $table->string('USER_BANCO');
             $table->string('USER_TP_CTA');
+            $table->string('USER_AVATAR');
             $table->string('password');
             // $table->integer('USU_EMPRESA');
             $table->rememberToken();
