@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\ft_fotos;
 use App\ot_orden_trabajo;
 use App\rep_reporte;
+use App\rf_reporte_fotografico;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -169,12 +171,38 @@ class OrdenTrabajoController extends Controller
     public function destroy( $id)
     {
 
-      $usuario = Auth::id();
-        //
-        $eliminarOt=rep_reporte::where('REP_USER_ID',$usuario)->delete();
-        $elimnarReporte= ot_orden_trabajo::find($id)->delete();
+        $usuario = Auth::id();
 
-        if (!$eliminarOt && !$elimnarReporte)
+        $rpfg=rf_reporte_fotografico::where('RPFG_OT_ID',$id)->value('RPFG_COD');
+        // dd($rpfg);
+        if($rpfg==[])
+        {
+
+          $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+
+          $eliminarOt= ot_orden_trabajo::find($id)->delete();
+        }
+
+        else{
+
+          $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
+
+          $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+
+          $eliminarOt= ot_orden_trabajo::find($id)->delete();
+
+        }
+
+        //
+        // $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
+        //
+        // $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
+        //
+        // $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+        //
+        // $eliminarOt= ot_orden_trabajo::find($id)->delete();
+
+        if (!$eliminarOt)
         {
           return redirect()->route('listaOt')->with('error', "Hubo un problema al eliminar la orden de trabajo.");
         }

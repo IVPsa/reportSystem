@@ -164,7 +164,7 @@ $(document).ready(function(){
               <th>DESCRIPCION</th>
               <th>FECHA INICIO</th>
               <th>FECHA TERMINO</th>
-              <th width="100px" colspan="3">ACCION</th>
+              <th width="100px" colspan="1">ACCION</th>
             </tr>
         </thead>
         @foreach($OTasignadas as $OTasignadas)
@@ -193,10 +193,10 @@ $(document).ready(function(){
               <button class="btn btn-xs btn-success"> <i class="fa fa-play" style="font-size:20px;"></i></button>
             </a>
           </td>
-          <td width="25px">
+          <!-- <td width="25px">
 
             <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
-          </td>
+          </td> -->
 
         </tr>
         @endforeach
@@ -236,7 +236,11 @@ $(document).ready(function(){
 
   </div>
 </div>
+@foreach ($imagenes as $imagenes)
+<!-- <img  src="{{ Storage::disk('public')->url($imagenes->RPFG_IMG_URL)}}" /> -->
 
+ <img  class="img-thumbnail" src="storage/{{$imagenes->RPFG_IMG_URL}}" />
+@endforeach
 
 
 @endsection

@@ -27,7 +27,7 @@ class perfil extends Controller
          $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->get();
          $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
          $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
-         $imagenes=rf_reporte_fotografico::all();
+         $imagenes=ft_fotos::all();
          $fotoPerfil=user::where('id',$idUsuario)->get();
          // dd($fotoPerfil);
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
@@ -91,10 +91,10 @@ class perfil extends Controller
 
 
          if (!$creacionDeReporte) {
-           return redirect()->route('Perfil')->with('error', 'Hubo un error al crear el reporte');
+           return redirect()->route('OTedicion', $numeroOt)->with('error', 'Hubo un error al crear el reporte');
          }
 
-           return redirect()->route('Perfil')->with('success', 'El reporte ha sido creado exitosamente, haga click en reporte para editarlo');
+           return redirect()->route('OTedicion', $numeroOt)->with('success', 'El reporte ha sido creado exitosamente, haga click en reporte para editarlo');
        }
 
        public function reporteEdicion($id){
@@ -202,7 +202,7 @@ class perfil extends Controller
         $codigoReporte=$request->input('codigoReporte');
 
         $subirimagen= ft_fotos::Create([
-          'FT_IMG'=>$image->store('imagenes','public'),
+          'FT_IMG'=>$image->store('fotosReportes','public'),
           'FT_DESC'=> $mensaje,
           'FT_RPFG_COD'=>$codigoReporte
         ]);
