@@ -6,15 +6,21 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "alrik11es/cowsayphp": "^1.2",
         "fideloper/proxy": "~3.3",
         "fzaninotto/faker": "^1.7",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "monolog/monolog": "^1.22",
+        "silex/silex": "^2.0.4",
+        "symfony/twig-bridge": "^3",
+        "twig/twig": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "mockery/mockery": "~1.0",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "heroku/heroku-buildpack-php": "*"
     },
     "autoload": {
         "classmap": [
