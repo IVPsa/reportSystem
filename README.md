@@ -14,7 +14,7 @@ php artisan route:list                                  | nos mostrará nuestra 
 php artisan cache:clear                                 | limpiar cache
 php artisan migrate:fresh                               | recarga migraciones
 php artisan make:factory --model=#nombre del modelo#    | crea un factory con un modelo determinado
-
+php artisan storage:link                                | crea un link 
 Route::get('personal/new','RrhhAdminController@getNuevoRh')->name('regPersonal');
 
 Route::post('personal/new','RrhhAdminController@postRegistroRh')->name('post.registrar.rrhh');
