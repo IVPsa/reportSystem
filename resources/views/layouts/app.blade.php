@@ -76,7 +76,7 @@
               <li><a href="{{ route('register') }}">Register</a></li>
           @else
 
-           <li class="nav-item dropdown" >
+           <li class="nav-item dropdown" style="margin-right:60px;">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->USU_NOMBRE }}
               </a>
@@ -89,7 +89,6 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-
 
               </div>
             </li>
