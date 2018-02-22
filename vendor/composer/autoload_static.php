@@ -11,10 +11,7 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
@@ -55,8 +52,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
             'Symfony\\Component\\Debug\\' => 24,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
-            'Spatie\\FlysystemDropbox\\' => 24,
-            'Spatie\\Dropbox\\' => 15,
         ),
         'R' => 
         array (
@@ -67,7 +62,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
-            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
         ),
@@ -83,12 +77,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         'I' => 
         array (
             'Illuminate\\' => 11,
-        ),
-        'G' => 
-        array (
-            'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
         ),
         'F' => 
         array (
@@ -110,10 +98,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         array (
             'Cron\\' => 5,
             'Carbon\\' => 7,
-        ),
-        'B' => 
-        array (
-            'BC\\Laravel\\DropboxDriver\\' => 25,
         ),
         'A' => 
         array (
@@ -200,14 +184,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Spatie\\FlysystemDropbox\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/flysystem-dropbox/src',
-        ),
-        'Spatie\\Dropbox\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/spatie/dropbox-api/src',
-        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -223,10 +199,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
-        ),
-        'Psr\\Http\\Message\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
@@ -251,18 +223,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
-        ),
-        'GuzzleHttp\\Psr7\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
-        ),
-        'GuzzleHttp\\Promise\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
-        ),
-        'GuzzleHttp\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
         'Fideloper\\Proxy\\' => 
         array (
@@ -299,10 +259,6 @@ class ComposerStaticInit9b8b3bed14008a48e522c7c4c3a2e591
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
-        ),
-        'BC\\Laravel\\DropboxDriver\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/benjamincrozat/laravel-dropbox-driver/src',
         ),
         'App\\' => 
         array (
