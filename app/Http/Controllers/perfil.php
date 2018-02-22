@@ -17,6 +17,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class perfil extends Controller
 {
@@ -154,6 +156,10 @@ class perfil extends Controller
       public function subirFotoDePerfil(Request $request){
 
         $id = Auth::id();
+
+        $fotoPerfilAnterior=user::where('id',$id)->value('USER_AVATAR');
+        Storage::disk('public')->delete($fotoPerfilAnterior);
+
         $imagenDePerfil=$request->file('imagenPerfil');
 
         $subirImagenDePerfil = user::where('id',$id)->update([
