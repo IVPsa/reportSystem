@@ -184,7 +184,7 @@ class OrdenTrabajoController extends Controller
         }
 
         else{
-          
+
           $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
 
           $elimnarReporteFotografico= rf_reporte_fotografico::where('RPFG_OT_ID',$id)->delete();
@@ -196,7 +196,7 @@ class OrdenTrabajoController extends Controller
         }
 
         //
-        $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
+        // $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
         //
         // $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
         //
