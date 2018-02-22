@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     <div class="col-md-2 col-xs-12">
       @foreach ($fotoPerfil as $fotoPerfil)
-      <img  src="{{ Storage::disk('public','imagenes')->url($fotoPerfil->USER_AVATAR) }}" width="200" height="300" />
+      <img  src="{{ Storage::disk('public')->url($fotoPerfil->USER_AVATAR) }}" width="200" height="300" />
       @endforeach
       <br />
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#subirAvatar" data-backdrop="static">ACTUALIZAR FOTO </button>
