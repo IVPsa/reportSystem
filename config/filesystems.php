@@ -65,6 +65,7 @@ return [
 
         'dropbox' => [
             'driver' => 'dropbox',
+            'root'=> 'reportSystemBeta01',
             'app_secret' => env('DROPBOX_APP_SECRET'),
             'token' => env('DROPBOX_TOKEN'),
         ],
