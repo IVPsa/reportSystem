@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'USER_BANCO'=>'NO INFORMADO',
             'USER_TP_CTA'=>'NO INFORMADO',
             'USU_RUT'=>'NO INFORMADO',
-            'USER_AVATAR'=>'imagenes/sinPerfil.png',
+            'USER_AVATAR'=>'public/imagenes/sinPerfil.png',
             'password' => bcrypt($data['password'])
         ]);
     }
