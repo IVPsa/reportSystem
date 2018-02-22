@@ -163,7 +163,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        BC\Laravel\DropboxDriver\ServiceProvider::class,
 
         /*
          * Package Service Providers...
