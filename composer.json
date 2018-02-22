@@ -48,7 +48,7 @@
             "@php artisan package:discover"
         ],
         "compile" : [
-           "php artisan migrate:fresh --force"
+           "php artisan migrate --force"
            "php artisan storage:link"
        ]
     },
