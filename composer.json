@@ -48,15 +48,16 @@
             "@php artisan package:discover"
 
         ],
-        "post-install-cmd": [
-          "php artisan clear-compiled",
-          "php artisan optimize",
-          "chmod -R 777 app/storage"],
 
         "compile" : [
            "php artisan migrate:fresh --force",
            "php artisan storage:link"
        ]
+       "post-install-cmd": [
+         "php artisan clear-compiled",
+         "php artisan optimize",
+         "chmod -R 777 app/storage"
+       ],
     },
     "config": {
         "preferred-install": "dist",
