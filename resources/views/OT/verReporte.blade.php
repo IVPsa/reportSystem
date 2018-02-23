@@ -42,13 +42,8 @@
 
       <div class="container" align="center">
         <br />
-        @if ($comprobarReporteFotografico == "[]")
-          <form action="{{route('CrearReporteFotografico',$reporte->REP_COD)}}" method="post">
-            {{ csrf_field() }}
-            <input  hidden name="numeroOt" value="{{$reporte->REP_OT_ID}}">
-            <button type="submit" class="btn btn-primary " > CREAR  REPORTE FOTOGRAFICO</button>
-          </form>
-        @else
+        @if ($comprobarReporteFotografico <> "[]")
+
           @foreach ($comprobarReporteFotografico as $comprobarReporteFotografico)
             <a href="{{route('FotosDelReporte', $comprobarReporteFotografico->RPFG_COD)}}"><button class="btn btn-primary " > REGISTRO FOTOGRAFICO</button></a>
           @endForeach
