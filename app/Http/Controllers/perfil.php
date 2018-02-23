@@ -198,7 +198,6 @@ class perfil extends Controller
 
         return view('PERFIL.subirImagenes',compact('reporteFotografico','fotos'));
 
-
       }
 
       public function subirArchivo(Request $request){
@@ -218,7 +217,6 @@ class perfil extends Controller
         }
 
           return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'imagen buena');
-
 
       }
 

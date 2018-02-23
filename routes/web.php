@@ -118,9 +118,6 @@ Route::group(['prefix' => 'PERFIL'], function () {
 // INCIO RUTAS OT
   Route::group(['prefix' => 'OT'], function () {
 
-            // Route::get('/crearOt', function () {
-            //     return view('OT.crearOt');
-            // })->name('crearOt');
 
             Route::get('/listaOt', [
               'uses' => 'OrdenTrabajoController@show',
@@ -131,10 +128,25 @@ Route::group(['prefix' => 'PERFIL'], function () {
                 return view('OT.registroFotografico');
             })->name('registroFotografico');
 
+            Route::get('/VerReporteOT/{id}', [
+              'uses' => 'OrdenTrabajoController@VerReporte',
+              'as' => 'VerReporteOT',
+            ]);
+
+            Route::get('/VerReporteOT/{id}', [
+              'uses' => 'OrdenTrabajoController@VerReporte',
+              'as' => 'VerReporteOT',
+            ]);
 
             Route::get('/resumenOt/{id}', [
               'uses' => 'OrdenTrabajoController@resumen',
               'as' => 'resumen',
+            ]);
+
+
+            Route::get('/VerRegistroFotografico/{id}', [
+              'uses' => 'OrdenTrabajoController@FotosDelReporte',
+              'as' => 'FotosDelReporte',
             ]);
 
             Route::patch('/resumenOt/{id}', [

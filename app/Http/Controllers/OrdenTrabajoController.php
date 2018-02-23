@@ -108,45 +108,27 @@ class OrdenTrabajoController extends Controller
         return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-    * @return \Illuminate\Http\Response
-    */
+
     public function resumen($id )
     {
         //
       $usuario=User::all();
 
       $ordenDeTrabajo = ot_orden_trabajo::find($id);
-      return view('OT.resumenOt',compact('ordenDeTrabajo'))
+      $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
+      $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
+
+      return view('OT.resumenOt',compact('ordenDeTrabajo','comprobarExistenciaDeReporte','verReporte'))
       ->with('usuario', $usuario);
     }
 
-     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $ordenDeTrabajo )
     {
-        //
-      // $ordenDeTrabajo = ot_orden_trabajo::find($ordenDeTrabajo);
+
 
       $estado = $request->input('estado');
       $encargado = $request->input('encargado');
-
-      // $crearReporte=rep_reporte::create([
-      //   'REP_DES'=>' ',
-      //   'REP_FECHA_EDICION'=> Carbon::today(),
-      //   'REP_FECHA_INICIO'=> Carbon::today(),
-      //   'REP_ESTADO'=>'ABIERTO',
-      //   'REP_USER_ID'=>$encargado,
-      //   'REP_OT_ID'=>$ordenDeTrabajo
-      // ]);
 
       $editOt = ot_orden_trabajo::where('OT_ID',$ordenDeTrabajo)->update([
         'OT_ESTADO' => $estado,
@@ -162,12 +144,7 @@ class OrdenTrabajoController extends Controller
         return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('success', 'La OT modificada exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy( $id)
     {
 
@@ -211,7 +188,26 @@ class OrdenTrabajoController extends Controller
 
         return redirect()->route('listaOt')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
     }
-    // $proveedor = Auth::user()->id;
+
+    public function verReporte($id){
+
+      $DatosReporte=rep_reporte::find($id);
+      $comprobarReporteFotografico = rf_reporte_fotografico::where('RPFG_REP_COD',$id)->get();
+
+      $reportefotografico=rf_reporte_fotografico::find($id);
+
+      return view('OT.verReporte',compact('DatosReporte','comprobarReporteFotografico','$reportefotografico' ));
+    }
+
+
+    public function FotosDelReporte($id){
+
+      $reporteFotografico = rf_reporte_fotografico::find($id);
+      $fotos=ft_fotos::where('FT_RPFG_COD',$id)->get();
+
+      return view('OT.registroFotografico',compact('reporteFotografico','fotos'));
+
+    }
 
 
 }

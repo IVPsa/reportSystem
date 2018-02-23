@@ -80,27 +80,40 @@
 
 
             </tr>
+
             <tr>
                 <td colspan="2" align="center"> <button type="button" data-toggle="modal" data-target="#seleccionarEncargado" data-backdrop="static" name="button" style="width:200px;" class=" btn btn-primary btn-xs">ASIGNAR ENCARGADO</button></td>
             </tr>
+<!--
             <tr>
               <td align="center"colspan="2">
                 <a href="{{route('registroFotografico')}}">  <button type="button" name="button" style="width:200px;" class=" btn btn-primary btn-xs">REPORTE FOTOGRAFICO</button></a>
               </td>
-
-            </tr>
+            </tr> -->
 
             <tr>
               <td align="center" colspan="2">
                 <button type="submit" name="button" style="width:200px;" class=" btn btn-primary">ACTUALIZAR</button>
               </td>
-
             </tr>
 
           </table>
         </div>
 
       </form>
+    </div>
+    <div class="col-md-12 col-xs-12">
+
+      @if ($comprobarExistenciaDeReporte <> "[]" )
+        <div class="container" align="center">
+          @foreach ($verReporte as $verReporte)
+            <a href="{{route('VerReporteOT', $verReporte->REP_COD)}}">
+
+              <button type="button" class="btn btn-primary"  style="width:200px;" name="button">VER REPORTE</button>
+            </a>
+          @endforeach
+        </div>
+      @endif
     </div>
 
   </div>
