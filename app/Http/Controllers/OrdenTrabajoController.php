@@ -151,7 +151,7 @@ class OrdenTrabajoController extends Controller
         $usuario = Auth::id();
 
         $rpfg=rf_reporte_fotografico::where('RPFG_OT_ID',$id)->value('RPFG_COD');
-        // dd($rpfg);
+
         if($rpfg==[])
         {
 
