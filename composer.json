@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "benjamincrozat/laravel-dropbox-driver": "^2.0",
         "fideloper/proxy": "~3.3",
         "fzaninotto/faker": "^1.7",
         "laravel/framework": "5.5.*",
@@ -46,7 +47,11 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
-        ]
+        ],
+        "compile" : [
+           "php artisan migrate:fresh --force",
+           "php artisan storage:link"
+       ]
     },
     "config": {
         "preferred-install": "dist",

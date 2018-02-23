@@ -163,7 +163,7 @@ class perfil extends Controller
         $imagenDePerfil=$request->file('imagenPerfil');
 
         $subirImagenDePerfil = user::where('id',$id)->update([
-          'USER_AVATAR'=>$imagenDePerfil->store('imagenes','public')
+          'USER_AVATAR'=>$imagenDePerfil->store('dropbox')
         ]);
 
         if (!$subirImagenDePerfil) {
