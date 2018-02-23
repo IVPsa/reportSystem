@@ -101,7 +101,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
 // INICIO RUTAS REPORTES
  Route::group(['prefix' => 'REPORTES'], function () {
 
-           Route::get('/hojaReporte', function () {
+           Route::get('/hojaReportes', function () {
                return view('REPORTES.hojaReporte');
            })->name('hojaReporte');
 
