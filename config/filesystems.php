@@ -63,6 +63,13 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'ftp' => [
+            'driver'   => 'ftp',
+            'host'     => 'mappu.cl',
+            'username' => 'mappucl',
+            'password' => '2wbQ3q0w0A',
+
+        ],
     ],
 
 ];

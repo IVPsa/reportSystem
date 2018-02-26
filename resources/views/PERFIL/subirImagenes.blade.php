@@ -21,14 +21,15 @@
         <input hidden name="codigoReporte" value="{{$reporteFotografico->RPFG_COD}}">
         <h5 class="col-md-2 col-xs-12" > SELECCIONAR IMAGEN:</h5>
 
-         <input type="file" class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" >
+         <input type="file"  accept="image/*" capture="camera" class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" />
         <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
       </div>
 
       <div class="form-group row">
         <h5 class="col-md-2 col-xs-12">DESCRIPCION:</h5>
         <textarea  name="descripcionImagen" class="form-control col-5 col-form  col-xs-12" rows="10" ></textarea>
-        <output  class="form-control col-5 col-form  col-xs-12"  id="list"></output>
+        <output  class="form-control col-5 col-form col-xs-12"  id="list"></output>
+
       </div>
 
       <div class="form-group row">
@@ -72,7 +73,7 @@
                reader.onload = (function(theFile) {
                    return function(e) {
                      // Insertamos la imagen
-                    document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                    document.getElementById("list").innerHTML = ['<img class="img-thumbnail" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
                    };
                })(f);
 
