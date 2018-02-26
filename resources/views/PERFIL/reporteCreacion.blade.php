@@ -27,7 +27,7 @@
 
           <div class="form-group row">
             <h5 class="col-md-12 col-xs-12 text-center">DESCRIPCION DEL REPORTE</h5>
-            <textarea  class="form-control col-12 col-form col-xs-12"   name="descripcionReporte"  rows="10" ></textarea>
+            <textarea  class="form-control col-12 col-form col-xs-12"   name="descripcionReporte" required  rows="10" ></textarea>
 
           </div>
 

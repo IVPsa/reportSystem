@@ -80,6 +80,12 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'edicionDeReporte',
           ]);
 
+          Route::patch('/VerReporte/{id}', [
+            'uses' => 'perfil@UpdateReporte',
+            'as' => 'UpdateReporte',
+          ]);
+
+
           Route::post('/VerReporte/{id}', [
             'uses' => 'perfil@CrearReporteFotografico',
             'as' => 'CrearReporteFotografico',
