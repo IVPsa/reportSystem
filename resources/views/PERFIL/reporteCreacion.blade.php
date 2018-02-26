@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.messages')
 
 <h3 class="text-center">CREACION DE REPORTE </h3>
 

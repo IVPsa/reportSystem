@@ -1,14 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
-@if ($message = Session::get('success'))
-<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <p>{{ $message }}</p>
-</div>
-@endif
+@include('layouts.messages')
 <h3 class="text-center">REPORTE ID: {{$reporte->REP_COD}}</h3>
 
 <div class="col-md-12 col-xs-12">

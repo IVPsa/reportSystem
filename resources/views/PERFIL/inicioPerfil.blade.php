@@ -1,23 +1,14 @@
 @extends('layouts.app')
 @section('content')
-
+@include('layouts.messages')
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 
-@if ($message = Session::get('success'))
-<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <p>{{ $message }}</p>
-</div>
-@endif
 
 <div class="row">
-
 
     <div class="col-md-2 col-xs-12">
       @foreach ($fotoPerfil as $fotoPerfil)
