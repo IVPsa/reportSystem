@@ -97,7 +97,7 @@ class perfil extends Controller
 
            Storage::disk('public')->delete($fotoPerfilAnterior);
          }
-         
+
          $imagenDePerfil=$request->file('imagenPerfil');
 
          $subirImagenDePerfil = user::where('id',$id)->update([
@@ -137,10 +137,10 @@ class perfil extends Controller
          ]);
 
          if (!$editOtAsignada) {
-           return redirect()->route('Perfil')->with('error', 'Hubo un error al modificar OT.');
+           return redirect()->route('OTedicion',$ordenDeTrabajoAsignada)->with('error', 'Hubo un error al modificar OT.');
          }
 
-           return redirect()->route('Perfil')->with('success', 'La OT modificada exitosamente.');
+           return redirect()->route('OTedicion',$ordenDeTrabajoAsignada)->with('success', 'La OT modificada exitosamente.');
        }
 
        // FIN FUNCIONES DE OT
