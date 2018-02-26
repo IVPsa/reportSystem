@@ -93,19 +93,23 @@ class perfil extends Controller
 
          $fotoPerfilAnterior=user::where('id',$id)->value('USER_AVATAR');
 
-         Storage::disk('public')->delete($fotoPerfilAnterior);
+         if ($fotoPerfilAnterior <> 'imagenes/sinPerfil.png'){
 
+           Storage::disk('public')->delete($fotoPerfilAnterior);
+         }
+         
          $imagenDePerfil=$request->file('imagenPerfil');
 
          $subirImagenDePerfil = user::where('id',$id)->update([
-         'USER_AVATAR'=>$imagenDePerfil->store('imagenes','public')
+           'USER_AVATAR'=>$imagenDePerfil->store('imagenes','public')
          ]);
 
-         if (!$subirImagenDePerfil) {
-           return redirect()->route('Perfil')->with('error', 'Hubo un error Editar Datos personales');
-         }
+           if (!$subirImagenDePerfil) {
+             return redirect()->route('Perfil')->with('error', 'Hubo un error Editar Datos personales');
+           }
 
-         return redirect()->route('Perfil')->with('success', 'Datos personales actualizados exitosamente');
+           return redirect()->route('Perfil')->with('success', 'Datos personales actualizados exitosamente');
+
 
 
        }
