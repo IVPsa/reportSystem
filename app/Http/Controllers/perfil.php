@@ -31,15 +31,15 @@ class perfil extends Controller
        public function showPerfil(){
 
          $idUsuario = Auth::id();
-         $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->get();
+         $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->simplePaginate(5);
          $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
-         $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
-         $imagenes=ft_fotos::all();
+         // $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
+         // $imagenes=ft_fotos::all();
          $fotoPerfil=user::where('id',$idUsuario)->get();
          // dd($fotoPerfil);
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
 
-         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','buscarReporte','imagenes','fotoPerfil' ));
+         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','fotoPerfil' ));
        }
 
        public function actualizarDatosPersonales(Request $request){
