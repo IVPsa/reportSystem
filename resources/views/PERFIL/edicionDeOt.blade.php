@@ -72,9 +72,12 @@
         <table align="center" cellpadding="5">
           @if ($comprobarExistenciaDeReporte == "[]" )
           <tr>
-            <td align="center"colspan="2">
-              <a href="{{route('CreacionDeReporte', $ordenDeTrabajoAsignada->OT_ID)}}">  <button type="button" name="button" class=" btn btn-primary btn-xs" style="width:150px;">CREAR REPORTE</button></a>
-            </td>
+              <td>
+                <form action="{{route('reporteCreacion',$ordenDeTrabajoAsignada->OT_ID)}}" method="post">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-primary " >CREAR REPORTE</button>
+                </form>
+              </td>
           </tr>
           @else
             @foreach ($verReporte as $verReporte)

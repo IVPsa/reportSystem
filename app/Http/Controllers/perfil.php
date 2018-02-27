@@ -154,19 +154,19 @@ class perfil extends Controller
            return view('PERFIL.reporteCreacion', compact('ordenDeTrabajoAsignada'));
        }
 
-       public function reporteCreacion(Request $request, $ordenDeTrabajoAsignada ){
+       public function reporteCreacion($ordenDeTrabajoAsignada){
 
-         $numeroOt = $request->input('numeroOt');
-         $creador = $request->input('creador');
-         $descripcionReporte = $request->input('descripcionReporte');
-         $Usu = Auth::id();
+         $numeroOt =$ordenDeTrabajoAsignada;
+         $creador = Auth::id();
+         $descripcionReporte = ' ';
+
 
          $creacionDeReporte = rep_reporte::create([
            'REP_DES'=>$descripcionReporte,
            'REP_FECHA_INICIO'=> Carbon::today(),
            'REP_FECHA_EDICION'=> Carbon::today(),
            'REP_ESTADO'=>'ABIERTO',
-           'REP_USER_ID'=>$Usu,
+           'REP_USER_ID'=>$creador,
            'REP_OT_ID'=>$ordenDeTrabajoAsignada
          ]);
 
