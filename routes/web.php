@@ -107,17 +107,25 @@ Route::group(['prefix' => 'PERFIL'], function () {
 // INICIO RUTAS REPORTES
  Route::group(['prefix' => 'REPORTES'], function () {
 
-           Route::get('/hojaReportes', function () {
-               return view('REPORTES.hojaReporte');
-           })->name('hojaReporte');
 
-           Route::get('/VerReporteFotografico', function () {
-               return view('REPORTES.ReporteFotografico');
-           })->name('VerReporteFotografico');
+           Route::get('/VerReporte/{id}', [
+             'uses' => 'reportes@VerReporte',
+             'as' => 'hojaReporte',
+            ]);
+
+            Route::get('/VerReporteFotografico/{id}', [
+              'uses' => 'reportes@reporteFotografico',
+              'as' => 'VerReporteFotografico',
+             ]);
 
            Route::get('/reportes', function () {
                return view('REPORTES.reportes');
            })->name('reportes');
+
+           Route::get('/ListadoDeReportes', [
+             'uses' => 'reportes@showReportes',
+             'as' => 'reportesListado',
+           ]);
   });
 // FIN RUTAS REPORTES
 

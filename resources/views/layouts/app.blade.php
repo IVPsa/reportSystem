@@ -62,7 +62,7 @@
           </li>
 
           <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="{{route('reportes')}}">REPORTES</a>
+            <a class="nav-link" href="{{route('reportesListado')}}">REPORTES</a>
           </li>
 
           <li class="nav-item d-md-none d-xs-block">
@@ -116,7 +116,7 @@
 
     </div>
 
-    <div class="container-fluid bg-dark">
+    <div class="container-fluid bg-dark" style="height:auto;">
 
           @yield('content')
 
