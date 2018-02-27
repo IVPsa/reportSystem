@@ -104,7 +104,7 @@ class OrdenTrabajoController extends Controller
     public function show(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
-        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
+        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->paginate();
         return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 

@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\Paginator;
 
 
 class perfil extends Controller
@@ -31,8 +32,8 @@ class perfil extends Controller
        public function showPerfil(){
 
          $idUsuario = Auth::id();
-         $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->simplePaginate(5);
-         $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->get();
+         $OTasignadas=ot_orden_trabajo::where('OT_USER_ENCARGADO',$idUsuario)->paginate(5);
+         $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->paginate(5);
          // $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
          // $imagenes=ft_fotos::all();
          $fotoPerfil=user::where('id',$idUsuario)->get();
