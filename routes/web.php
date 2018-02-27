@@ -91,9 +91,15 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'CrearReporteFotografico',
           ]);
 
+
           Route::get('/ReporteFotografico/{id}', [
             'uses' => 'perfil@ReporteFotografico',
             'as' => 'ReporteFotografico',
+          ]);
+
+          Route::patch('/eliminarArchivo', [
+            'uses' => 'perfil@eliminarArchivo',
+            'as' => 'eliminarArchivo',
           ]);
 
           Route::post('/subirArchivo', [

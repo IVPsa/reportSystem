@@ -225,9 +225,9 @@ class perfil extends Controller
         public function ReporteFotografico($id){
 
           $reporteFotografico = rf_reporte_fotografico::find($id);
-          $fotos=ft_fotos::where('FT_RPFG_COD',$id)->get();
+          $foto=ft_fotos::where('FT_RPFG_COD',$id)->paginate(5);
 
-          return view('PERFIL.subirImagenes',compact('reporteFotografico','fotos'));
+          return view('PERFIL.subirImagenes',compact('reporteFotografico','foto'));
 
         }
 
@@ -244,12 +244,32 @@ class perfil extends Controller
           ]);
 
           if (!$subirimagen) {
-            return redirect()->route('ReporteFotografico', $codigoReporte)->with('error', 'imagen mala.');
+            return redirect()->route('ReporteFotografico', $codigoReporte)->with('error', 'imagen no se pudo subir.');
           }
 
-            return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'imagen buena');
+            return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'imagen Subida');
 
         }
+
+        public function eliminarArchivo(Request $request){
+
+          $codigoReporte=$request->input('codigoReporte');
+          $id=$request->input('codigoFoto');
+
+          $fotoURL=ft_fotos::where('FT_COD',$id)->value('FT_IMG');
+
+          Storage::disk('public')->delete($fotoURL);
+
+          $eliminarFoto = ft_fotos::where('FT_COD', $id)->delete();
+
+          if (!$eliminarFoto) {
+            return redirect()->route('ReporteFotografico', $codigoReporte)->with('error', 'imagen no pudo ser borrada.');
+          }
+
+            return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'imagen borrada satisfactoriamente');
+
+        }
+
         //FIN FUNCIONES REPORTE FOTOGRAFICO
 
 

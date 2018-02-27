@@ -37,17 +37,36 @@
 
 
   <div class="col-md-12 col-xs-12">
-    <div class="form-group row">
-      @foreach ($fotos as $fotos)
-        <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-        <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-5 col-xs-5" >
 
-          <button type="button" class="btn btn-danger col-1  col-xs-1">X</button>
+
+      @foreach ($foto as $fotos)
+      <div class="row">
+        <div class="col-md-5 col-xs-12">
+          <textarea  class="form-control " rows="10" name="">{{$fotos->FT_DESC}}</textarea>
+        </div>
+        <div class="col-md-5 col-xs-12">
+          <div class="form-group row">
+
+          <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-12 col-xs-12" >
+          </div>
+        </div>
+        <div class="col-md-2">
+          <form action="{{route('eliminarArchivo')}}" method="post">
+            {{ method_field('PATCH') }}
+            {{ csrf_field() }}
+            <input hidden name="codigoReporte" value="{{$fotos->FT_RPFG_COD}}">
+            <input hidden name="codigoFoto" value="{{$fotos->FT_COD}}">
+            <button type="submit" class="btn btn-lg btn-danger" style="width:80px;" ><i class="fa fa-remove"></i></button>
+          </form>
+
+        </div>
+      </div>
 
       @endforeach
-    </div>
+
   </div>
 </div>
+    {{ $foto->links('pagination::bootstrap-4') }}
 <br />
 
 <script>

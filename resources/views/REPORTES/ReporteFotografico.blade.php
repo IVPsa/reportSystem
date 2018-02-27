@@ -22,7 +22,7 @@
         <div class="form-group row">
             @foreach ($fotos as $fotos)
               <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-              <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-5 col-xs-5" >
+              <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
             @endforeach
           </div>
         @else
