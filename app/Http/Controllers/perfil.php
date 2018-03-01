@@ -8,6 +8,7 @@ use App\ot_orden_trabajo;
 use App\rep_reporte;
 use App\rf_reporte_fotografico;
 use App\ft_fotos;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 use App\Http\Controllers\Console;
@@ -271,6 +272,20 @@ class perfil extends Controller
         }
 
         //FIN FUNCIONES REPORTE FOTOGRAFICO
+        public function pdf(Request $request)
+        {
+            /**
+             * toma en cuenta que para ver los mismos
+             * datos debemos hacer la misma consulta
+            **/
 
+            $id=$request->input('codigoOt');
+
+            $ordenDeTrabajoAsignada = ot_orden_trabajo::where('OT_ID','1');
+            
+            $pdf = PDF::loadView('pdfs.pdfOT', compact('ordenDeTrabajoAsignada'));
+
+          return $pdf->download('ot.pdf');
+        }
 
 }

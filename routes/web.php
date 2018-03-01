@@ -102,6 +102,13 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'subirArchivo',
           ]);
 
+          Route::get('/pdfloco', [
+            'uses' => 'perfil@pdf',
+            'as' => 'pdfOt',
+          ]);
+
+
+
  });
 // FIN RUTAS PERFIL
 

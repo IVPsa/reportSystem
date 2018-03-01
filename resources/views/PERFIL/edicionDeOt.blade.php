@@ -97,4 +97,11 @@
     </div>
   </div>
 
+  <a href="{{route('pdfOt')}}">    <button type="button" class="btn btn-primary " >CREAR PDF</button></a>
+  <form action="{{route('pdfOt')}}" method="get">
+    {{ csrf_field() }}
+    <button type="submit" class="btn btn-primary " >CREAR REPORTE</button>
+    <input  name="codigoOt" hidden value="{{$ordenDeTrabajoAsignada->OT_ID}}">
+  </form>
+
 @endsection
