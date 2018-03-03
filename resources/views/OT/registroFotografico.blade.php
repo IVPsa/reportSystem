@@ -22,15 +22,13 @@
           <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
         @endforeach
 
-
-
       @else
         <div class="form-group row">
           <div class="col-xs-12 col-md-12">
             <h1 class="text-center">AUN NO SE HAN SUBIDO FOTOS A ESTE REPORTE</h1>
           </div>
         </div>
-    @endif
+      @endif
   </div>
 </div>
 {{ $foto->links('pagination::bootstrap-4') }}

@@ -14,7 +14,7 @@
 
   <tr>
     <td>  <h5 class="text-right">CREADOR:</h5></td>
-    <td><input type="text" class="form-control" name="" readonly value="{{$DatosReporte->REP_USER_ID}}"></td>
+    <td><input type="text" class="form-control" name="" readonly value="{{$encargadoDelReporte}}"></td>
   </tr>
 
 </table>

@@ -16,11 +16,10 @@
   <h3 class="text-center">FOTOS SUBIDAS</h3>
   <div class="table-responsive">
 
-
     <div class="col-md-12 col-xs-12">
-        @if ($fotos <>  "[]")
-        <div class="form-group row">
-            @foreach ($fotos as $fotos)
+        @if ($foto <>  "[]")
+          <div class="form-group row">
+            @foreach ($foto as $fotos)
               <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
               <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
             @endforeach
@@ -33,12 +32,11 @@
           </div>
         @endif
     </div>
+    {{ $foto->links('pagination::bootstrap-4') }}
   </div>
 </div>
 <br />
 
-<div style="height:250px;">
 
-</div>
 
 @endsection

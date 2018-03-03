@@ -37,16 +37,23 @@ class reportes extends Controller
 
       $reportefotografico=rf_reporte_fotografico::find($id);
 
+      $encargadoDelReporte = DB::table('rep_reporte')
+      ->Join('users', 'users.id', '=', 'users.id')
+      // ->leftJoin('rep_reporte', 'rep_reporte.REP_USER_ID', '=', 'users.id')
+      ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
+      ->where('REP_COD',$id )
+      ->value('USU_NOMBRE');
 
-      return view('REPORTES.hojaReporte',compact('DatosReporte','comprobarReporteFotografico','reportefotografico' ));
+
+      return view('REPORTES.hojaReporte',compact('DatosReporte','comprobarReporteFotografico','reportefotografico','encargadoDelReporte' ));
     }
 
     public function reporteFotografico($id){
 
       $reporteFotografico = rf_reporte_fotografico::find($id);
-      $fotos=ft_fotos::where('FT_RPFG_COD',$id)->get();
+      $foto=ft_fotos::where('FT_RPFG_COD',$id)->paginate(5);
 
-      return view('REPORTES.ReporteFotografico',compact('reporteFotografico','fotos'));
+      return view('REPORTES.ReporteFotografico',compact('reporteFotografico','foto'));
 
     }
 }

@@ -188,7 +188,7 @@ class OrdenTrabajoController extends Controller
 
       $reporteFotografico = rf_reporte_fotografico::find($id);
       $foto=ft_fotos::where('FT_RPFG_COD',$id)->paginate(5);
-
+      // dd($foto);
       return view('OT.registroFotografico',compact('reporteFotografico','foto'));
 
     }
