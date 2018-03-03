@@ -25,7 +25,7 @@ class reportes extends Controller
     public function showReportes(){
 
            $idUsuario = Auth::id();
-           $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->paginate();
+           $buscarReporte= DB::table('rep_reporte')->paginate(15);
 
            return view('REPORTES.reportes', compact('buscarReporte'));
     }
