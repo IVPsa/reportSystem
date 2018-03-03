@@ -1,0 +1,22 @@
+
+ip: 192.168.10.110
+memory: 2048
+cpus: 1
+provider: virtualbox
+
+
+authorize: C:/Users/TSUO/.ssh/id_rsa.pub
+keys:
+    - C:/Users/TSUO/.ssh/id_rsa
+folders:
+    -
+        map: C:/xampp\htdocs/reportSystem
+        to: /home/vagrant/reportSystem
+sites:
+    -
+        map: rps.test.dev
+        to: /home/vagrant/code/Laravel/
+databases:
+    - reportsystem
+name: reportsystem
+hostname: reportsystem

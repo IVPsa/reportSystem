@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
+
     <title>RPS</title>
 
     <!-- Styles -->
@@ -62,7 +62,7 @@
           </li>
 
           <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="{{route('reportes')}}">REPORTES</a>
+            <a class="nav-link" href="{{route('reportesListado')}}">REPORTES</a>
           </li>
 
           <li class="nav-item d-md-none d-xs-block">
@@ -76,7 +76,7 @@
               <li><a href="{{ route('register') }}">Register</a></li>
           @else
 
-           <li class="nav-item dropdown" >
+           <li class="nav-item dropdown" style="margin-right:60px;">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ Auth::user()->USU_NOMBRE }}
               </a>
@@ -89,7 +89,6 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
-
 
               </div>
             </li>
@@ -108,7 +107,7 @@
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
           <a href="{{route('home')}}">HOME</a>
           <a href="{{route('Perfil')}}">PERFIL</a>
-          <a href="{{route('reportes')}}">REPORTES</a>
+          <a href="{{route('reportesListado')}}">REPORTES</a>
           <a href="{{route('InicioOT')}}">ORDENES DE TRABAJO</a>
         </div>
       </div>
@@ -117,7 +116,7 @@
 
     </div>
 
-    <div class="container-fluid bg-dark">
+    <div class="container-fluid bg-dark" style="height:auto;">
 
           @yield('content')
 

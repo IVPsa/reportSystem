@@ -21,34 +21,21 @@ class OrdenTrabajoController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
           return view('OT.inicio');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function getCrearOt()
     {
         //
         return view('OT.crearOt');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     protected function validateOt(Request $request)
     {
         $this->validate($request, [
@@ -95,58 +82,37 @@ class OrdenTrabajoController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
-        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
+        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->paginate();
         return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 
-    /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-    * @return \Illuminate\Http\Response
-    */
+
     public function resumen($id )
     {
         //
+
+
       $usuario=User::all();
 
       $ordenDeTrabajo = ot_orden_trabajo::find($id);
-      return view('OT.resumenOt',compact('ordenDeTrabajo'))
+      $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
+      $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
+
+      return view('OT.resumenOt',compact('ordenDeTrabajo','comprobarExistenciaDeReporte','verReporte'))
       ->with('usuario', $usuario);
     }
 
-     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $ordenDeTrabajo )
     {
-        //
-      // $ordenDeTrabajo = ot_orden_trabajo::find($ordenDeTrabajo);
+
 
       $estado = $request->input('estado');
       $encargado = $request->input('encargado');
-
-      // $crearReporte=rep_reporte::create([
-      //   'REP_DES'=>' ',
-      //   'REP_FECHA_EDICION'=> Carbon::today(),
-      //   'REP_FECHA_INICIO'=> Carbon::today(),
-      //   'REP_ESTADO'=>'ABIERTO',
-      //   'REP_USER_ID'=>$encargado,
-      //   'REP_OT_ID'=>$ordenDeTrabajo
-      // ]);
 
       $editOt = ot_orden_trabajo::where('OT_ID',$ordenDeTrabajo)->update([
         'OT_ESTADO' => $estado,
@@ -162,19 +128,14 @@ class OrdenTrabajoController extends Controller
         return redirect()->route('resumen', compact('ordenDeTrabajo'))->with('success', 'La OT modificada exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy( $id)
     {
 
         $usuario = Auth::id();
 
         $rpfg=rf_reporte_fotografico::where('RPFG_OT_ID',$id)->value('RPFG_COD');
-        // dd($rpfg);
+
         if($rpfg==[])
         {
 
@@ -185,7 +146,9 @@ class OrdenTrabajoController extends Controller
 
         else{
 
-          $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
+          $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
+
+          $elimnarReporteFotografico= rf_reporte_fotografico::where('RPFG_OT_ID',$id)->delete();
 
           $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
 
@@ -193,14 +156,6 @@ class OrdenTrabajoController extends Controller
 
         }
 
-        //
-        // $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
-        //
-        // $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
-        //
-        // $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
-        //
-        // $eliminarOt= ot_orden_trabajo::find($id)->delete();
 
         if (!$eliminarOt)
         {
@@ -209,7 +164,34 @@ class OrdenTrabajoController extends Controller
 
         return redirect()->route('listaOt')->with('success', "La orden de trabajo ha sido eliminada exitosamente.");
     }
-    // $proveedor = Auth::user()->id;
+
+    public function verReporte($id){
+
+      $DatosReporte=rep_reporte::find($id);
+      $comprobarReporteFotografico = rf_reporte_fotografico::where('RPFG_REP_COD',$id)->get();
+
+      $reportefotografico=rf_reporte_fotografico::find($id);
+
+
+        $encargadoDelReporte = DB::table('rep_reporte')
+        ->Join('users', 'users.id', '=', 'users.id')
+        // ->leftJoin('rep_reporte', 'rep_reporte.REP_USER_ID', '=', 'users.id')
+        ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
+        ->where('REP_COD',$id )
+        ->value('USU_NOMBRE');
+
+      return view('OT.verReporte',compact('DatosReporte','comprobarReporteFotografico','reportefotografico','encargadoDelReporte' ));
+    }
+
+
+    public function FotosDelReporte($id){
+
+      $reporteFotografico = rf_reporte_fotografico::find($id);
+      $foto=ft_fotos::where('FT_RPFG_COD',$id)->paginate(5);
+      // dd($foto);
+      return view('OT.registroFotografico',compact('reporteFotografico','foto'));
+
+    }
 
 
 }

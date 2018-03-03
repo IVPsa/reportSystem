@@ -14,13 +14,13 @@
           <div class="col-xs-12 col-md-12">
             <h3 class="text-center">SELECCIONAR ENCARGADO</h3>
             <div class="table-responsive">
-              <table class="table table-bordered" id="usuario_table">
+              <table class="table table-hover table-dark table-bordered table-striped" align="center" id="usuario_table">
                 <tr>
-                  <td>ID</td>
-                  <td>NOMBRE</td>
-                  <td>EMAIL</td>
-                  <td>RUT</td>
-                  <td>ACCION</td>
+                  <th>ID</th>
+                  <th>NOMBRE</th>
+                  <th>EMAIL</th>
+                  <th>RUT</th>
+                  <th>ACCION</th>
                 </tr>
                 @foreach($usuario as $usuario)
                 <tr>

@@ -1,14 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.messages')
 
-@if ($message = Session::get('success'))
-<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <p>{{ $message }}</p>
-</div>
-@endif
 <h3 class="text-center">REGISTRO FOTOGRAFICO {{$reporteFotografico->RPFG_COD}} </h3>
 
 <h3 class="text-center">OT Nº:{{$reporteFotografico->RPFG_OT_ID}}</h3>
@@ -21,14 +14,15 @@
         <input hidden name="codigoReporte" value="{{$reporteFotografico->RPFG_COD}}">
         <h5 class="col-md-2 col-xs-12" > SELECCIONAR IMAGEN:</h5>
 
-         <input type="file" class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" >
+         <input type="file"  accept="image/*"  class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" />
         <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
       </div>
 
       <div class="form-group row">
         <h5 class="col-md-2 col-xs-12">DESCRIPCION:</h5>
         <textarea  name="descripcionImagen" class="form-control col-5 col-form  col-xs-12" rows="10" ></textarea>
-        <output  class="form-control col-5 col-form  col-xs-12"  id="list"></output>
+        <output  class="form-control col-5 col-form col-xs-12"  id="list"></output>
+
       </div>
 
       <div class="form-group row">
@@ -43,17 +37,45 @@
 
 
   <div class="col-md-12 col-xs-12">
-    <div class="form-group row">
-      @foreach ($fotos as $fotos)
-        <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-        <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-5 col-xs-5" >
 
-          <button type="button" class="btn btn-danger col-1  col-xs-1">X</button>
+    @if ($foto <>  "[]")
 
-      @endforeach
-    </div>
+          @foreach ($foto as $fotos)
+            <div class="row">
+              <div class="col-md-5 col-xs-12">
+                <textarea  class="form-control " rows="10" name="">{{$fotos->FT_DESC}}</textarea>
+              </div>
+              <div class="col-md-5 col-xs-12">
+                <div class="form-group row">
+
+                <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-12 col-xs-12" >
+                </div>
+              </div>
+              <div class="col-md-2">
+                <form action="{{route('eliminarArchivo')}}" method="post">
+                  {{ method_field('PATCH') }}
+                  {{ csrf_field() }}
+                  <input hidden name="codigoReporte" value="{{$fotos->FT_RPFG_COD}}">
+                  <input hidden name="codigoFoto" value="{{$fotos->FT_COD}}">
+                  <button type="submit" class="btn btn-lg btn-danger" style="width:80px;" ><i class="fa fa-remove"></i></button>
+                </form>
+
+              </div>
+            </div>
+
+          @endforeach
+
+      @else
+        <div class="form-group row">
+          <div class="col-xs-12 col-md-12">
+            <h1 class="text-center">AUN NO SE HAN SUBIDO FOTOS A ESTE REPORTE</h1>
+          </div>
+        </div>
+      @endif
+
   </div>
 </div>
+    {{ $foto->links('pagination::bootstrap-4') }}
 <br />
 
 <script>
@@ -72,7 +94,7 @@
                reader.onload = (function(theFile) {
                    return function(e) {
                      // Insertamos la imagen
-                    document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+                    document.getElementById("list").innerHTML = ['<img class="img-thumbnail" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
                    };
                })(f);
 
