@@ -19,14 +19,10 @@
                 </div>
 
                 <div class="form-group row">
-                  <h5 class="col-md-2 col-xs-12">ENCARGADO:</h5>
-                  <input class="form-control col-10 col-form  col-xs-12" name="creador" readonly value="{{$reporte->REP_USER_ID}}" type="text" >
+                  <h5 class="col-md-2 col-xs-12">ENCARGADO DEL REPORTE:</h5>
+                  <input class="form-control col-10 col-form  col-xs-12" name="creador" readonly value="{{ Auth::user()->USU_NOMBRE }}" type="text" >
                 </div>
 
-                <!-- <div class="form-group row">
-                  <h5 class="col-md-2 col-xs-12">EMPRESA:</h5>
-                  <input class="form-control col-10 col-form  col-xs-12"  readonly type="text" >
-                </div> -->
 
                 <div class="form-group row">
                   <h5 class="col-md-12 col-xs-12 text-center">DESCRIPCION DEL REPORTE</h5>

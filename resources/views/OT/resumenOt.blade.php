@@ -67,10 +67,8 @@
             </tr>
 
             <tr>
-              <td><h5 class="text-right" >ENCARGADO:</h5></td>
+              <td><h5 class="text-right" >ENCARGADO ID:</h5></td>
               <td><input class="form-control" name="encargado" id="usuario" value=" {{ $ordenDeTrabajo->OT_USER_ENCARGADO}}"  type="text" ></td>
-
-
 
             </tr>
 

@@ -107,7 +107,7 @@
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
           <a href="{{route('home')}}">HOME</a>
           <a href="{{route('Perfil')}}">PERFIL</a>
-          <a href="{{route('reportes')}}">REPORTES</a>
+          <a href="{{route('reportesListado')}}">REPORTES</a>
           <a href="{{route('InicioOT')}}">ORDENES DE TRABAJO</a>
         </div>
       </div>

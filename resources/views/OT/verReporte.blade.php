@@ -17,13 +17,9 @@
 
         <div class="form-group row">
           <h5 class="col-md-2 col-xs-12">ENCARGADO:</h5>
-          <input class="form-control col-10 col-form  col-xs-12" name="creador" readonly value="{{ $DatosReporte->REP_USER_ID}}" type="text" >
+          <input class="form-control col-10 col-form  col-xs-12" name="creador" readonly value="{{ $encargadoDelReporte}}" type="text" >
         </div>
 
-        <!-- <div class="form-group row">
-          <h5 class="col-md-2 col-xs-12">EMPRESA:</h5>
-          <input class="form-control col-10 col-form  col-xs-12"  readonly type="text" >
-        </div> -->
 
         <div class="form-group row">
           <h5 class="col-md-12 col-xs-12 text-center">DESCRIPCION DEL REPORTE</h5>

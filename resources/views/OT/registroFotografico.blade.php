@@ -15,13 +15,25 @@
 
 <div class="col-md-12 col-xs-12">
   <div class="form-group row">
-    @foreach ($fotos as $fotos)
-      <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-      <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
+      @if ($foto <>  "[]")
 
-    @endforeach
+        @foreach ($foto as $fotos)
+          <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
+          <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
+        @endforeach
+
+
+
+      @else
+        <div class="form-group row">
+          <div class="col-xs-12 col-md-12">
+            <h1 class="text-center">AUN NO SE HAN SUBIDO FOTOS A ESTE REPORTE</h1>
+          </div>
+        </div>
+    @endif
   </div>
 </div>
+{{ $foto->links('pagination::bootstrap-4') }}
 </div>
 <br />
 

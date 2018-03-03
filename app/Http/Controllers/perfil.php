@@ -124,7 +124,7 @@ class perfil extends Controller
          $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
          $ordenDeTrabajoAsignada = ot_orden_trabajo::find($id);
          $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
-
+         $idUsuario = Auth::id();
 
          return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte','verReporte'));
 
@@ -181,12 +181,25 @@ class perfil extends Controller
 
        public function reporteEdicion($id){
 
+           $idUsuario=Auth::id();
+
+
            $reporte = rep_reporte::find($id);
+           //esto posiblemente no tenga una utilidad a largo plazo pero conservar en caso de ser util
+           $joinDeUsuarioYreporte = DB::table('rep_reporte')
+           ->Join('users', 'users.id', '=', 'users.id')
+           // ->leftJoin('rep_reporte', 'rep_reporte.REP_USER_ID', '=', 'users.id')
+           ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
+           ->where('REP_COD',$id )
+           ->value('USU_NOMBRE');
+           // dd($joinDeUsuarioYreporte);
+           $idUsuario = Auth::id();
+
            $comprobarReporteFotografico = rf_reporte_fotografico::where('RPFG_REP_COD',$id)->get();
 
            $reportefotografico=rf_reporte_fotografico::find($id);
 
-           return view('PERFIL.reporteEdicion',compact('reporte', 'comprobarReporteFotografico','reportefotografico'));
+           return view('PERFIL.reporteEdicion',compact('reporte', 'comprobarReporteFotografico','reportefotografico','joinDeUsuarioYreporte','idUsuario'));
        }
 
        public function UpdateReporte( Request $request, $id){
@@ -282,7 +295,7 @@ class perfil extends Controller
             $id=$request->input('codigoOt');
 
             $ordenDeTrabajoAsignada = ot_orden_trabajo::where('OT_ID','1');
-            
+
             $pdf = PDF::loadView('pdfs.pdfOT', compact('ordenDeTrabajoAsignada'));
 
           return $pdf->download('ot.pdf');

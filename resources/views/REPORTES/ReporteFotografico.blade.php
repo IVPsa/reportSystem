@@ -26,7 +26,11 @@
             @endforeach
           </div>
         @else
-        <h1 class="text-center">AUN NO SE HAN SUBIDO FOTOS A ESTE REPORTE</h1>
+          <div class="form-group row">
+            <div class="col-xs-12 col-md-12">
+              <h1 class="text-center">AUN NO SE HAN SUBIDO FOTOS A ESTE REPORTE</h1>
+            </div>
+          </div>
         @endif
     </div>
   </div>
