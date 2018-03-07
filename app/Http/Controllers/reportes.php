@@ -37,9 +37,9 @@ class reportes extends Controller
 
       $reportefotografico=rf_reporte_fotografico::find($id);
 
+
       $encargadoDelReporte = DB::table('rep_reporte')
       ->Join('users', 'users.id', '=', 'users.id')
-      // ->leftJoin('rep_reporte', 'rep_reporte.REP_USER_ID', '=', 'users.id')
       ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
       ->where('REP_COD',$id )
       ->value('USU_NOMBRE');
