@@ -21,7 +21,7 @@
                   <table>
                       <tr>
                         <td>
-                          <input type="file" required   class="form-control-file" name="imagenPerfil" >
+                          <input type="file" required   class="form-control" name="imagenPerfil" >
                         </td>
                         <td>
                           <button type="submit" name="button" class="btn btn-success">Subir</button>
