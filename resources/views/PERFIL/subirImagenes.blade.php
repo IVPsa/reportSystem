@@ -14,13 +14,13 @@
         <input hidden name="codigoReporte" value="{{$reporteFotografico->RPFG_COD}}">
         <h5 class="col-md-2 col-xs-12" > SELECCIONAR IMAGEN:</h5>
 
-         <input type="file"  accept="image/*"  class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" />
+         <input type="file" accept="image/*"  class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" />
         <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
       </div>
 
       <div class="form-group row">
         <h5 class="col-md-2 col-xs-12">DESCRIPCION:</h5>
-        <textarea  name="descripcionImagen" class="form-control col-5 col-form  col-xs-12" rows="10" ></textarea>
+        <textarea  name="descripcionImagen" class="form-control col-5 col-form  col-xs-12" rows="10"  required></textarea>
         <output  class="form-control col-5 col-form col-xs-12"  id="list"></output>
 
       </div>
@@ -48,7 +48,7 @@
               <div class="col-md-5 col-xs-12">
                 <div class="form-group row">
 
-                <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-12 col-xs-12" >
+                <img src="{{ Storage::disk('public')->url($fotos->FT_IMG)}}" style="width:320px; height:320px;"  class="col-md-12 col-xs-12" >
                 </div>
               </div>
               <div class="col-md-2">

@@ -187,12 +187,12 @@ class perfil extends Controller
 
            $reporte = rep_reporte::find($id);
            //esto posiblemente no tenga una utilidad a largo plazo pero conservar en caso de ser util
-           $joinDeUsuarioYreporte = DB::table('rep_reporte')
+           $joinDeUsuarioYreporte = DB::table('REP_REPORTE')
            ->Join('users', 'users.id', '=', 'users.id')
-           ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
+           ->select('users.USU_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
            ->where('REP_COD',$id )
            ->value('USU_NOMBRE');
-           
+
            $idUsuario = Auth::id();
 
            $comprobarReporteFotografico = rf_reporte_fotografico::where('RPFG_REP_COD',$id)->get();
