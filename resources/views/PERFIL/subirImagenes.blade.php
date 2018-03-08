@@ -48,7 +48,7 @@
               <div class="col-md-5 col-xs-12">
                 <div class="form-group row">
 
-                <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-12 col-xs-12" >
+                <img src="{{ Storage::disk('public')->url($fotos->FT_IMG)}}" style="width:320px; height:320px;"  class="col-md-12 col-xs-12" >
                 </div>
               </div>
               <div class="col-md-2">
