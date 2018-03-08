@@ -1,15 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@include('layouts.messages')
   <h3 class="text-center">ORDEN DE TRABAJO ID: {{ $ordenDeTrabajo->OT_ID  or '' }}</h3>
   <!-- <h3 class="text-center">EMPRESA:#####</h3> -->
-  @if ($message = Session::get('success'))
-  <div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <p>{{ $message }}</p>
-  </div>
-  @endif
   <div class="row">
 
 
@@ -74,10 +67,8 @@
             </tr>
 
             <tr>
-              <td><h5 class="text-right" >ENCARGADO:</h5></td>
+              <td><h5 class="text-right" >ENCARGADO ID:</h5></td>
               <td><input class="form-control" name="encargado" id="usuario" value=" {{ $ordenDeTrabajo->OT_USER_ENCARGADO}}"  type="text" ></td>
-
-
 
             </tr>
 

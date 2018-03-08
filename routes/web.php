@@ -65,12 +65,7 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'edicionDeOtAsignada',
           ]);
 
-          Route::get('/CreacionDeReporte/{id}', [
-            'uses' => 'perfil@reporte',
-            'as' => 'CreacionDeReporte',
-          ]);
-
-          Route::post('/CreacionDeReporte/{id}', [
+          Route::post('/reporteCreacion/{id}', [
             'uses' => 'perfil@reporteCreacion',
             'as' => 'reporteCreacion',
           ]);
@@ -80,14 +75,26 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'edicionDeReporte',
           ]);
 
+          Route::patch('/VerReporte/{id}', [
+            'uses' => 'perfil@UpdateReporte',
+            'as' => 'UpdateReporte',
+          ]);
+
+
           Route::post('/VerReporte/{id}', [
             'uses' => 'perfil@CrearReporteFotografico',
             'as' => 'CrearReporteFotografico',
           ]);
 
+
           Route::get('/ReporteFotografico/{id}', [
             'uses' => 'perfil@ReporteFotografico',
             'as' => 'ReporteFotografico',
+          ]);
+
+          Route::patch('/eliminarArchivo', [
+            'uses' => 'perfil@eliminarArchivo',
+            'as' => 'eliminarArchivo',
           ]);
 
           Route::post('/subirArchivo', [
@@ -95,23 +102,38 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'subirArchivo',
           ]);
 
+          Route::get('/pdfloco', [
+            'uses' => 'perfil@pdf',
+            'as' => 'pdfOt',
+          ]);
+
+
+
  });
 // FIN RUTAS PERFIL
 
 // INICIO RUTAS REPORTES
  Route::group(['prefix' => 'REPORTES'], function () {
 
-           Route::get('/hojaReportes', function () {
-               return view('REPORTES.hojaReporte');
-           })->name('hojaReporte');
 
-           Route::get('/VerReporteFotografico', function () {
-               return view('REPORTES.ReporteFotografico');
-           })->name('VerReporteFotografico');
+           Route::get('/VerReporte/{id}', [
+             'uses' => 'reportes@VerReporte',
+             'as' => 'hojaReporte',
+            ]);
+
+            Route::get('/VerReporteFotografico/{id}', [
+              'uses' => 'reportes@reporteFotografico',
+              'as' => 'VerReporteFotografico',
+             ]);
 
            Route::get('/reportes', function () {
                return view('REPORTES.reportes');
            })->name('reportes');
+
+           Route::get('/ListadoDeReportes', [
+             'uses' => 'reportes@showReportes',
+             'as' => 'reportesListado',
+           ]);
   });
 // FIN RUTAS REPORTES
 

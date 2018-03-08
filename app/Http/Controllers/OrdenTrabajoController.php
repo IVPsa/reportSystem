@@ -21,34 +21,21 @@ class OrdenTrabajoController extends Controller
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
           return view('OT.inicio');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function getCrearOt()
     {
         //
         return view('OT.crearOt');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     protected function validateOt(Request $request)
     {
         $this->validate($request, [
@@ -95,16 +82,11 @@ class OrdenTrabajoController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ot_orden_trabajo  $ot_orden_trabajo
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(ot_orden_trabajo $ot_orden_trabajo)
     {
         //
-        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
+        $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->paginate();
         return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 
@@ -112,6 +94,8 @@ class OrdenTrabajoController extends Controller
     public function resumen($id )
     {
         //
+
+
       $usuario=User::all();
 
       $ordenDeTrabajo = ot_orden_trabajo::find($id);
@@ -172,14 +156,6 @@ class OrdenTrabajoController extends Controller
 
         }
 
-        //
-        // $eliminarFotos = ft_fotos::where('FT_RPFG_COD', $rpfg)->delete();
-        //
-        // $elimnarReporteFotografico= rf_reporte_fotografico::find($id)->delete();
-        //
-        // $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
-        //
-        // $eliminarOt= ot_orden_trabajo::find($id)->delete();
 
         if (!$eliminarOt)
         {
@@ -196,16 +172,24 @@ class OrdenTrabajoController extends Controller
 
       $reportefotografico=rf_reporte_fotografico::find($id);
 
-      return view('OT.verReporte',compact('DatosReporte','comprobarReporteFotografico','$reportefotografico' ));
+
+        $encargadoDelReporte = DB::table('rep_reporte')
+        ->Join('users', 'users.id', '=', 'users.id')
+        
+        ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
+        ->where('REP_COD',$id )
+        ->value('USU_NOMBRE');
+
+      return view('OT.verReporte',compact('DatosReporte','comprobarReporteFotografico','reportefotografico','encargadoDelReporte' ));
     }
 
 
     public function FotosDelReporte($id){
 
       $reporteFotografico = rf_reporte_fotografico::find($id);
-      $fotos=ft_fotos::where('FT_RPFG_COD',$id)->get();
-
-      return view('OT.registroFotografico',compact('reporteFotografico','fotos'));
+      $foto=ft_fotos::where('FT_RPFG_COD',$id)->paginate(5);
+      // dd($foto);
+      return view('OT.registroFotografico',compact('reporteFotografico','foto'));
 
     }
 

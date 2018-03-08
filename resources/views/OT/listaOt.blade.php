@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('content')
-@if ($message = Session::get('success'))
-<div class="alert alert-success" data-dismiss="alert" aria-label="Close" >
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-      <p>{{ $message }}</p>
-  </div>
-@endif
+@include('layouts.messages')
 <h1 class="text-center">LISTADO DE ORDENES DE TRABAJO</h1>
 <table cellpadding="5" align="center">
 
@@ -68,7 +61,7 @@
 <div class="row">
   <div class="col-md-12 col-xs-12">
     <div class="table-responsive">
-      <table class="table table-hover table-dark table-bordered" align="center">
+      <table class="table table-hover table-dark table-bordered table-striped" align="center">
 
         <thead class="thead-dark">
             <tr>
@@ -79,16 +72,16 @@
               <th width="100px" colspan="2">ACCION</th>
             </tr>
         </thead>
-        @foreach($ordenDeTrabajo as $ordenDeTrabajo)
+        @foreach($ordenDeTrabajo as $ordenesDeTrabajos)
         <tr>
-          <td>{{ $ordenDeTrabajo->OT_ID }}</td>
-          <td>{{ $ordenDeTrabajo->OT_DES }}</td>
-          <td>{{ $ordenDeTrabajo->OT_FECHA_CREACION }}</td>
-          <td>{{ $ordenDeTrabajo->OT_FECHA_TERMINO }}</td>
-          <td width="15px" ><a href="{{route('resumen' ,$ordenDeTrabajo->OT_ID)}}"><button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></a></td>
+          <td>{{ $ordenesDeTrabajos->OT_ID }}</td>
+          <td>{{ $ordenesDeTrabajos->OT_DES }}</td>
+          <td>{{ $ordenesDeTrabajos->OT_FECHA_CREACION }}</td>
+          <td>{{ $ordenesDeTrabajos->OT_FECHA_TERMINO }}</td>
+          <td width="15px" ><a href="{{route('resumen' ,$ordenesDeTrabajos->OT_ID)}}"><button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></a></td>
           <td width="15px" >
 
-            <a href="{{ route('Eliminar', $ordenDeTrabajo->OT_ID) }}">
+            <a href="{{ route('Eliminar', $ordenesDeTrabajos->OT_ID) }}">
               <button type="button"  class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button>
             </a>
           </td>
@@ -98,6 +91,7 @@
 
       </table>
     </div>
+    {{ $ordenDeTrabajo->links('pagination::bootstrap-4') }}
   </div>
 </div>
 @endsection
