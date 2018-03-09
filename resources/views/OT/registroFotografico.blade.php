@@ -10,16 +10,17 @@
 
 
 <h3 class="text-center">FOTOS DEL REPORTE</h3>
-<div class="table-responsive">
 
-
-<div class="col-md-12 col-xs-12">
-  <div class="form-group row">
+  <div class="row">
       @if ($foto <>  "[]")
 
         @foreach ($foto as $fotos)
-          <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-          <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
+        <div class="col-md-6 col-xs-6">
+          <textarea  class="form-control " rows="10" readonly name="">{{$fotos->FT_DESC}}</textarea>
+        </div>
+        <div class="col-md-6 col-xs-6">
+          <img src="{{Storage::disk('public')->url($fotos->FT_IMG)}}"  class="img-thumbnail " >
+        </div>
         @endforeach
 
       @else
@@ -30,9 +31,9 @@
         </div>
       @endif
   </div>
-</div>
+
 {{ $foto->links('pagination::bootstrap-4') }}
-</div>
+
 <br />
 
 

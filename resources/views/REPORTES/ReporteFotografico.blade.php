@@ -20,8 +20,12 @@
         @if ($foto <>  "[]")
           <div class="form-group row">
             @foreach ($foto as $fotos)
-              <textarea  class="form-control col-6 col-form  col-xs-6" rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-              <img src="storage/{{$fotos->FT_IMG}}"  class="img-thumbnail  col-6 col-xs-6" >
+              <div class="col-md-6 col-xs-12">
+                <textarea  class="form-control" rows="10" name="" readonly>{{$fotos->FT_DESC}}</textarea>
+              </div>
+              <div class="col-md-6 col-xs-12">
+                <img src="{{ Storage::disk('public')->url($fotos->FT_IMG)}}"  class="img-thumbnail " >
+              </div>
             @endforeach
           </div>
         @else

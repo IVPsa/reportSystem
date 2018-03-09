@@ -139,7 +139,7 @@ class OrdenTrabajoController extends Controller
         if($rpfg==[])
         {
 
-          $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+          $elimnarReporte=rep_reporte::where('REP_OT_ID',$id)->delete();
 
           $eliminarOt= ot_orden_trabajo::find($id)->delete();
         }
@@ -150,7 +150,7 @@ class OrdenTrabajoController extends Controller
 
           $elimnarReporteFotografico= rf_reporte_fotografico::where('RPFG_OT_ID',$id)->delete();
 
-          $elimnarReporte=rep_reporte::where('REP_USER_ID',$usuario)->delete();
+          $elimnarReporte=rep_reporte::where('REP_OT_ID',$id)->delete();
 
           $eliminarOt= ot_orden_trabajo::find($id)->delete();
 
@@ -173,10 +173,10 @@ class OrdenTrabajoController extends Controller
       $reportefotografico=rf_reporte_fotografico::find($id);
 
 
-        $encargadoDelReporte = DB::table('rep_reporte')
+        $encargadoDelReporte = DB::table('REP_REPORTE')
         ->Join('users', 'users.id', '=', 'users.id')
-        
-        ->select('users.USU_NOMBRE','rep_reporte.REP_COD','rep_reporte.REP_USER_ID')
+
+        ->select('users.USU_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
         ->where('REP_COD',$id )
         ->value('USU_NOMBRE');
 
