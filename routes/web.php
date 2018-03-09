@@ -97,6 +97,11 @@ Route::group(['prefix' => 'PERFIL'], function () {
             'as' => 'eliminarArchivo',
           ]);
 
+          Route::patch('/actualizarDescripcionDeArchivo', [
+            'uses' => 'perfil@actualizarDescripcionDeArchivo',
+            'as' => 'actualizarDescripcionDeArchivo',
+          ]);
+
           Route::post('/subirArchivo', [
             'uses' => 'perfil@subirArchivo',
             'as' => 'subirArchivo',

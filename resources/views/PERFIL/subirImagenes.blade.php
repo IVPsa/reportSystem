@@ -15,7 +15,7 @@
         <h5 class="col-md-2 col-xs-12" > SELECCIONAR IMAGEN:</h5>
 
          <input type="file" accept="image/*"  class="form-control-file col-5 col-form  col-xs-12 " name="image"  id="files" />
-        <!-- <input class="form-control col-5 col-form  col-xs-12" readonly type="text" > -->
+
       </div>
 
       <div class="form-group row">
@@ -26,8 +26,10 @@
       </div>
 
       <div class="form-group row">
-        <div class=" col-2 col-form  col-xs-12"></div>
-        <input type="submit" class="btn btn-primary col-10 col-form  col-xs-12" value="SUBIR">
+        <div class=" col-md-2  col-xs-12"></div>
+        <button  type="submit" class="btn btn-lg btn-primary col-10 col-form  col-xs-12">
+          SUBIR FOTOGRAFIA  <i class="fa fa-camera"></i>
+        </button>
       </div>
     </form>
 </div>
@@ -35,34 +37,52 @@
 <h3 class="text-center">FOTOS SUBIDAS</h3>
 <div class="table-responsive">
 
-
   <div class="col-md-12 col-xs-12">
 
     @if ($foto <>  "[]")
 
           @foreach ($foto as $fotos)
-            <div class="row">
-              <div class="col-md-5 col-xs-12">
-                <textarea  class="form-control " rows="10" name="">{{$fotos->FT_DESC}}</textarea>
-              </div>
-              <div class="col-md-5 col-xs-12">
-                <div class="form-group row">
 
-                <img src="{{ Storage::disk('public')->url($fotos->FT_IMG)}}" style="width:320px; height:320px;"  class="col-md-12 col-xs-12" >
+              <div class="row">
+                <div class="col-md-5 col-xs-6">
+                  <textarea  class="form-control" rows="10" name="fotoDescripcion" >{{$fotos->FT_DESC}}</textarea>
+                </div>
+
+                <div class="col-md-6 col-xs-5">
+                    <img src="{{ Storage::disk('public')->url($fotos->FT_IMG)}}"  class="img-thumbnail" >
+                </div>
+
+                <div class="col-md-1 col-xs-1">
+
+                  <form action="{{route('eliminarArchivo')}}" method="post">
+                    {{ method_field('PATCH') }}
+                    {{ csrf_field() }}
+                    <input hidden name="codigoReporte" value="{{$fotos->FT_RPFG_COD}}">
+                    <input hidden name="codigoFoto" value="{{$fotos->FT_COD}}">
+                    <button type="submit" class="btn btn-lg btn-danger" style="width:80px;"  data-toggle="tooltip" data-placement="bottom" title="ELIMNAR FOTO">
+                      <i class="fa fa-remove"></i>
+                    </button>
+                  </form>
+
+                  <br />
+
+                  <a href="{{ Storage::disk('public')->url($fotos->FT_IMG)}}" data-toggle="tooltip" data-placement="bottom" title="DESCARGAR FOTO">
+                    <button type="button" class="btn btn-lg btn-info" style="width:80px;" ><i class="fa fa-arrow-down" style="font-size:24px"></i></button>
+                  </a>
+
+                  <br />
+                  <br />
+
+                  <a  data-toggle="tooltip" data-placement="bottom" title="EDITAR DESCRIPCION">
+                    <button type="button" class="btn btn-lg btn-success" style="width:80px;" data-toggle="modal" data-target="#nuevaDescripcionDeFoto" data-backdrop="static"  >
+                      <i class="fa fa-pencil-square-o"></i>
+                    </button>
+                  </a>
+                  @include('modals.NuevaDescripcionDeFoto')
+
                 </div>
               </div>
-              <div class="col-md-2">
-                <form action="{{route('eliminarArchivo')}}" method="post">
-                  {{ method_field('PATCH') }}
-                  {{ csrf_field() }}
-                  <input hidden name="codigoReporte" value="{{$fotos->FT_RPFG_COD}}">
-                  <input hidden name="codigoFoto" value="{{$fotos->FT_COD}}">
-                  <button type="submit" class="btn btn-lg btn-danger" style="width:80px;" ><i class="fa fa-remove"></i></button>
-                </form>
-
-              </div>
-            </div>
-
+            <br />
           @endforeach
 
       @else

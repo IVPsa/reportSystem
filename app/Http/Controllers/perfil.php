@@ -283,6 +283,24 @@ class perfil extends Controller
             return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'imagen borrada satisfactoriamente');
 
         }
+        public function actualizarDescripcionDeArchivo(Request $request){
+
+          $codigoReporte=$request->input('codigoReporte');
+          $id=$request->input('codigoFoto');
+
+          $descripcionFoto=$request->input('fotoDescripcion');
+
+          $actualizarDatosPersonales = ft_fotos::where('FT_COD',$id)->update([
+            'FT_DESC'=>$descripcionFoto
+          ]);
+
+          if (!$actualizarDatosPersonales) {
+            return redirect()->route('ReporteFotografico', $codigoReporte)->with('error', 'Descripcion no pudo ser actualizada.');
+          }
+
+            return redirect()->route('ReporteFotografico', $codigoReporte)->with('success', 'Descripcion actualizada satisfactoriamente');
+
+        }
 
         //FIN FUNCIONES REPORTE FOTOGRAFICO
         public function pdf(Request $request)
