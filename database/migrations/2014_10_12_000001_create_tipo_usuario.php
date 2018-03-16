@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmpresa extends Migration
+class CreateTipoUsuario extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateEmpresa extends Migration
      */
     public function up()
     {
-        //quitar esto?
-        //TAL VEZ SI, delar un select con empresas afiliadas al RPS
-        //revisar despues
-        Schema::create('EMP_EMPRESA', function (Blueprint $table) {
-        $table->increments('EMP_COD');
-        $table->string('EMP_DESCRIPCION');
-      });
+        //
+        Schema::create('TPU_TIPO_USUARIO', function (Blueprint $table) {
+
+            $table->increments('TPU_COD');
+            $table->string('TPU_DES',45);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateEmpresa extends Migration
     public function down()
     {
         //
-          Schema::dropIfExists('EMP_EMPRESA');
+        Schema::dropIfExists('TPU_TIPO_USUARIO');
     }
 }
