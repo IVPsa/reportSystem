@@ -37,7 +37,7 @@ $(document).ready(function(){
                 <h4 class="text-right">NOMBRE:</h4>
               </td>
               <td>
-                  <input class="form-control"  type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
+                  <input class="form-control"  type="text" name="nombre" value="{{ Auth::user()->USER_NOMBRE }}">
               </td>
             </tr>
 
@@ -55,7 +55,7 @@ $(document).ready(function(){
                 <h4 class="text-right">RUT:</h4>
               </td>
               <td>
-                  <input class="form-control" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
+                  <input class="form-control" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USER_RUT }}">
               </td>
             </tr>
             <tr>
@@ -199,7 +199,7 @@ $(document).ready(function(){
               <th>DESCRIPCION</th>
               <th>FECHA INICIO</th>
               <th>FECHA TERMINO</th>
-              <th width="100px" colspan="3">ACCION</th>
+              <th width="100px" >ACCION</th>
             </tr>
         </thead>
         @foreach($OTcreadas as $OTcreada)

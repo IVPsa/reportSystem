@@ -11,22 +11,10 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('empresa') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">empresa</label>
 
-                            <div class="col-md-6">
-                                <input id="empresa" type="text" class="form-control" name="empresa" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('empresa'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('empresa') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">NOMBRE</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -40,7 +28,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-Mail </label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -53,8 +41,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="TPU" class="col-md-4 control-label">TIPO DE USUARIO</label>
+
+                            <div class="col-md-6">
+
+                                <select class="form-control" id="TPU" name="tipoUsuario" required>
+                                  <option value="1">ADMINISTRADOR</option>
+                                  <option value="2">TECNICO</option>
+                                </select>
+
+                                @if ($errors->has('tipoUsuario'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('tipoUsuario') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">PASSWORD</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -68,7 +74,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">CONFIRMAR PASSWORD</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -78,7 +84,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    REGISTRAR
                                 </button>
                             </div>
                         </div>

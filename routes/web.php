@@ -186,6 +186,8 @@ Route::group(['prefix' => 'PERFIL'], function () {
               'uses' => 'OrdenTrabajoController@getCrearOt',
               'as' => 'OT.crearOT',
             ]);
+            Route::get('api/provincia/{region}','LocationController@getProvincia')->name('get.provincia');
+            Route::get('api/ciudad/{provincia}','LocationController@getCiudad')->name('get.ciudad');
 
             Route::post('/crearOt', [
               'uses' => 'OrdenTrabajoController@store',

@@ -35,12 +35,20 @@
 
             <tr>
               <td>  <h5 class="text-right">REGION:</h5></td>
-              <td><input type="text" class="form-control" name="region" value="{{ $ordenDeTrabajo->OT_REGION}}"></td>
+              <td><input type="text" readonly class="form-control" name="region" value="{{$nombreRegion}}"></td>
             </tr>
 
             <tr>
+              <td>  <h5 class="text-right">PROVINCIA:</h5></td>
+              <td><input type="text"  readonly class="form-control" value="{{ $nombreProvincia}} "></td>
+            </tr>
+
+
+            <tr>
               <td>  <h5 class="text-right">CIUDAD:</h5></td>
-              <td><input type="text" class="form-control" name="ciudad" value="{{ $ordenDeTrabajo->OT_CIUDAD}}"></td>
+
+              <td><input type="text" readonly class="form-control" name="ciudad" value="{{ $ciudad}} "></td>
+
             </tr>
 
             <tr>

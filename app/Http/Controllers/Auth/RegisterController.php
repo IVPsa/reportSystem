@@ -51,7 +51,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'empresa' => 'required|string'
+
+            'tipoUsuario' => 'required'
         ]);
     }
 
@@ -65,14 +66,14 @@ class RegisterController extends Controller
     {
 
         return User::create([
-            'USU_NOMBRE' => $data['name'],
+            'USER_NOMBRE' => $data['name'],
             'email' => $data['email'],
-            'USU_EMPRESA' => $data['empresa'],
-            'USU_TPU_COD'=>'TECNICO',
+            'USU_EMPRESA' => 'NIHIL',
+            'USER_TPU_COD'=>$data['tipoUsuario'],
             'USER_N_CTA_BANCO'=>'NO INFORMADO',
             'USER_BANCO'=>'NO INFORMADO',
             'USER_TP_CTA'=>'NO INFORMADO',
-            'USU_RUT'=>'NO INFORMADO',
+            'USER_RUT'=>'NO INFORMADO',
             'USER_AVATAR'=>'imagenes/sinPerfil.png',
             'password' => bcrypt($data['password'])
         ]);

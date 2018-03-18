@@ -15,15 +15,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'USU_NOMBRE',
+        'USER_NOMBRE',
         'email',
         'password',
         'USU_EMPRESA',
-        'USU_TPU_COD',
+        'USER_TPU_COD',
         'USER_N_CTA_BANCO',
         'USER_BANCO',
         'USER_TP_CTA',
-        'USU_RUT',
+        'USER_RUT',
         'USER_AVATAR'
     ];
 
@@ -35,4 +35,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function TipoDeUsuario()
+    {
+        return $this->hasOne('App\TipoDeUsuario', '{TPU_COD', 'TPU_DES');
+    }
 }

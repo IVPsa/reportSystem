@@ -14,12 +14,12 @@ class CreateProvincia extends Migration
     public function up()
     {
         //
-        Schema::create('PRO_PORVINCIA', function (Blueprint $table) {
+        Schema::create('PRO_PROVINCIA', function (Blueprint $table) {
           $table->increments('PRO_COD');
           $table->string('PRO_NOMBRE', 23);
           $table->integer('PRO_REG_COD')->unsigned();
           $table->foreign('PRO_REG_COD')->references('REG_COD')->on('REG_REGION');
-          
+
 
           });
     }

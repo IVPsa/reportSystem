@@ -31,12 +31,20 @@
 
                 <tr>
                   <td>  <h5 class="text-right">REGION:</h5></td>
-                  <td><input type="text" class="form-control" name="region" readonly value="{{$ordenDeTrabajoAsignada->OT_REGION}}"></td>
+                  <td><input type="text" readonly  class="form-control" name="region" value="{{$nombreRegion}}"></td>
                 </tr>
 
                 <tr>
+                  <td>  <h5 class="text-right">PROVINCIA:</h5></td>
+                  <td><input type="text"  readonly class="form-control" value="{{ $nombreProvincia}} "></td>
+                </tr>
+
+
+                <tr>
                   <td>  <h5 class="text-right">CIUDAD:</h5></td>
-                  <td><input type="text" class="form-control" name="ciudad" readonly value="{{$ordenDeTrabajoAsignada->OT_CIUDAD}}"></td>
+
+                  <td><input type="text"readonly class="form-control" name="ciudad" value="{{ $ciudad}} "></td>
+
                 </tr>
 
                 <tr>
@@ -96,7 +104,7 @@
       </div>
     </div>
   </div>
-<!-- 
+<!--
   <a href="{{route('pdfOt')}}">    <button type="button" class="btn btn-primary " >CREAR PDF</button></a>
   <form action="{{route('pdfOt')}}" method="get">
     {{ csrf_field() }}

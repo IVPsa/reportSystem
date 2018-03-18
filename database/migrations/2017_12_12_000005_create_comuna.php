@@ -23,7 +23,7 @@ class CreateComuna extends Migration
            $table->timestamps();
 
            $table->integer('COM_PRO_COD')->unsigned();
-           $table->foreign('COM_PRO_COD')->references('PRO_COD')->on('PRO_PORVINCIA');
+           $table->foreign('COM_PRO_COD')->references('PRO_COD')->on('PRO_PROVINCIA');
 
 
        });

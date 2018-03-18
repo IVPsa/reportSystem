@@ -23,11 +23,21 @@
               <tr>
                 <td>  <h5 class="text-right">REGION:</h5></td>
                 <td>
-                  <select class="form-control" name="region">
-                    <option>asdf</option>
-                    <option></option>
-                    <option></option>
-                    <option></option>
+                  <select class="form-control"  id="region" name="region">
+                    @foreach ($regiones as $regiones)
+                      <option value="{{ $regiones->REG_COD}}">{{ $regiones->REG_NOMBRE}}</option>
+                    @endforeach
+                  </select>
+                </td>
+              </tr>
+
+              <tr>
+                <td>  <h5 class="text-right">PROVINCIA:</h5></td>
+                <td>
+                  <select class="form-control" id="provincia" name="provincia">
+                      @foreach ($provincias as $provincias)
+                        <option value="{{ $provincias->PRO_COD}}">{{ $provincias->PRO_NOMBRE}}</option>
+                      @endforeach
                   </select>
                 </td>
               </tr>
@@ -35,11 +45,11 @@
               <tr>
                 <td>  <h5 class="text-right">CIUDAD:</h5></td>
                 <td>
-                  <select class="form-control" name="ciudad">
-                    <option>asdf</option>
-                    <option>asdf</option>
-                    <option>asdf</option>
-                    <option></option>
+                  <select class="form-control" id="ciudad" name="ciudad">
+
+                    @foreach ($ciudades as $ciu)
+                      <option value="{{$ciu->COM_COD}}">{{ $ciu->COM_NOMBRE}}</option>
+                    @endforeach
                   </select>
                 </td>
               </tr>
@@ -51,7 +61,7 @@
 
               <tr>
                 <td>  <h5 class="text-right">VALOR:</h5></td>
-                <td><input type="text" class="form-control" name="valor" value=""></td>
+                <td><input type="number" min=0 class="form-control" name="valor" value=""></td>
               </tr>
 
               <tr>

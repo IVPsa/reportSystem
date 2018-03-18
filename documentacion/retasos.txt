@@ -37,7 +37,7 @@ $user->name;
 Autenticación con el objeto Request
 Como una manera alternativa a través de los Request también se puede obtener la información del usuario que esta logueado, observa el siguiente ejemplo
 
-INSERT INTO `users` (`id`, `USU_NOMBRE`, `email`, `USU_EMPRESA`, `USU_TPU_COD`, `USU_RUT`, `USER_N_CTA_BANCO`, `USER_BANCO`, `USER_TP_CTA`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+INSERT INTO `users` (`id`, `USER_NOMBRE`, `email`, `USU_EMPRESA`, `USU_TPU_COD`, `USER_RUT`, `USER_N_CTA_BANCO`, `USER_BANCO`, `USER_TP_CTA`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'ivan', 'ivan_vilugron@hotmail.es', 'mappu', 'TECNICO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', '$2y$10$QRA2VaF/SA1iuhXgfI9oJenm4NA1Cjc5vMsSDSoy2aoc9zC68sMDW', 'NULL', '2018-02-13 06:04:42', '2018-02-13 06:04:42'),
 (2, 'ale', 'ale@hotmail.es', 'mappu', 'TECNICO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', 'NO INFORMADO', '$2y$10$mOdzVgIE89OILvXieI38UuITlLveuL2T1tAiA1dR3fhnTIJPPvO3i', NULL, '2018-02-13 06:05:08', '2018-02-13 06:05:08');
 
@@ -89,7 +89,7 @@ Iniciar una sesión usando el id un usuario con Auth::loginUsingId(1);
 
 <div class="form-group row">
   <h4 class="col-md-2 col-xs-12" >NOMBRE:</h4>
-  <input class="form-control col-md-5 col-form  col-xs-12" type="text" name="nombre" value="{{ Auth::user()->USU_NOMBRE }}">
+  <input class="form-control col-md-5 col-form  col-xs-12" type="text" name="nombre" value="{{ Auth::user()->USER_NOMBRE }}">
 </div>
 
 <div class="form-group row">
@@ -99,7 +99,7 @@ Iniciar una sesión usando el id un usuario con Auth::loginUsingId(1);
 
 <div class="form-group row">
   <h4 class="col-md-2 col-xs-12" >RUT:</h4>
-  <input class="form-control col-md-5  col-form  col-xs-12" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USU_RUT }}">
+  <input class="form-control col-md-5  col-form  col-xs-12" name="rut" type="text" placeholder="no inscrito" value="{{ Auth::user()->USER_RUT }}">
 </div>
 
 <div class="form-group row">

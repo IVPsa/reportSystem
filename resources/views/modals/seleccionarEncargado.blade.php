@@ -25,9 +25,9 @@
                 @foreach($usuario as $usuario)
                 <tr>
                   <td>    {{ $usuario->id }}</td>
-                  <td>    {{ $usuario->USU_NOMBRE }}</td>
+                  <td>    {{ $usuario->USER_NOMBRE }}</td>
                   <td>    {{ $usuario->email }}</td>
-                  <td>    {{ $usuario->USU_RUT }}</td>
+                  <td>    {{ $usuario->USER_RUT }}</td>
                   <td>
                       <button class=" btn btn-primary"  data-dismiss="modal"  data-usu-id="{{ $usuario->id }}"><i class="fa fa-play"></i></button>
                   </td>

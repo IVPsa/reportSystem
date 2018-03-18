@@ -40,9 +40,9 @@ class reportes extends Controller
 
       $encargadoDelReporte = DB::table('REP_REPORTE')
       ->Join('users', 'users.id', '=', 'users.id')
-      ->select('users.USU_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
+      ->select('users.USER_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
       ->where('REP_COD',$id )
-      ->value('USU_NOMBRE');
+      ->value('USER_NOMBRE');
 
 
       return view('REPORTES.hojaReporte',compact('DatosReporte','comprobarReporteFotografico','reportefotografico','encargadoDelReporte' ));

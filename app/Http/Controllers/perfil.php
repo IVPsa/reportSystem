@@ -54,9 +54,9 @@ class perfil extends Controller
 
 
          $actualizarDatosPersonales = user::where('id',$id)->update([
-           'USU_RUT'=>$rut,
+           'USER_RUT'=>$rut,
            'email'=>$email,
-           'USU_NOMBRE'=>$nombre,
+           'USER_NOMBRE'=>$nombre,
          ]);
 
          if (!$actualizarDatosPersonales) {
@@ -126,7 +126,20 @@ class perfil extends Controller
          $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
          $idUsuario = Auth::id();
 
-         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte','verReporte'));
+         $idCiudad = ot_orden_trabajo::where('OT_ID', $id)->value('OT_COM_COD');
+
+         $ciudad=DB::table('COM_COMUNA')->select('COM_NOMBRE')->where('COM_COD',$idCiudad)->value('COM_NOMBRE');
+
+         $idProvincia=DB::table('COM_COMUNA')->select('COM_PRO_COD')->where('COM_COD',$idCiudad)->value('COM_PRO_COD');
+
+         $nombreProvincia=DB::table('PRO_PROVINCIA')->select('PRO_NOMBRE')->where('PRO_COD',$idProvincia)->value('PRO_NOMBRE');
+
+         $idRegion=DB::table('PRO_PROVINCIA')->select('PRO_REG_COD')->where('PRO_COD',$idProvincia)->value('PRO_REG_COD');
+
+         $nombreRegion=DB::table('REG_REGION')->select('REG_NOMBRE')->where('REG_COD', $idRegion)->value('REG_NOMBRE');
+
+
+         return view('PERFIL.edicionDeOt',compact('ordenDeTrabajoAsignada','comprobarExistenciaDeReporte','verReporte', 'ciudad', 'nombreProvincia','nombreRegion'));
 
        }
 
@@ -189,9 +202,9 @@ class perfil extends Controller
            //esto posiblemente no tenga una utilidad a largo plazo pero conservar en caso de ser util
            $joinDeUsuarioYreporte = DB::table('REP_REPORTE')
            ->Join('users', 'users.id', '=', 'users.id')
-           ->select('users.USU_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
+           ->select('users.USER_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
            ->where('REP_COD',$id )
-           ->value('USU_NOMBRE');
+           ->value('USER_NOMBRE');
 
            $idUsuario = Auth::id();
 

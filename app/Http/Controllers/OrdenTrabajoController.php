@@ -7,6 +7,11 @@ use App\ot_orden_trabajo;
 use App\rep_reporte;
 use App\rf_reporte_fotografico;
 use App\User;
+
+use App\region;
+use App\provincia;
+use App\ciudad;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -32,7 +37,14 @@ class OrdenTrabajoController extends Controller
     public function getCrearOt()
     {
         //
-        return view('OT.crearOt');
+        $regiones = region::all();
+        $provincias = provincia::all();
+        $ciudades = ciudad::all();
+
+        return view('OT.crearOt')->with('regiones', $regiones)
+        ->with('provincias', $provincias)
+        ->with('ciudades', $ciudades);
+         // compact('regiones','provincias','ciudades'));
     }
 
 
@@ -42,7 +54,7 @@ class OrdenTrabajoController extends Controller
             'fecha_inicio' => 'required',
             'region' => 'required',
             'direccion'=>'required',
-            'ciudad' => 'required',
+            'ciudad' => 'required|int',
             'descripcion' => 'required',
             'valor' => 'required'
         ]);
@@ -51,8 +63,22 @@ class OrdenTrabajoController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validateOt($request);
-        $crearOT = $this->createOrdenTrabajo($request->all());
+        $id = Auth::id();
+
+        $crearOT = ot_orden_trabajo::create([
+            'OT_DES' => $request->input('descripcion'),
+            'OT_ESTADO' =>'EN ESPERA',
+            'OT_FECHA_CREACION' => Carbon::today(),
+            'OT_FECHA_TERMINO' => Carbon::today(),
+            'OT_COM_COD' =>  $request->input('ciudad'),
+            'OT_DIRECCION' => $request->input('direccion'),
+            'OT_VALOR' =>  $request->input('valor'),
+            'OT_USER_ID_CREADOR' => $id,
+            'OT_USER_ENCARGADO' => $id,
+            'updated_at'=> Carbon::now(),
+            'created_at'=> Carbon::now()
+        ]);
+
 
         if (! $crearOT) {
           return redirect()->route('InicioOT')->with('error', "Hubo un problema al crear la orden de trabajo.");
@@ -62,25 +88,6 @@ class OrdenTrabajoController extends Controller
 
     }
 
-    protected function createOrdenTrabajo(array $data)
-    {
-        $id = Auth::id();
-        // $usuario=Auth::user()->USU_NOMBRE;
-        return ot_orden_trabajo::create([
-            'OT_DES' => $data['descripcion'],
-            'OT_ESTADO' =>'EN ESPERA',
-            'OT_FECHA_CREACION' => Carbon::today(),
-            'OT_FECHA_TERMINO' => Carbon::today(),
-            'OT_REGION' =>  $data['region'],
-            'OT_CIUDAD' =>  $data['ciudad'],
-            'OT_DIRECCION' =>  $data['direccion'],
-            'OT_VALOR' =>  $data['valor'],
-            'OT_USER_ID_CREADOR' => $id,
-            'OT_USER_ENCARGADO' => $id,
-            'updated_at'=> Carbon::now(),
-            'created_at'=> Carbon::now()
-        ]);
-    }
 
 
     public function show(ot_orden_trabajo $ot_orden_trabajo)
@@ -102,7 +109,26 @@ class OrdenTrabajoController extends Controller
       $comprobarExistenciaDeReporte= rep_reporte::where('REP_OT_ID', $id)->get();
       $verReporte=rep_reporte::where('REP_OT_ID', $id)->get();
 
-      return view('OT.resumenOt',compact('ordenDeTrabajo','comprobarExistenciaDeReporte','verReporte'))
+      $idCiudad = ot_orden_trabajo::where('OT_ID', $id)->value('OT_COM_COD');
+
+
+      //
+      // $ciudad = DB::table('OT_ORDEN_TRABAJO')
+      // ->Join('COM_COMUNA', 'OT_ORDEN_TRABAJO.OT_COM_COD', '=', 'COM_COMUNA.COM_COD')
+      // ->select('OT_ORDEN_TRABAJO.OT_COM_COD','COM_COMUNA.COM_COD','COM_COMUNA.COM_NOMBRE')
+      // ->where('OT_COM_COD',$idCiudad )->get();
+
+      $ciudad=DB::table('COM_COMUNA')->select('COM_NOMBRE')->where('COM_COD',$idCiudad)->value('COM_NOMBRE');
+
+      $idProvincia=DB::table('COM_COMUNA')->select('COM_PRO_COD')->where('COM_COD',$idCiudad)->value('COM_PRO_COD');
+
+      $nombreProvincia=DB::table('PRO_PROVINCIA')->select('PRO_NOMBRE')->where('PRO_COD',$idProvincia)->value('PRO_NOMBRE');
+
+      $idRegion=DB::table('PRO_PROVINCIA')->select('PRO_REG_COD')->where('PRO_COD',$idProvincia)->value('PRO_REG_COD');
+
+      $nombreRegion=DB::table('REG_REGION')->select('REG_NOMBRE')->where('REG_COD', $idRegion)->value('REG_NOMBRE');
+
+      return view('OT.resumenOt',compact('ordenDeTrabajo','comprobarExistenciaDeReporte','verReporte','ciudad','nombreProvincia','nombreRegion'))
       ->with('usuario', $usuario);
     }
 
@@ -176,9 +202,9 @@ class OrdenTrabajoController extends Controller
         $encargadoDelReporte = DB::table('REP_REPORTE')
         ->Join('users', 'users.id', '=', 'users.id')
 
-        ->select('users.USU_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
+        ->select('users.USER_NOMBRE','REP_REPORTE.REP_COD','REP_REPORTE.REP_USER_ID')
         ->where('REP_COD',$id )
-        ->value('USU_NOMBRE');
+        ->value('USER_NOMBRE');
 
       return view('OT.verReporte',compact('DatosReporte','comprobarReporteFotografico','reportefotografico','encargadoDelReporte' ));
     }

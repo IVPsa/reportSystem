@@ -78,7 +78,7 @@
 
            <li class="nav-item dropdown" style="margin-right:60px;">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ Auth::user()->USU_NOMBRE }}
+                {{ Auth::user()->USER_NOMBRE }}
               </a>
               <div class="dropdown-menu " aria-labelledby="navbarDropdown">
 
