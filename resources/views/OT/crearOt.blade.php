@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <div class="row">
 
   <div class="col-md-12 col-xs-12">
@@ -24,8 +25,8 @@
                 <td>  <h5 class="text-right">REGION:</h5></td>
                 <td>
                   <select class="form-control"  id="region" name="region">
-                    @foreach ($regiones as $regiones)
-                      <option value="{{ $regiones->REG_COD}}">{{ $regiones->REG_NOMBRE}}</option>
+                    @foreach ($region as $region)
+                      <option value="{{ $region->REG_COD}}">{{ $region->REG_NOMBRE}}</option>
                     @endforeach
                   </select>
                 </td>
@@ -35,9 +36,10 @@
                 <td>  <h5 class="text-right">PROVINCIA:</h5></td>
                 <td>
                   <select class="form-control" id="provincia" name="provincia">
-                      @foreach ($provincias as $provincias)
-                        <option value="{{ $provincias->PRO_COD}}">{{ $provincias->PRO_NOMBRE}}</option>
-                      @endforeach
+                        <option>Seleccionar</option>
+                        @foreach ($provincias as $provincias)
+                          <option value="{{ $provincias->PRO_COD}}">{{ $provincias->PRO_NOMBRE}}</option>
+                        @endforeach
                   </select>
                 </td>
               </tr>
@@ -46,11 +48,13 @@
                 <td>  <h5 class="text-right">CIUDAD:</h5></td>
                 <td>
                   <select class="form-control" id="ciudad" name="ciudad">
-
-                    @foreach ($ciudades as $ciu)
-                      <option value="{{$ciu->COM_COD}}">{{ $ciu->COM_NOMBRE}}</option>
+                    <option>Seleccionar</option>
+                    @foreach ($ciudades as $ciudades)
+                      <option value="{{ $ciudades->COM_COD}}">{{ $ciudades->COM_NOMBRE}}</option>
                     @endforeach
                   </select>
+
+
                 </td>
               </tr>
 

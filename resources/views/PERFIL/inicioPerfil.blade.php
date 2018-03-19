@@ -12,9 +12,9 @@ $(document).ready(function(){
 <div class="row">
 
     <div class="col-md-2 col-xs-12">
-      @foreach ($fotoPerfil as $fotoPerfil)
-      <img  src="storage/{{ ($fotoPerfil->USER_AVATAR) }}" width="200" height="300" />
-      @endforeach
+
+      <img  src="storage/{{ $fotoPerfil }}" width="200" height="300" />
+
       <br />
       <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#subirAvatar" data-backdrop="static">ACTUALIZAR FOTO </button>
       @include('modals.subirAvatar')
@@ -142,7 +142,7 @@ $(document).ready(function(){
 
   </div>
 </div>
-
+@if ($tipoDeUsuario==2)
 <div class="row">
   <div class="col-md-12 col-xs-12">
     <h1 class="display-6 text-center">OT's ASIGNADAS</h1>
@@ -151,13 +151,13 @@ $(document).ready(function(){
       <table class="table table-hover table-dark table-bordered table-striped" align="center">
 
         <thead class="thead-dark">
-            <tr>
-              <th>ID</th>
-              <th>DESCRIPCION</th>
-              <th>FECHA INICIO</th>
-              <th>FECHA TERMINO</th>
-              <th width="100px" colspan="1">ACCION</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>DESCRIPCION</th>
+            <th>FECHA INICIO</th>
+            <th>FECHA TERMINO</th>
+            <th width="100px" colspan="1">ACCION</th>
+          </tr>
         </thead>
         @foreach($OTasignadas as $OTasignada)
         <tr>
@@ -173,19 +173,21 @@ $(document).ready(function(){
           </td>
           <!-- <td width="25px">
 
-            <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
-          </td> -->
+          <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-photo" style="font-size:20px;"></i></button>
+        </td> -->
 
-        </tr>
-        @endforeach
+      </tr>
+      @endforeach
 
-      </table>
-    </div>
+    </table>
   </div>
 </div>
+</div>
 
-    {{ $OTasignadas->links('pagination::bootstrap-4') }}
+{{ $OTasignadas->links('pagination::bootstrap-4') }}
 
+ @endif
+@if ($tipoDeUsuario==1)
 
 <div class="row">
   <div class="col-md-12 col-xs-12">
@@ -217,6 +219,6 @@ $(document).ready(function(){
     {{ $OTcreadas->links('pagination::bootstrap-4') }}
   </div>
 </div>
-
+ @endif
 
 @endsection

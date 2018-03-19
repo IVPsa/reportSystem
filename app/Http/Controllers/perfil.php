@@ -37,11 +37,12 @@ class perfil extends Controller
          $OTcreadas=ot_orden_trabajo::where('OT_USER_ID_CREADOR',$idUsuario)->paginate(5);
          // $buscarReporte=rep_reporte::where('REP_USER_ID', $idUsuario)->get();
          // $imagenes=ft_fotos::all();
-         $fotoPerfil=user::where('id',$idUsuario)->get();
+         $fotoPerfil=user::where('id',$idUsuario)->value('USER_AVATAR');
          // dd($fotoPerfil);
          // $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->get();
-
-         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','fotoPerfil' ));
+         $tipoDeUsuario=user::where('id',$idUsuario)->value('USER_TPU_COD');
+         // dd($tipoDeUsuario);
+         return view('PERFIL.inicioPerfil', compact('OTasignadas','OTcreadas','fotoPerfil', 'tipoDeUsuario' ));
        }
 
        public function actualizarDatosPersonales(Request $request){

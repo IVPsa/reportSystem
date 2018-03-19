@@ -37,14 +37,15 @@ class OrdenTrabajoController extends Controller
     public function getCrearOt()
     {
         //
-        $regiones = region::all();
+        $region = region::all();
         $provincias = provincia::all();
         $ciudades = ciudad::all();
 
-        return view('OT.crearOt')->with('regiones', $regiones)
-        ->with('provincias', $provincias)
-        ->with('ciudades', $ciudades);
-         // compact('regiones','provincias','ciudades'));
+        return view('OT.crearOt',compact('region','provincias','ciudades'));
+        // ->with('region', $region)
+        // ->with('provincias', $provincias)
+        // ->with('ciudades', $ciudades);
+         //
     }
 
 

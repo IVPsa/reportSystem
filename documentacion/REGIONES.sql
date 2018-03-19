@@ -16,7 +16,7 @@ INSERT INTO `REG_REGION` (`REG_COD`, `REG_NOMBRE`, `ISO_3166_2_CL`) VALUES
 (15, 'Arica y Parinacota', 'CL-AP');
 
 
-INSERT INTO `reportSystembeta02`.`PRO_PORVINCIA`
+INSERT INTO `reportSystembeta02`.`PRO_PR0VINCIA`
 (`PRO_COD`,
 `PRO_NOMBRE`,
 `PRO_REG_COD`)
