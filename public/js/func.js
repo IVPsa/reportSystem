@@ -1,4 +1,4 @@
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 $(document).ready(function () {
 
     var id_usuario_encargado = $('#usuario_table').find('tbody tr td button');
