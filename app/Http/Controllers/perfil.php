@@ -264,9 +264,10 @@ class perfil extends Controller
           $mensaje=$request->input('descripcionImagen');
           $image=$request->file('image');
           $codigoReporte=$request->input('codigoReporte');
+          $NombreCarpeta="RPFGCOD_".$codigoReporte;
 
           $subirimagen= ft_fotos::Create([
-            'FT_IMG'=>$image->store('fotosReportes','public'),
+            'FT_IMG'=>$image->store($NombreCarpeta,'public'),
             'FT_DESC'=> $mensaje,
             'FT_RPFG_COD'=>$codigoReporte
           ]);
