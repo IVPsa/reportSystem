@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @include('layouts.messages')
+
 <h1 class="text-center">LISTADO DE ORDENES DE TRABAJO</h1>
 <table cellpadding="5" align="center">
 
@@ -60,15 +61,16 @@
 
 <div class="row">
   <div class="col-md-12 col-xs-12">
-    <div class="table-responsive">
-      <table class="table table-hover table-dark table-bordered table-striped" align="center">
+    <div class="table-responsive" >
+      <table class="table table-bordered table-hover table-dark table-striped" align="center"  id="table">
 
         <thead class="thead-dark">
             <tr>
               <th>ID</th>
               <th>DESCRIPCION</th>
-              <th>FECHA INICIO</th>
-              <th>FECHA TERMINO</th>
+              <th>ESTADO</th>
+              <th width="100px">FECHA INICIO</th>
+              <th width="100px">FECHA TERMINO</th>
               <th width="100px" colspan="2">ACCION</th>
             </tr>
         </thead>
@@ -76,6 +78,7 @@
         <tr>
           <td>{{ $ordenesDeTrabajos->OT_ID }}</td>
           <td>{{ $ordenesDeTrabajos->OT_DES }}</td>
+          <td>{{ $ordenesDeTrabajos->OT_ESTADO }}</td>
           <td>{{ $ordenesDeTrabajos->OT_FECHA_CREACION }}</td>
           <td>{{ $ordenesDeTrabajos->OT_FECHA_TERMINO }}</td>
           <td width="15px" ><a href="{{route('resumen' ,$ordenesDeTrabajos->OT_ID)}}"><button class="btn btn-lg btn-success"> <i class="fa fa-play"></i></button></a></td>
@@ -94,4 +97,5 @@
     {{ $ordenDeTrabajo->links('pagination::bootstrap-4') }}
   </div>
 </div>
+
 @endsection
