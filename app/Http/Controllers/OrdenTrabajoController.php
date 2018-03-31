@@ -20,12 +20,14 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
+use App\Http\Resources\OT_API as OT_APIs;
+
 class OrdenTrabajoController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index()
     {
@@ -96,6 +98,13 @@ class OrdenTrabajoController extends Controller
         //
         $ordenDeTrabajo = DB::table('OT_ORDEN_TRABAJO')->paginate();
         return view('OT.listaOt', compact('ordenDeTrabajo'));
+    }
+
+    public function LISTADO()
+    {
+        //
+        $ordenDeTrabajo = ot_orden_trabajo::all();
+        return response()->json($ordenDeTrabajo, 200);
     }
 
 

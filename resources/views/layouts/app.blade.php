@@ -43,86 +43,86 @@
 <body>
 <div  id="app">
 
-@if (Route::has('login'))
-  @auth
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgba(0, 0, 0, 0.9);">
-      <span class="d-none d-sm-block " style="font-size:40px; color:white; cursor:pointer" onclick="openNav()">&#9776;</span>
-      <a class="navbar-brand" href="#">RPS</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  @if (Route::has('login'))
+    @auth
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgba(0, 0, 0, 0.9);">
+        <span class="d-none d-sm-block " style="font-size:40px; color:white; cursor:pointer" onclick="openNav()">&#9776;</span>
+        <a class="navbar-brand" href="#">RPS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto ">
-          <li class="nav-item  d-md-none d-xs-block">
-              <a class="nav-link" href="{{route('home')}}">HOME</a>
-          </li>
-          <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="{{route('Perfil')}}">PERFIL</a>
-          </li>
-
-          <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="{{route('reportesListado')}}">REPORTES</a>
-          </li>
-
-          <li class="nav-item d-md-none d-xs-block">
-            <a class="nav-link" href="{{route('InicioOT')}}">OT</a>
-          </li>
-
-        </ul>
-      	<ul class="navbar-nav ">
-          @guest
-              <li><a href="{{ route('login') }}">Login</a></li>
-              <li><a href="{{ route('register') }}">Register</a></li>
-          @else
-
-           <li class="nav-item dropdown" style="margin-right:60px;">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ Auth::user()->USER_NOMBRE }}
-              </a>
-              <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-
-                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-
-              </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto ">
+            <li class="nav-item  d-md-none d-xs-block">
+                <a class="nav-link" href="{{route('home')}}">HOME</a>
             </li>
-                    @endguest
-      	</ul>
-      </div>
+            <li class="nav-item d-md-none d-xs-block">
+              <a class="nav-link" href="{{route('Perfil')}}">PERFIL</a>
+            </li>
 
-     </nav>
+            <li class="nav-item d-md-none d-xs-block">
+              <a class="nav-link" href="{{route('reportesListado')}}">REPORTES</a>
+            </li>
 
-  @endauth
-@endif
+            <li class="nav-item d-md-none d-xs-block">
+              <a class="nav-link" href="{{route('InicioOT')}}">OT</a>
+            </li>
 
-      <div class="hidden-xs ">
+          </ul>
+        	<ul class="navbar-nav ">
+            @guest
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
+            @else
 
-        <div id="mySidenav" class="sidenav ">
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-          <a href="{{route('home')}}">HOME</a>
-          <a href="{{route('Perfil')}}">PERFIL</a>
-          <a href="{{route('reportesListado')}}">REPORTES</a>
-          <a href="{{route('InicioOT')}}">ORDENES DE TRABAJO</a>
+             <li class="nav-item dropdown" style="margin-right:60px;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ Auth::user()->USER_NOMBRE }}
+                </a>
+                <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                  <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+
+                </div>
+              </li>
+                      @endguest
+        	</ul>
         </div>
-      </div>
+
+       </nav>
+
+    @endauth
+  @endif
+
+        <div class="hidden-xs ">
+
+          <div id="mySidenav" class="sidenav ">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="{{route('home')}}">HOME</a>
+            <a href="{{route('Perfil')}}">PERFIL</a>
+            <a href="{{route('reportesListado')}}">REPORTES</a>
+            <a href="{{route('InicioOT')}}">ORDENES DE TRABAJO</a>
+          </div>
+        </div>
 
 
 
-    </div>
+</div>
 
     <div class="container-fluid bg-dark" style="height:auto;">
 
           @yield('content')
 
-      </div>
-
     </div>
+
+  
     <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
