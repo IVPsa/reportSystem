@@ -105,6 +105,8 @@ class OrdenTrabajoController extends Controller
         //
         $ordenDeTrabajo = ot_orden_trabajo::all();
         return response()->json($ordenDeTrabajo, 200);
+
+
     }
 
 
