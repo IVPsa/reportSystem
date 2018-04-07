@@ -16,8 +16,21 @@ use App\Http\Controllers\OrdenTrabajoController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+//INICIO APIcontroller
+Route::get('/otListado', 'APIcontroller@ListadoDeOt');
 
-Route::get('/ListadoOtJson', 'OrdenTrabajoController@LISTADO');
+Route::get('/ot/{id}', 'APIcontroller@Especifica');
+
+//crear OT
+Route::post('/crearOt', 'APIcontroller@crearOT');
+
+//crear Borrar OT
+Route::delete('/ot/{id}', 'APIcontroller@Especifica');
+
+//crear actualizar OT
+Route::put('/ot/{id}', 'APIcontroller@Especifica');
+
+//FIN APIcontroller
 
 Route::get('/region', [
     'uses' => 'LocationController@getRegion',

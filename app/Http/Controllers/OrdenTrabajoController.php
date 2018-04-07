@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 
-use App\Http\Resources\OT_API as OT_APIs;
 
 class OrdenTrabajoController extends Controller
 {
@@ -100,14 +99,7 @@ class OrdenTrabajoController extends Controller
         return view('OT.listaOt', compact('ordenDeTrabajo'));
     }
 
-    public function LISTADO()
-    {
-        //
-        $ordenDeTrabajo = ot_orden_trabajo::all();
-        return response()->json($ordenDeTrabajo, 200);
 
-
-    }
 
 
     public function resumen($id )
@@ -230,6 +222,5 @@ class OrdenTrabajoController extends Controller
       return view('OT.registroFotografico',compact('reporteFotografico','foto'));
 
     }
-
 
 }
